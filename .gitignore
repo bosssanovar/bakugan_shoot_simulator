@@ -11,7 +11,7 @@
 .packages
 .pub-cache/
 .pub/
-.idea
+.idea/
 build/
 
 # Android related
