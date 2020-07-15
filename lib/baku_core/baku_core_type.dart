@@ -22,6 +22,8 @@ extension BakuCoreTypeEx on BakuCoreType{
         return 'Special';
       case BakuCoreType.Failed:
         return '';
+      default:
+        throw Error();
     }
   }
 }

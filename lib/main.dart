@@ -4,6 +4,7 @@ import 'package:bakugan_shoot_simulator/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/baku_core/baku_cores.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:screen/screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,6 +13,7 @@ void main() {
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
   ]);
+  Screen.keepOn(true);
   runApp(MyApp());
 }
 
