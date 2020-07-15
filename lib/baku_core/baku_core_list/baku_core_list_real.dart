@@ -5,17 +5,37 @@ import 'baku_core_list.dart';
 class BakuCoreListReal implements BakuCoreList {
   @override
   List<BakuCore> getBakuCoreList() {
-    var ret = List<BakuCore>();
-    for(int bp = -200; bp <= 650; bp+=50){
-      for(int dr = -1; dr <= 6; dr++){
-        ret.add(BakuCore(bp, dr, BakuCoreType.Attack));
-        ret.add(BakuCore(bp, dr, BakuCoreType.SuperAttack));
-        ret.add(BakuCore(bp, dr, BakuCoreType.Shield));
-        ret.add(BakuCore(bp, dr, BakuCoreType.MagicShield));
-        ret.add(BakuCore(bp, dr, BakuCoreType.Special));
-      }
-    }
-    return ret;
+    return [
+      // Attack
+      BakuCore(0,2,BakuCoreType.Attack),
+      BakuCore(0,3,BakuCoreType.Attack),
+      BakuCore(150,2,BakuCoreType.Attack),
+      BakuCore(0,-1,BakuCoreType.Attack),
+      BakuCore(100,3,BakuCoreType.Attack),
+      BakuCore(100,0,BakuCoreType.Attack),
+
+      // Super Attack
+      BakuCore(0,5,BakuCoreType.SuperAttack),
+      BakuCore(0,6,BakuCoreType.SuperAttack),
+      BakuCore(150,4,BakuCoreType.SuperAttack),
+      BakuCore(0,-1,BakuCoreType.SuperAttack),
+
+      // Shield
+      BakuCore(100,0,BakuCoreType.Shield),
+      BakuCore(150,0,BakuCoreType.Shield),
+      BakuCore(200,0,BakuCoreType.Shield),
+      BakuCore(300,0,BakuCoreType.Shield),
+      BakuCore(-200,0,BakuCoreType.Shield),
+      BakuCore(400,0,BakuCoreType.Shield),
+      BakuCore(0,0,BakuCoreType.Shield),
+
+      // Magic Shield
+      BakuCore(600,0,BakuCoreType.MagicShield),
+
+      // Special
+      BakuCore(500,-1,BakuCoreType.Special),
+      BakuCore(-100,4,BakuCoreType.Special),
+    ];
   }
 
 }
