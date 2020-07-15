@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63005981-a9ba-4288-989e-9a76625a925b" name="Default Changelist" comment="">
+    <list default="true" id="63005981-a9ba-4288-989e-9a76625a925b" name="Default Changelist" comment="横表示固定">
+      <change afterPath="$PROJECT_DIR$/lib/baku_core/baku_core.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/baku_core/baku_core_list/baku_core_list.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/baku_core/baku_core_list/baku_core_list_real.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/baku_core/baku_core_type.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/baku_core/baku_cores.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/baku_cores_test.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
     </list>
@@ -12,6 +18,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_XL_API_28" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -26,7 +39,14 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/baku_core" />
+      <recent name="$PROJECT_DIR$/lib/baku_core/baku_core_list" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -40,11 +60,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Flutter Test.getRandom">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
     </configuration>
+    <configuration name="Counter increments smoke test" type="FlutterTestConfigType" factoryName="Flutter Test" temporary="true" nameIsGenerated="true">
+      <option name="testName" value="Counter increments smoke test" />
+      <option name="testFile" value="$PROJECT_DIR$/test/baku_cores_test.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration name="getRandom" type="FlutterTestConfigType" factoryName="Flutter Test" temporary="true" nameIsGenerated="true">
+      <option name="testName" value="getRandom" />
+      <option name="testFile" value="$PROJECT_DIR$/test/baku_cores_test.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration name="random" type="FlutterTestConfigType" factoryName="Flutter Test" temporary="true" nameIsGenerated="true">
+      <option name="testName" value="random" />
+      <option name="testFile" value="$PROJECT_DIR$/test/baku_cores_test.dart" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Flutter Test.getRandom" />
+        <item itemvalue="Flutter Test.random" />
+        <item itemvalue="Flutter Test.Counter increments smoke test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -57,6 +99,14 @@
       <option name="presentableId" value="Default" />
       <updated>1594258627944</updated>
     </task>
+    <task id="LOCAL-00001" summary="横表示固定">
+      <created>1594704474157</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1594704474157</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -71,6 +121,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="横表示固定" />
+    <option name="LAST_COMMIT_MESSAGE" value="横表示固定" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
