@@ -5,10 +5,17 @@ import 'baku_core_list.dart';
 class BakuCoreListReal implements BakuCoreList {
   @override
   List<BakuCore> getBakuCoreList() {
-    return [
-      BakuCore(0,0,BakuCoreType.Attack),
-      BakuCore(100,1,BakuCoreType.Shield)
-    ];
+    var ret = List<BakuCore>();
+    for(int bp = -200; bp <= 650; bp+=50){
+      for(int dr = -1; dr <= 6; dr++){
+        ret.add(BakuCore(bp, dr, BakuCoreType.Attack));
+        ret.add(BakuCore(bp, dr, BakuCoreType.SuperAttack));
+        ret.add(BakuCore(bp, dr, BakuCoreType.Shield));
+        ret.add(BakuCore(bp, dr, BakuCoreType.MagicShield));
+        ret.add(BakuCore(bp, dr, BakuCoreType.Special));
+      }
+    }
+    return ret;
   }
 
 }
