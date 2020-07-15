@@ -3,7 +3,8 @@ enum BakuCoreType{
   MagicShield,
   Attack,
   SuperAttack,
-  Special
+  Special,
+  Failed
 }
 
 extension BakuCoreTypeEx on BakuCoreType{
@@ -19,6 +20,8 @@ extension BakuCoreTypeEx on BakuCoreType{
         return 'SuperAttack';
       case BakuCoreType.Special:
         return 'Special';
+      case BakuCoreType.Failed:
+        return '';
     }
   }
 }

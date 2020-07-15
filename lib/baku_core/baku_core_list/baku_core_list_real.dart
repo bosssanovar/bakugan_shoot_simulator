@@ -6,6 +6,11 @@ class BakuCoreListReal implements BakuCoreList {
   @override
   List<BakuCore> getBakuCoreList() {
     return [
+      // 失敗の確率を個数で制御
+      BakuCore(0,0,BakuCoreType.Failed),
+      BakuCore(1,1,BakuCoreType.Failed),
+      BakuCore(2,2,BakuCoreType.Failed),
+
       // Attack
       BakuCore(0,2,BakuCoreType.Attack),
       BakuCore(0,3,BakuCoreType.Attack),

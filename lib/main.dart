@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:bakugan_shoot_simulator/baku_core/baku_core.dart';
 import 'package:bakugan_shoot_simulator/baku_core/baku_core_list/baku_core_list_real.dart';
 import 'package:bakugan_shoot_simulator/baku_core/baku_core_type.dart';
@@ -60,8 +58,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   BakuCores _bakuCores = BakuCores(BakuCoreListReal());
-  BakuCore _right = BakuCore(0,0,BakuCoreType.Attack);
-  BakuCore _left = BakuCore(0,0,BakuCoreType.Attack);
+  BakuCore _right = BakuCore(0,0,BakuCoreType.Failed);
+  BakuCore _left = BakuCore(0,0,BakuCoreType.Failed);
 
   void _bakuganShoot() {
     setState(() {
@@ -84,15 +82,15 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  '${_left.battlePoint}',
+                  '${_getBattlePointText(_left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
-                  '${_left.damageRate}',
+                  '${_getDamageRateText(_left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
-                  '${_left.type.text}',
+                  '${_getTypeText(_left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
               ],
@@ -104,15 +102,15 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  '${_right.battlePoint}',
+                  '${_getBattlePointText(_right)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
-                  '${_right.damageRate}',
+                  '${_getDamageRateText(_right)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
-                  '${_right.type.text}',
+                  '${_getTypeText(_right)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
               ],
@@ -126,5 +124,26 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.loop),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  String _getBattlePointText(BakuCore bakuCore) {
+    if(bakuCore.type == BakuCoreType.Failed){
+      return '-';
+    }
+    return '${bakuCore.battlePoint}';
+  }
+
+  String _getDamageRateText(BakuCore bakuCore) {
+    if(bakuCore.type == BakuCoreType.Failed){
+      return '-';
+    }
+    return '${bakuCore.damageRate}';
+  }
+
+  String _getTypeText(BakuCore bakuCore) {
+    if(bakuCore.type == BakuCoreType.Failed){
+      return '-';
+    }
+    return '${bakuCore.type.text}';
   }
 }
