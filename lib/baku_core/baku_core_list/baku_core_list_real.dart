@@ -10,6 +10,9 @@ class BakuCoreListReal implements BakuCoreList {
       BakuCore(0,0,BakuCoreType.Failed),
       BakuCore(1,1,BakuCoreType.Failed),
       BakuCore(2,2,BakuCoreType.Failed),
+      BakuCore(3,3,BakuCoreType.Failed),
+      BakuCore(4,4,BakuCoreType.Failed),
+      BakuCore(5,5,BakuCoreType.Failed),
 
       // Attack
       BakuCore(0,2,BakuCoreType.Attack),
