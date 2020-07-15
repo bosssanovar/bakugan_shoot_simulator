@@ -5,6 +5,10 @@ class BakuCore{
   final int damageRate;
   final BakuCoreType type;
 
+  bool get isNoCore => false;
+
+  bool get canAddTeam => type.canAddTeam ;
+
   const BakuCore(this.battlePoint, this.damageRate, this.type);
 
   equal(BakuCore target){
