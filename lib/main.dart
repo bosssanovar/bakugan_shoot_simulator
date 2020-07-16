@@ -87,7 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _bakuganShoot,
         tooltip: 'Increment',
         child: Icon(Icons.loop),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
