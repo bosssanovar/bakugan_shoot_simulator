@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63005981-a9ba-4288-989e-9a76625a925b" name="Default Changelist" comment="チームに爆コアを追加する機能を追加。 #1">
-      <change afterPath="$PROJECT_DIR$/lib/team_baku_core_position.dart" afterDir="false" />
+    <list default="true" id="63005981-a9ba-4288-989e-9a76625a925b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
     </list>
@@ -150,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594857390209</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="チームに爆コアを追加する機能をリファクタリング。 #1">
+      <created>1594858047963</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1594858047963</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,24 +181,14 @@
     <MESSAGE value="スリープにならないように変更。&#10;#2" />
     <MESSAGE value="スタンド失敗の確率調整" />
     <MESSAGE value="チームに爆コアを追加する機能を追加。 #1" />
-    <option name="LAST_COMMIT_MESSAGE" value="チームに爆コアを追加する機能を追加。 #1" />
+    <MESSAGE value="チームに爆コアを追加する機能をリファクタリング。 #1" />
+    <option name="LAST_COMMIT_MESSAGE" value="チームに爆コアを追加する機能をリファクタリング。 #1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/main.dart</url>
-          <line>94</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/main.dart</url>
-          <line>209</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
-        <breakpoint type="dart-exception" />
+        <breakpoint enabled="true" type="java-exception" />
+        <breakpoint enabled="true" type="CidrExceptionBreakpoint" />
       </default-breakpoints>
     </breakpoint-manager>
   </component>
