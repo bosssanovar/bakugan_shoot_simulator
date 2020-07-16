@@ -3,6 +3,7 @@ import 'package:bakugan_shoot_simulator/baku_core/baku_core_list/baku_core_list_
 import 'package:bakugan_shoot_simulator/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/baku_core/baku_cores.dart';
 import 'package:bakugan_shoot_simulator/baku_core/no_baku_core.dart';
+import 'package:bakugan_shoot_simulator/team_baku_core_position.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:screen/screen.dart';
@@ -94,38 +95,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        _leftTeam1.isNoCore ? _buildLeftCoreAddButton(1) : _buildTeamBakuCore(_leftTeam1),
-        _leftTeam2.isNoCore ? _buildLeftCoreAddButton(2) : _buildTeamBakuCore(_leftTeam2),
-        _leftTeam3.isNoCore ? _buildLeftCoreAddButton(3) : _buildTeamBakuCore(_leftTeam3),
+        _leftTeam1.isNoCore
+            ? _buildCoreAddButton(TeamBakuCorePosition.Left1)
+            : _buildTeamBakuCore(_leftTeam1),
+        _leftTeam2.isNoCore
+            ? _buildCoreAddButton(TeamBakuCorePosition.Left2)
+            : _buildTeamBakuCore(_leftTeam2),
+        _leftTeam3.isNoCore
+            ? _buildCoreAddButton(TeamBakuCorePosition.Left3)
+            : _buildTeamBakuCore(_leftTeam3),
       ],
-    );
-  }
-
-  Widget _buildLeftCoreAddButton(int teamNum) {
-    return IconButton(
-      onPressed: (){
-        if(!_left.canAddTeam){
-          _showCantAddTeamDialog();
-          return;
-        }
-        setState(() {
-          switch(teamNum){
-            case 1:
-              _leftTeam1 = _left;
-              break;
-            case 2:
-              _leftTeam2 = _left;
-              break;
-            case 3:
-              _leftTeam3 = _left;
-              break;
-            default:
-              throw Error();
-              break;
-          }
-        });
-      },
-      icon: Icon(Icons.add_circle_outline),
     );
   }
 
@@ -177,29 +156,62 @@ class _MyHomePageState extends State<MyHomePage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        _rightTeam1.isNoCore ? _buildRightCoreAddButton(1) : _buildTeamBakuCore(_rightTeam1),
-        _rightTeam2.isNoCore ? _buildRightCoreAddButton(2) : _buildTeamBakuCore(_rightTeam2),
-        _rightTeam3.isNoCore ? _buildRightCoreAddButton(3) : _buildTeamBakuCore(_rightTeam3),
+        _rightTeam1.isNoCore
+            ? _buildCoreAddButton(TeamBakuCorePosition.Right1)
+            : _buildTeamBakuCore(_rightTeam1),
+        _rightTeam2.isNoCore
+            ? _buildCoreAddButton(TeamBakuCorePosition.Right2)
+            : _buildTeamBakuCore(_rightTeam2),
+        _rightTeam3.isNoCore
+            ? _buildCoreAddButton(TeamBakuCorePosition.Right3)
+            : _buildTeamBakuCore(_rightTeam3),
       ],
     );
   }
 
-  Widget _buildRightCoreAddButton(int teamNum) {
+  Widget _buildCoreAddButton(TeamBakuCorePosition pos) {
     return IconButton(
       onPressed: (){
-        if(!_right.canAddTeam){
-          _showCantAddTeamDialog();
-          return;
+        switch(pos) {
+          case TeamBakuCorePosition.Left1:
+          case TeamBakuCorePosition.Left2:
+          case TeamBakuCorePosition.Left3:
+            if (!_left.canAddTeam) {
+              _showCantAddTeamDialog();
+              return;
+            }
+            break;
+          case TeamBakuCorePosition.Right1:
+          case TeamBakuCorePosition.Right2:
+          case TeamBakuCorePosition.Right3:
+            if (!_right.canAddTeam) {
+              _showCantAddTeamDialog();
+              return;
+            }
+            break;
+          default:
+            throw Error();
+            break;
         }
+
         setState(() {
-          switch(teamNum){
-            case 1:
+          switch(pos){
+            case TeamBakuCorePosition.Left1:
+              _leftTeam1 = _left;
+              break;
+            case TeamBakuCorePosition.Left2:
+              _leftTeam2 = _left;
+              break;
+            case TeamBakuCorePosition.Left3:
+              _leftTeam3 = _left;
+              break;
+            case TeamBakuCorePosition.Right1:
               _rightTeam1 = _right;
               break;
-            case 2:
+            case TeamBakuCorePosition.Right2:
               _rightTeam2 = _right;
               break;
-            case 3:
+            case TeamBakuCorePosition.Right3:
               _rightTeam3 = _right;
               break;
             default:
