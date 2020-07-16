@@ -73,8 +73,11 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
               child: _buildLeftPlayerGetBakuCore(context),
             ),
-            Text(
-              'V.S.',
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'V.S.',
+              ),
             ),
             Expanded(
               child: _buildRightPlayerGetBakuCore(context),

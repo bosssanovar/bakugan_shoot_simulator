@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63005981-a9ba-4288-989e-9a76625a925b" name="Default Changelist" comment="">
+    <list default="true" id="63005981-a9ba-4288-989e-9a76625a925b" name="Default Changelist" comment="レウアウトをv.s.を中心に調整。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
     </list>
@@ -170,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594868255450</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="レウアウトをv.s.を中心に調整。">
+      <created>1594872111579</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1594872111579</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -198,7 +205,8 @@
     <MESSAGE value="チームに爆コアを追加する機能をリファクタリング。 #1" />
     <MESSAGE value="チームに爆コアを削除する機能追加。 #1" />
     <MESSAGE value="シュートボタンをセンターに" />
-    <option name="LAST_COMMIT_MESSAGE" value="シュートボタンをセンターに" />
+    <MESSAGE value="レウアウトをv.s.を中心に調整。" />
+    <option name="LAST_COMMIT_MESSAGE" value="レウアウトをv.s.を中心に調整。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
