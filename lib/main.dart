@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _buildLeftTeam(),
+            Expanded(child: _buildLeftTeam()),
             Expanded(
               child: _buildLeftPlayerGetBakuCore(context),
             ),
@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
               child: _buildRightPlayerGetBakuCore(context),
             ),
-            _buildRightTeam(),
+            Expanded(child: _buildRightTeam()),
           ],
         ),
       ),
@@ -217,6 +217,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildTeamBakuCore(TeamBakuCorePosition pos){
     var bakuCore = _getTeamBakuCoreObject(pos);
     return Row(
+      mainAxisAlignment: _isLeft(pos)
+          ? MainAxisAlignment.start
+          : MainAxisAlignment.end,
       children: <Widget>[
         _isLeft(pos) ? _buildRemoveButtonIfNeed(pos) : Container(),
         Column(
