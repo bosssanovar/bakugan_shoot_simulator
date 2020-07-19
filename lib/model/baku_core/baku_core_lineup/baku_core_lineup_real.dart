@@ -1,18 +1,18 @@
-import 'package:bakugan_shoot_simulator/baku_core/baku_core.dart';
-import 'package:bakugan_shoot_simulator/baku_core/baku_core_type.dart';
-import 'baku_core_list.dart';
+import '../baku_core.dart';
+import '../baku_core_type.dart';
+import 'baku_core_lineup.dart';
 
-class BakuCoreListReal implements BakuCoreList {
+class BakuCorelineupMine implements BakuCoreLineup {
   @override
   List<BakuCore> getBakuCoreList() {
     return [
       // 失敗の確率を個数で制御
-      BakuCore(0,0,BakuCoreType.Failed),
-      BakuCore(1,1,BakuCoreType.Failed),
-      BakuCore(2,2,BakuCoreType.Failed),
-      BakuCore(3,3,BakuCoreType.Failed),
-      BakuCore(4,4,BakuCoreType.Failed),
-      BakuCore(5,5,BakuCoreType.Failed),
+      BakuCore(0, 0, BakuCoreType.Failed),
+      BakuCore(1, 1, BakuCoreType.Failed),
+      BakuCore(2, 2, BakuCoreType.Failed),
+      BakuCore(3, 3, BakuCoreType.Failed),
+      BakuCore(4, 4, BakuCoreType.Failed),
+      BakuCore(5, 5, BakuCoreType.Failed),
 
       // Attack
       BakuCore(0,2,BakuCoreType.Attack),

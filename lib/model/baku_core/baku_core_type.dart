@@ -29,21 +29,4 @@ extension BakuCoreTypeEx on BakuCoreType{
         throw Error();
     }
   }
-
-  bool get canAddTeam {
-
-    switch(this){
-      case BakuCoreType.Shield:
-      case BakuCoreType.MagicShield:
-      case BakuCoreType.Attack:
-      case BakuCoreType.SuperAttack:
-      case BakuCoreType.Special:
-      return true;
-      case BakuCoreType.Failed:
-      case BakuCoreType.None:
-        return false;
-      default:
-        throw Error();
-    }
-  }
 }

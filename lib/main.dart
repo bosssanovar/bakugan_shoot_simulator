@@ -1,12 +1,11 @@
-import 'package:bakugan_shoot_simulator/baku_core/baku_core.dart';
-import 'package:bakugan_shoot_simulator/baku_core/baku_core_list/baku_core_list_real.dart';
-import 'package:bakugan_shoot_simulator/baku_core/baku_core_type.dart';
-import 'package:bakugan_shoot_simulator/baku_core/baku_cores.dart';
-import 'package:bakugan_shoot_simulator/baku_core/no_baku_core.dart';
-import 'package:bakugan_shoot_simulator/team_baku_core_position.dart';
+import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
+import 'package:bakugan_shoot_simulator/model/player/player_position.dart';
+import 'package:bakugan_shoot_simulator/model/player/team_baku_core_position.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:screen/screen.dart';
+
+import 'model/baku_core/baku_core_type.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,20 +41,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  BakuCores _bakuCores = BakuCores(BakuCoreListReal());
-  BakuCore _left = NoBakuCore();
-  BakuCore _right = NoBakuCore();
-  BakuCore _leftTeam1 = NoBakuCore();
-  BakuCore _leftTeam2 = NoBakuCore();
-  BakuCore _leftTeam3 = NoBakuCore();
-  BakuCore _rightTeam1 = NoBakuCore();
-  BakuCore _rightTeam2 = NoBakuCore();
-  BakuCore _rightTeam3 = NoBakuCore();
+  MainBloc _bloc = MainBloc();
 
   void _bakuganShoot() {
     setState(() {
-      _left = _bakuCores.getRandom();
-      _right = _bakuCores.getRandom();
+      _bloc.shootBakugans();
     });
   }
 
@@ -100,15 +90,24 @@ class _MyHomePageState extends State<MyHomePage> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        _leftTeam1.isNoCore
-            ? _buildCoreAddButton(TeamBakuCorePosition.Left1)
-            : _buildTeamBakuCore(TeamBakuCorePosition.Left1),
-        _leftTeam2.isNoCore
-            ? _buildCoreAddButton(TeamBakuCorePosition.Left2)
-            : _buildTeamBakuCore(TeamBakuCorePosition.Left2),
-        _leftTeam3.isNoCore
-            ? _buildCoreAddButton(TeamBakuCorePosition.Left3)
-            : _buildTeamBakuCore(TeamBakuCorePosition.Left3),
+        !_bloc.isExistTeamsBakuCore(
+                PlayerPosition.Left, TeamBakuCorePosition.Pos1)
+            ? _buildCoreAddButton(
+                PlayerPosition.Left, TeamBakuCorePosition.Pos1)
+            : _buildTeamBakuCore(
+                PlayerPosition.Left, TeamBakuCorePosition.Pos1),
+        !_bloc.isExistTeamsBakuCore(
+                PlayerPosition.Left, TeamBakuCorePosition.Pos2)
+            ? _buildCoreAddButton(
+                PlayerPosition.Left, TeamBakuCorePosition.Pos2)
+            : _buildTeamBakuCore(
+                PlayerPosition.Left, TeamBakuCorePosition.Pos2),
+        !_bloc.isExistTeamsBakuCore(
+                PlayerPosition.Left, TeamBakuCorePosition.Pos3)
+            ? _buildCoreAddButton(
+                PlayerPosition.Left, TeamBakuCorePosition.Pos3)
+            : _buildTeamBakuCore(
+                PlayerPosition.Left, TeamBakuCorePosition.Pos3),
       ],
     );
   }
@@ -119,15 +118,15 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Text(
-                  '${_getBattlePointText(_left)}',
+                  '${_getBattlePointText(PlayerPosition.Left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
-                  '${_getDamageRateText(_left)}',
+                  '${_getShotDamageRateText(PlayerPosition.Left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
-                  '${_getTypeText(_left)}',
+                  '${_getShotTypeText(PlayerPosition.Left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
               ],
@@ -140,15 +139,15 @@ class _MyHomePageState extends State<MyHomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          '${_getBattlePointText(_right)}',
+          '${_getBattlePointText(PlayerPosition.Right)}',
           style: Theme.of(context).textTheme.display1,
         ),
         Text(
-          '${_getDamageRateText(_right)}',
+          '${_getShotDamageRateText(PlayerPosition.Right)}',
           style: Theme.of(context).textTheme.display1,
         ),
         Text(
-          '${_getTypeText(_right)}',
+          '${_getShotTypeText(PlayerPosition.Right)}',
           style: Theme.of(context).textTheme.display1,
         ),
       ],
@@ -162,177 +161,151 @@ class _MyHomePageState extends State<MyHomePage> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
-        _rightTeam1.isNoCore
-            ? _buildCoreAddButton(TeamBakuCorePosition.Right1)
-            : _buildTeamBakuCore(TeamBakuCorePosition.Right1),
-        _rightTeam2.isNoCore
-            ? _buildCoreAddButton(TeamBakuCorePosition.Right2)
-            : _buildTeamBakuCore(TeamBakuCorePosition.Right2),
-        _rightTeam3.isNoCore
-            ? _buildCoreAddButton(TeamBakuCorePosition.Right3)
-            : _buildTeamBakuCore(TeamBakuCorePosition.Right3),
+        !_bloc.isExistTeamsBakuCore(
+            PlayerPosition.Right, TeamBakuCorePosition.Pos1)
+            ? _buildCoreAddButton(
+            PlayerPosition.Right, TeamBakuCorePosition.Pos1)
+            : _buildTeamBakuCore(
+            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+        !_bloc.isExistTeamsBakuCore(
+            PlayerPosition.Right, TeamBakuCorePosition.Pos2)
+            ? _buildCoreAddButton(
+            PlayerPosition.Right, TeamBakuCorePosition.Pos2)
+            : _buildTeamBakuCore(
+            PlayerPosition.Right, TeamBakuCorePosition.Pos2),
+        !_bloc.isExistTeamsBakuCore(
+            PlayerPosition.Right, TeamBakuCorePosition.Pos3)
+            ? _buildCoreAddButton(
+            PlayerPosition.Right, TeamBakuCorePosition.Pos3)
+            : _buildTeamBakuCore(
+            PlayerPosition.Right, TeamBakuCorePosition.Pos3),
       ],
     );
   }
 
-  Widget _buildCoreAddButton(TeamBakuCorePosition pos) {
+  Widget _buildCoreAddButton(PlayerPosition playerPosition,
+      TeamBakuCorePosition teamBakuCorePosition) {
     return IconButton(
       onPressed: (){
-          if (_isLeft(pos) && !_left.canAddTeam) {
+        if (_isLeft(playerPosition) &&
+            !_bloc.isSuccessShoot(PlayerPosition.Left)) {
             _showCantAddTeamDialog();
             return;
           }
-          if (_isRight(pos) && !_right.canAddTeam) {
+        if (_isRight(playerPosition) &&
+            !_bloc.isSuccessShoot(PlayerPosition.Right)) {
             _showCantAddTeamDialog();
             return;
           }
 
         setState(() {
-          switch(pos){
-            case TeamBakuCorePosition.Left1:
-              _leftTeam1 = _left;
-              break;
-            case TeamBakuCorePosition.Left2:
-              _leftTeam2 = _left;
-              break;
-            case TeamBakuCorePosition.Left3:
-              _leftTeam3 = _left;
-              break;
-            case TeamBakuCorePosition.Right1:
-              _rightTeam1 = _right;
-              break;
-            case TeamBakuCorePosition.Right2:
-              _rightTeam2 = _right;
-              break;
-            case TeamBakuCorePosition.Right3:
-              _rightTeam3 = _right;
-              break;
-            default:
-              throw Error();
-              break;
-          }
+          _bloc.storeCores(playerPosition, teamBakuCorePosition);
         });
       },
       icon: Icon(Icons.add_circle_outline),
     );
   }
 
-  Widget _buildTeamBakuCore(TeamBakuCorePosition pos){
-    var bakuCore = _getTeamBakuCoreObject(pos);
+  Widget _buildTeamBakuCore(PlayerPosition playerPosition,
+      TeamBakuCorePosition teamBakuCorePosition) {
     return Row(
-      mainAxisAlignment: _isLeft(pos)
+      mainAxisAlignment: _isLeft(playerPosition)
           ? MainAxisAlignment.start
           : MainAxisAlignment.end,
       children: <Widget>[
-        _isLeft(pos) ? _buildRemoveButtonIfNeed(pos) : Container(),
+        _isLeft(playerPosition)
+            ? _buildRemoveButton(playerPosition, teamBakuCorePosition)
+            : Container(),
         Column(
-          crossAxisAlignment: _isLeft(pos)
+          crossAxisAlignment: _isLeft(playerPosition)
               ? CrossAxisAlignment.start
               : CrossAxisAlignment.end,
           children: <Widget>[
-            Text(_getDamageRateText(bakuCore)),
-            Text(_getTypeText(bakuCore)),
+            Text(
+                _getTeamsDamageRateText(
+                    playerPosition, teamBakuCorePosition)
+            ),
+            Text(
+                _getTeamsBakuCoreTypeText(
+                    playerPosition, teamBakuCorePosition)
+            ),
           ],
         ),
-        _isRight(pos) ? _buildRemoveButtonIfNeed(pos) : Container()
+        _isRight(playerPosition)
+            ? _buildRemoveButton(playerPosition, teamBakuCorePosition)
+            : Container()
       ],
     );
   }
 
-  Widget _buildRemoveButtonIfNeed(TeamBakuCorePosition pos) {
+  Widget _buildRemoveButton(PlayerPosition playerPosition,
+      TeamBakuCorePosition teamBakuCorePosition) {
     return IconButton(
         icon: Icon(Icons.remove_circle),
         onPressed: () async {
-          await _removeTeamBakuCore(pos);
+          await _removeTeamBakuCore(playerPosition, teamBakuCorePosition);
         },
       );
   }
 
-  Future _removeTeamBakuCore(TeamBakuCorePosition pos) async {
+  Future _removeTeamBakuCore(PlayerPosition playerPosition,
+      TeamBakuCorePosition teamBakuCorePosition) async {
     if(!(await _showRemoveConfirmDialog())){
-    return;
+      return;
     }
 
     setState(() {
-      switch(pos){
-        case TeamBakuCorePosition.Left1:
-          _leftTeam1 = NoBakuCore();
-          break;
-        case TeamBakuCorePosition.Left2:
-          _leftTeam2 = NoBakuCore();
-          break;
-        case TeamBakuCorePosition.Left3:
-          _leftTeam3 = NoBakuCore();
-          break;
-        case TeamBakuCorePosition.Right1:
-          _rightTeam1 = NoBakuCore();
-          break;
-        case TeamBakuCorePosition.Right2:
-          _rightTeam2 = NoBakuCore();
-          break;
-        case TeamBakuCorePosition.Right3:
-          _rightTeam3 = NoBakuCore();
-          break;
-        default:
-          throw Error();
-          break;
-      }
+      _bloc.removeCores(playerPosition, teamBakuCorePosition);
     });
   }
 
-  BakuCore _getTeamBakuCoreObject(TeamBakuCorePosition pos) {
-    var bakuCore;
-    switch(pos){
-      case TeamBakuCorePosition.Left1:
-        bakuCore = _leftTeam1;
-        break;
-      case TeamBakuCorePosition.Left2:
-        bakuCore = _leftTeam2;
-        break;
-      case TeamBakuCorePosition.Left3:
-        bakuCore = _leftTeam3;
-        break;
-      case TeamBakuCorePosition.Right1:
-        bakuCore = _rightTeam1;
-        break;
-      case TeamBakuCorePosition.Right2:
-        bakuCore = _rightTeam2;
-        break;
-      case TeamBakuCorePosition.Right3:
-        bakuCore = _rightTeam3;
-        break;
-    }
-    return bakuCore;
-  }
-
-  String _getBattlePointText(BakuCore bakuCore) {
-    if(bakuCore.type == BakuCoreType.Failed){
-      return '-';
-    }
-    if(bakuCore.type == BakuCoreType.None){
+  String _getBattlePointText(PlayerPosition position) {
+    if (!_bloc.isShotBakugan()) {
       return '';
     }
-    return 'BP : ${bakuCore.battlePoint}';
-  }
-
-  String _getDamageRateText(BakuCore bakuCore) {
-    if(bakuCore.type == BakuCoreType.Failed){
+    if (!_bloc.isSuccessShoot(position)) {
       return '-';
     }
-    if(bakuCore.type == BakuCoreType.None){
-      return '';
-    }
-    return 'DR : ${bakuCore.damageRate}';
+    return 'BP : ${_bloc.getShotBakuganBattlePoint(position)}';
   }
 
-  String _getTypeText(BakuCore bakuCore) {
-    if(bakuCore.type == BakuCoreType.Failed){
-      return '-';
-    }
-    if(bakuCore.type == BakuCoreType.None){
+  String _getShotDamageRateText(PlayerPosition position) {
+    if (!_bloc.isShotBakugan()) {
       return '';
     }
-    return '${bakuCore.type.text}';
+    if (!_bloc.isSuccessShoot(position)) {
+      return '-';
+    }
+    return 'DR : ${_bloc.getShotBakuganDamageRate(position)}';
+  }
+
+  String _getShotTypeText(PlayerPosition position) {
+    if (!_bloc.isShotBakugan()) {
+      return '';
+    }
+    if (!_bloc.isSuccessShoot(position)) {
+      return '-';
+    }
+    return '${_bloc
+        .getShotBakuCoreType(position)
+        .text}';
+  }
+
+  String _getTeamsDamageRateText(PlayerPosition playerPosition,
+      TeamBakuCorePosition teamBakuCorePosition) {
+    return 'DR : ${
+        _bloc.getTeamsDamageRate(playerPosition,
+            teamBakuCorePosition)
+    }';
+  }
+
+  String _getTeamsBakuCoreTypeText(PlayerPosition playerPosition,
+      TeamBakuCorePosition teamBakuCorePosition) {
+    return '${
+        _bloc
+            .getTeamsBakuCoreType(playerPosition, teamBakuCorePosition)
+            .text
+    }';
   }
 
   void _showCantAddTeamDialog() {
@@ -373,22 +346,17 @@ class _MyHomePageState extends State<MyHomePage> {
     return result;
   }
 
-  bool _isLeft(TeamBakuCorePosition pos){
+  bool _isLeft(PlayerPosition pos) {
     switch(pos){
-      case TeamBakuCorePosition.Left1:
-      case TeamBakuCorePosition.Left2:
-      case TeamBakuCorePosition.Left3:
-        return true;
-      case TeamBakuCorePosition.Right1:
-      case TeamBakuCorePosition.Right2:
-      case TeamBakuCorePosition.Right3:
+      case PlayerPosition.Right:
         return false;
-        break;
+      case PlayerPosition.Left:
+        return true;
     }
     throw Error();
   }
 
-  bool _isRight(TeamBakuCorePosition pos){
+  bool _isRight(PlayerPosition pos) {
     return !_isLeft(pos);
   }
 }
