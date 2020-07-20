@@ -68,4 +68,12 @@ class MainBloc {
   bool isSuccessShoot(PlayerPosition playerPosition) {
     return _arena.isShotSuccess(playerPosition);
   }
+
+  void reShootBakugan(PlayerPosition position) {
+    _arena.reShootBakugan(position);
+  }
+
+  void swapBakuCores(){
+    _arena.swapBakuCores();
+  }
 }

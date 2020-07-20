@@ -43,45 +43,159 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   MainBloc _bloc = MainBloc();
 
-  void _bakuganShoot() {
-    setState(() {
-      _bloc.shootBakugans();
-    });
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(child: _buildLeftTeam()),
-            Expanded(
-              child: _buildLeftPlayerGetBakuCore(context),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'V.S.',
+    return SafeArea(
+      child: Scaffold(
+//      appBar: AppBar(
+//        title: Text(widget.title),
+//      ),
+        body: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(child: _buildLeftTeam()),
+              Expanded(
+                child: _buildLeftPlayerGetBakuCore(context),
               ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  'V.S.',
+                ),
+              ),
+              Expanded(
+                child: _buildRightPlayerGetBakuCore(context),
+              ),
+              Expanded(child: _buildRightTeam()),
+            ],
+          ),
+        ),
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    disabledElevation: 0,
+                    backgroundColor: _bloc.isShotBakugan()
+                        ? Colors.lightBlueAccent
+                        : Colors.grey,
+                    onPressed: !_bloc.isShotBakugan()
+                        ? null
+                        : () {
+//                      setState(() {
+//                        _bloc.reShootBakugan(PlayerPosition.Right);
+//                      });
+                        },
+                    tooltip: 'add left',
+                    child: Icon(Icons.plus_one),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    disabledElevation: 0,
+                    backgroundColor: _bloc.isShotBakugan()
+                        ? Colors.lightBlueAccent
+                        : Colors.grey,
+                    onPressed: !_bloc.isShotBakugan()
+                        ? null
+                        : () {
+                          setState(() {
+                            _bloc.reShootBakugan(PlayerPosition.Left);
+                          });
+                        },
+                    tooltip: 'shoot left',
+                    child: Icon(Icons.repeat_one),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    disabledElevation: 0,
+                    backgroundColor: _bloc.isShotBakugan()
+                        ? Colors.lightBlueAccent
+                        : Colors.grey,
+                    onPressed: !_bloc.isShotBakugan()
+                        ? null
+                        : () {
+                          setState(() {
+                            _bloc.swapBakuCores();
+                          });
+                        },
+                    tooltip: 'swap',
+                    child: Icon(Icons.swap_horiz),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    disabledElevation: 0,
+                    backgroundColor: _bloc.isShotBakugan()
+                        ? Colors.lightBlueAccent
+                        : Colors.grey,
+                    onPressed: !_bloc.isShotBakugan()
+                        ? null
+                        : () {
+                      setState(() {
+                        _bloc.reShootBakugan(PlayerPosition.Right);
+                      });
+                    },
+                    tooltip: 'shoot right',
+                    child: Icon(Icons.repeat_one),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    disabledElevation: 0,
+                    backgroundColor: _bloc.isShotBakugan()
+                        ? Colors.lightBlueAccent
+                        : Colors.grey,
+                    onPressed: !_bloc.isShotBakugan()
+                      ? null
+                      : () {
+  //                      setState(() {
+  //                        _bloc.reShootBakugan(PlayerPosition.Right);
+  //                      });
+                      },
+                    tooltip: 'add right',
+                    child: Icon(Icons.plus_one),
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              child: _buildRightPlayerGetBakuCore(context),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      setState(() {
+                        _bloc.shootBakugans();
+                      });
+                    },
+                    tooltip: 'shoot',
+                    child: Icon(Icons.refresh),
+                  ),
+                ),
+              ],
             ),
-            Expanded(child: _buildRightTeam()),
           ],
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _bakuganShoot,
-        tooltip: 'Increment',
-        child: Icon(Icons.loop),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 

@@ -63,4 +63,21 @@ class Arena {
     }
     return _bakuCores[position];
   }
+
+  void reShootBakugan(PlayerPosition position) {
+    if(!isShotBakugan()){
+      throw StateError('Bakugan is not shot yet.');
+    }
+    _bakuCores[position] = _bakuCorePool.getRandom();
+  }
+
+  void swapBakuCores() {
+    if(!isShotBakugan()){
+      throw StateError('Bakugan is not shot yet.');
+    }
+
+    final temp = _bakuCores[PlayerPosition.Right];
+    _bakuCores[PlayerPosition.Right] = _bakuCores[PlayerPosition.Left];
+    _bakuCores[PlayerPosition.Left] = temp;
+  }
 }
