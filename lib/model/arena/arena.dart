@@ -6,7 +6,7 @@ import 'package:bakugan_shoot_simulator/model/baku_core/no_baku_core.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 
 class Arena {
-  final _bakuCorePool = BakuCorePool(BakuCorelineupMine());
+  final _bakuCorePool = BakuCorePool(BakuCoreLineupMine());
   var _bakuCores = Map<TeamPosition, BakuCore>();
 
   Arena() {

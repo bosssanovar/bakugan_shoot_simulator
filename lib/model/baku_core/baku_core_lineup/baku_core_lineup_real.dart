@@ -2,7 +2,7 @@ import '../baku_core.dart';
 import '../baku_core_type.dart';
 import 'baku_core_lineup.dart';
 
-class BakuCorelineupMine implements BakuCoreLineup {
+class BakuCoreLineupMine implements BakuCoreLineup {
   @override
   List<BakuCore> getBakuCoreList() {
     return [
