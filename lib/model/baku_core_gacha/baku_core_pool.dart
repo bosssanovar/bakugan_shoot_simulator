@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'baku_core.dart';
-import 'baku_core_lineup/baku_core_lineup.dart';
+import '../baku_core/baku_core.dart';
+import '../baku_core/baku_core_lineup/baku_core_lineup.dart';
 
 class BakuCorePool {
 

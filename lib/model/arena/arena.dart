@@ -1,6 +1,6 @@
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_lineup/baku_core_lineup_real.dart';
-import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_pool.dart';
+import 'package:bakugan_shoot_simulator/model/baku_core_gacha/baku_core_pool.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/no_baku_core.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
