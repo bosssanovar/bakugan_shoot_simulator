@@ -1,0 +1,1 @@
+enum TeamPosition { Right, Left }

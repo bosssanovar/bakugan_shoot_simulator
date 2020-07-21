@@ -2,43 +2,43 @@ import 'dart:core';
 
 import 'package:bakugan_shoot_simulator/model/arena/arena.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
-import 'package:bakugan_shoot_simulator/model/player/player.dart';
-import 'package:bakugan_shoot_simulator/model/player/player_position.dart';
-import 'package:bakugan_shoot_simulator/model/player/team_baku_core_position.dart';
+import 'package:bakugan_shoot_simulator/model/team/team.dart';
+import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
+import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 
 class MainBloc {
-  final Map<PlayerPosition, Player> _players = Map<PlayerPosition, Player>();
+  final Map<TeamPosition, Team> _players = Map<TeamPosition, Team>();
   final Arena _arena = Arena();
 
   MainBloc() {
-    _players[PlayerPosition.Left] = Player();
-    _players[PlayerPosition.Right] = Player();
+    _players[TeamPosition.Left] = Team();
+    _players[TeamPosition.Right] = Team();
   }
 
   // Player
 
-  void storeCores(PlayerPosition playerPosition,
+  void storeCores(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     _players[playerPosition].storeTeamBakuCores(
         _arena.getBakuCore(playerPosition), teamBakuCorePosition);
   }
 
-  void removeCores(PlayerPosition playerPosition,
+  void removeCores(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     _players[playerPosition].removeTeamBakuCore(teamBakuCorePosition);
   }
 
-  int getTeamsDamageRate(PlayerPosition playerPosition,
+  int getTeamsDamageRate(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     return _players[playerPosition].getDamageRate(teamBakuCorePosition);
   }
 
-  BakuCoreType getTeamsBakuCoreType(PlayerPosition playerPosition,
+  BakuCoreType getTeamsBakuCoreType(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     return _players[playerPosition].getBakuCoreType(teamBakuCorePosition);
   }
 
-  bool isExistTeamsBakuCore(PlayerPosition playerPosition,
+  bool isExistTeamsBakuCore(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     return _players[playerPosition].isExistBakuCore(teamBakuCorePosition);
   }
@@ -49,15 +49,15 @@ class MainBloc {
     _arena.shootBakgans();
   }
 
-  int getShotBakuganBattlePoint(PlayerPosition playerPosition) {
+  int getShotBakuganBattlePoint(TeamPosition playerPosition) {
     return _arena.getBattlePoint(playerPosition);
   }
 
-  int getShotBakuganDamageRate(PlayerPosition playerPosition) {
+  int getShotBakuganDamageRate(TeamPosition playerPosition) {
     return _arena.getDamageRate(playerPosition);
   }
 
-  BakuCoreType getShotBakuCoreType(PlayerPosition playerPosition) {
+  BakuCoreType getShotBakuCoreType(TeamPosition playerPosition) {
     return _arena.getBakuCoreType(playerPosition);
   }
 
@@ -65,11 +65,11 @@ class MainBloc {
     return _arena.isShotBakugan();
   }
 
-  bool isSuccessShoot(PlayerPosition playerPosition) {
+  bool isSuccessShoot(TeamPosition playerPosition) {
     return _arena.isShotSuccess(playerPosition);
   }
 
-  void reShootBakugan(PlayerPosition position) {
+  void reShootBakugan(TeamPosition position) {
     _arena.reShootBakugan(position);
   }
 

@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
-import 'package:bakugan_shoot_simulator/model/player/player_position.dart';
-import 'package:bakugan_shoot_simulator/model/player/team_baku_core_position.dart';
+import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
+import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:screen/screen.dart';
@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ? null
                       : () {
                         setState(() {
-                          _bloc.reShootBakugan(PlayerPosition.Left);
+                          _bloc.reShootBakugan(TeamPosition.Left);
                         });
                       },
                   tooltip: 'shoot left',
@@ -158,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ? null
                       : () {
                     setState(() {
-                      _bloc.reShootBakugan(PlayerPosition.Right);
+                      _bloc.reShootBakugan(TeamPosition.Right);
                     });
                   },
                   tooltip: 'shoot right',
@@ -214,23 +214,23 @@ class _MyHomePageState extends State<MyHomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         !_bloc.isExistTeamsBakuCore(
-                PlayerPosition.Left, TeamBakuCorePosition.Pos1)
+                TeamPosition.Left, TeamBakuCorePosition.Pos1)
             ? _buildCoreAddButton(
-                PlayerPosition.Left, TeamBakuCorePosition.Pos1)
+                TeamPosition.Left, TeamBakuCorePosition.Pos1)
             : _buildTeamBakuCore(
-                PlayerPosition.Left, TeamBakuCorePosition.Pos1),
+                TeamPosition.Left, TeamBakuCorePosition.Pos1),
         !_bloc.isExistTeamsBakuCore(
-                PlayerPosition.Left, TeamBakuCorePosition.Pos2)
+                TeamPosition.Left, TeamBakuCorePosition.Pos2)
             ? _buildCoreAddButton(
-                PlayerPosition.Left, TeamBakuCorePosition.Pos2)
+                TeamPosition.Left, TeamBakuCorePosition.Pos2)
             : _buildTeamBakuCore(
-                PlayerPosition.Left, TeamBakuCorePosition.Pos2),
+                TeamPosition.Left, TeamBakuCorePosition.Pos2),
         !_bloc.isExistTeamsBakuCore(
-                PlayerPosition.Left, TeamBakuCorePosition.Pos3)
+                TeamPosition.Left, TeamBakuCorePosition.Pos3)
             ? _buildCoreAddButton(
-                PlayerPosition.Left, TeamBakuCorePosition.Pos3)
+                TeamPosition.Left, TeamBakuCorePosition.Pos3)
             : _buildTeamBakuCore(
-                PlayerPosition.Left, TeamBakuCorePosition.Pos3),
+                TeamPosition.Left, TeamBakuCorePosition.Pos3),
       ],
     );
   }
@@ -241,15 +241,15 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Text(
-                  '${_getBattlePointText(PlayerPosition.Left)}',
+                  '${_getBattlePointText(TeamPosition.Left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
-                  '${_getShotDamageRateText(PlayerPosition.Left)}',
+                  '${_getShotDamageRateText(TeamPosition.Left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
-                  '${_getShotTypeText(PlayerPosition.Left)}',
+                  '${_getShotTypeText(TeamPosition.Left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
               ],
@@ -262,15 +262,15 @@ class _MyHomePageState extends State<MyHomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          '${_getBattlePointText(PlayerPosition.Right)}',
+          '${_getBattlePointText(TeamPosition.Right)}',
           style: Theme.of(context).textTheme.display1,
         ),
         Text(
-          '${_getShotDamageRateText(PlayerPosition.Right)}',
+          '${_getShotDamageRateText(TeamPosition.Right)}',
           style: Theme.of(context).textTheme.display1,
         ),
         Text(
-          '${_getShotTypeText(PlayerPosition.Right)}',
+          '${_getShotTypeText(TeamPosition.Right)}',
           style: Theme.of(context).textTheme.display1,
         ),
       ],
@@ -285,38 +285,38 @@ class _MyHomePageState extends State<MyHomePage> {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         !_bloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1)
+            TeamPosition.Right, TeamBakuCorePosition.Pos1)
             ? _buildCoreAddButton(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1)
+            TeamPosition.Right, TeamBakuCorePosition.Pos1)
             : _buildTeamBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.Right, TeamBakuCorePosition.Pos1),
         !_bloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos2)
+            TeamPosition.Right, TeamBakuCorePosition.Pos2)
             ? _buildCoreAddButton(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos2)
+            TeamPosition.Right, TeamBakuCorePosition.Pos2)
             : _buildTeamBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos2),
+            TeamPosition.Right, TeamBakuCorePosition.Pos2),
         !_bloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos3)
+            TeamPosition.Right, TeamBakuCorePosition.Pos3)
             ? _buildCoreAddButton(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos3)
+            TeamPosition.Right, TeamBakuCorePosition.Pos3)
             : _buildTeamBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos3),
+            TeamPosition.Right, TeamBakuCorePosition.Pos3),
       ],
     );
   }
 
-  Widget _buildCoreAddButton(PlayerPosition playerPosition,
+  Widget _buildCoreAddButton(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     return IconButton(
       onPressed: (){
         if (_isLeft(playerPosition) &&
-            !_bloc.isSuccessShoot(PlayerPosition.Left)) {
+            !_bloc.isSuccessShoot(TeamPosition.Left)) {
             _showCantAddTeamDialog();
             return;
           }
         if (_isRight(playerPosition) &&
-            !_bloc.isSuccessShoot(PlayerPosition.Right)) {
+            !_bloc.isSuccessShoot(TeamPosition.Right)) {
             _showCantAddTeamDialog();
             return;
           }
@@ -329,7 +329,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget _buildTeamBakuCore(PlayerPosition playerPosition,
+  Widget _buildTeamBakuCore(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     return Row(
       mainAxisAlignment: _isLeft(playerPosition)
@@ -361,7 +361,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget _buildRemoveButton(PlayerPosition playerPosition,
+  Widget _buildRemoveButton(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     return IconButton(
         icon: Icon(Icons.remove_circle),
@@ -371,7 +371,7 @@ class _MyHomePageState extends State<MyHomePage> {
       );
   }
 
-  Future _removeTeamBakuCore(PlayerPosition playerPosition,
+  Future _removeTeamBakuCore(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) async {
     if(!(await _showRemoveConfirmDialog())){
       return;
@@ -382,7 +382,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  String _getBattlePointText(PlayerPosition position) {
+  String _getBattlePointText(TeamPosition position) {
     if (!_bloc.isShotBakugan()) {
       return '';
     }
@@ -392,7 +392,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return 'BP : ${_bloc.getShotBakuganBattlePoint(position)}';
   }
 
-  String _getShotDamageRateText(PlayerPosition position) {
+  String _getShotDamageRateText(TeamPosition position) {
     if (!_bloc.isShotBakugan()) {
       return '';
     }
@@ -402,7 +402,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return 'DR : ${_bloc.getShotBakuganDamageRate(position)}';
   }
 
-  String _getShotTypeText(PlayerPosition position) {
+  String _getShotTypeText(TeamPosition position) {
     if (!_bloc.isShotBakugan()) {
       return '';
     }
@@ -414,7 +414,7 @@ class _MyHomePageState extends State<MyHomePage> {
         .text}';
   }
 
-  String _getTeamsDamageRateText(PlayerPosition playerPosition,
+  String _getTeamsDamageRateText(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     return 'DR : ${
         _bloc.getTeamsDamageRate(playerPosition,
@@ -422,7 +422,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }';
   }
 
-  String _getTeamsBakuCoreTypeText(PlayerPosition playerPosition,
+  String _getTeamsBakuCoreTypeText(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     return '${
         _bloc
@@ -469,17 +469,17 @@ class _MyHomePageState extends State<MyHomePage> {
     return result;
   }
 
-  bool _isLeft(PlayerPosition pos) {
+  bool _isLeft(TeamPosition pos) {
     switch(pos){
-      case PlayerPosition.Right:
+      case TeamPosition.Right:
         return false;
-      case PlayerPosition.Left:
+      case TeamPosition.Left:
         return true;
     }
     throw Error();
   }
 
-  bool _isRight(PlayerPosition pos) {
+  bool _isRight(TeamPosition pos) {
     return !_isLeft(pos);
   }
 }

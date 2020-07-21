@@ -1,7 +1,7 @@
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
-import 'package:bakugan_shoot_simulator/model/player/player_position.dart';
-import 'package:bakugan_shoot_simulator/model/player/team_baku_core_position.dart';
+import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
+import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -12,103 +12,103 @@ void main() {
     // テスト
     // Arenaの状態
     expect(mainBloc.isShotBakugan(), false);
-    expect(mainBloc.isSuccessShoot(PlayerPosition.Right), false);
-    expect(mainBloc.isSuccessShoot(PlayerPosition.Left), false);
-    expect(() => mainBloc.getShotBakuCoreType(PlayerPosition.Right),
+    expect(mainBloc.isSuccessShoot(TeamPosition.Right), false);
+    expect(mainBloc.isSuccessShoot(TeamPosition.Left), false);
+    expect(() => mainBloc.getShotBakuCoreType(TeamPosition.Right),
         throwsStateError);
-    expect(() => mainBloc.getShotBakuCoreType(PlayerPosition.Left),
+    expect(() => mainBloc.getShotBakuCoreType(TeamPosition.Left),
         throwsStateError);
-    expect(() => mainBloc.getShotBakuganBattlePoint(PlayerPosition.Right),
+    expect(() => mainBloc.getShotBakuganBattlePoint(TeamPosition.Right),
         throwsStateError);
-    expect(() => mainBloc.getShotBakuganBattlePoint(PlayerPosition.Left),
+    expect(() => mainBloc.getShotBakuganBattlePoint(TeamPosition.Left),
         throwsStateError);
-    expect(() => mainBloc.getShotBakuganDamageRate(PlayerPosition.Right),
+    expect(() => mainBloc.getShotBakuganDamageRate(TeamPosition.Right),
         throwsStateError);
-    expect(() => mainBloc.getShotBakuganDamageRate(PlayerPosition.Left),
+    expect(() => mainBloc.getShotBakuganDamageRate(TeamPosition.Left),
         throwsStateError);
 
     // Playerの状態
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.Right, TeamBakuCorePosition.Pos1),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos2),
+            TeamPosition.Right, TeamBakuCorePosition.Pos2),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos3),
+            TeamPosition.Right, TeamBakuCorePosition.Pos3),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos1),
+            TeamPosition.Left, TeamBakuCorePosition.Pos1),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos2),
+            TeamPosition.Left, TeamBakuCorePosition.Pos2),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos3),
+            TeamPosition.Left, TeamBakuCorePosition.Pos3),
         false);
 
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.Right, TeamBakuCorePosition.Pos1),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos2),
+            TeamPosition.Right, TeamBakuCorePosition.Pos2),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos3),
+            TeamPosition.Right, TeamBakuCorePosition.Pos3),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos1),
+            TeamPosition.Left, TeamBakuCorePosition.Pos1),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos2),
+            TeamPosition.Left, TeamBakuCorePosition.Pos2),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos3),
+            TeamPosition.Left, TeamBakuCorePosition.Pos3),
         throwsStateError);
 
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.Right, TeamBakuCorePosition.Pos1),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos2),
+            TeamPosition.Right, TeamBakuCorePosition.Pos2),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos3),
+            TeamPosition.Right, TeamBakuCorePosition.Pos3),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos1),
+            TeamPosition.Left, TeamBakuCorePosition.Pos1),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos2),
+            TeamPosition.Left, TeamBakuCorePosition.Pos2),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos3),
+            TeamPosition.Left, TeamBakuCorePosition.Pos3),
         throwsStateError);
   });
 
   test('shoot Bakugans', () {
     // 準備
     var mainBloc = MainBloc();
-    while (!(mainBloc.isSuccessShoot(PlayerPosition.Right) &&
-        mainBloc.isSuccessShoot(PlayerPosition.Left))) {
+    while (!(mainBloc.isSuccessShoot(TeamPosition.Right) &&
+        mainBloc.isSuccessShoot(TeamPosition.Left))) {
       //どちらもshoot成功になるまで
       mainBloc.shootBakugans();
     }
@@ -116,29 +116,29 @@ void main() {
     // テスト
     expect(mainBloc.isShotBakugan(), true);
     // 右プレイヤー
-    expect(mainBloc.isSuccessShoot(PlayerPosition.Right), true);
+    expect(mainBloc.isSuccessShoot(TeamPosition.Right), true);
     expect(
-        mainBloc.getShotBakuganDamageRate(PlayerPosition.Right) > -9999, true);
+        mainBloc.getShotBakuganDamageRate(TeamPosition.Right) > -9999, true);
     expect(
-        mainBloc.getShotBakuganBattlePoint(PlayerPosition.Right) > -9999, true);
+        mainBloc.getShotBakuganBattlePoint(TeamPosition.Right) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreType(PlayerPosition.Right) != BakuCoreType.None,
+        mainBloc.getShotBakuCoreType(TeamPosition.Right) != BakuCoreType.None,
         true);
     expect(
-        mainBloc.getShotBakuCoreType(PlayerPosition.Right) !=
+        mainBloc.getShotBakuCoreType(TeamPosition.Right) !=
             BakuCoreType.Failed,
         true);
     // 左プレイヤー
-    expect(mainBloc.isSuccessShoot(PlayerPosition.Left), true);
+    expect(mainBloc.isSuccessShoot(TeamPosition.Left), true);
     expect(
-        mainBloc.getShotBakuganDamageRate(PlayerPosition.Left) > -9999, true);
+        mainBloc.getShotBakuganDamageRate(TeamPosition.Left) > -9999, true);
     expect(
-        mainBloc.getShotBakuganBattlePoint(PlayerPosition.Left) > -9999, true);
+        mainBloc.getShotBakuganBattlePoint(TeamPosition.Left) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreType(PlayerPosition.Left) != BakuCoreType.None,
+        mainBloc.getShotBakuCoreType(TeamPosition.Left) != BakuCoreType.None,
         true);
     expect(
-        mainBloc.getShotBakuCoreType(PlayerPosition.Left) !=
+        mainBloc.getShotBakuCoreType(TeamPosition.Left) !=
             BakuCoreType.Failed,
         true);
   });
@@ -148,197 +148,197 @@ void main() {
     var mainBloc = MainBloc();
     expect(
         () => mainBloc.storeCores(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.Right, TeamBakuCorePosition.Pos1),
         throwsStateError);
-    while ((mainBloc.isSuccessShoot(PlayerPosition.Right))) {
+    while ((mainBloc.isSuccessShoot(TeamPosition.Right))) {
       //Rightが失敗になるまで
       mainBloc.shootBakugans();
     }
     expect(
         () => mainBloc.storeCores(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.Right, TeamBakuCorePosition.Pos1),
         throwsStateError);
   });
 
   test('store Bakugans', () {
     // 準備
     var mainBloc = MainBloc();
-    while (!(mainBloc.isSuccessShoot(PlayerPosition.Right) &&
-        mainBloc.isSuccessShoot(PlayerPosition.Left))) {
+    while (!(mainBloc.isSuccessShoot(TeamPosition.Right) &&
+        mainBloc.isSuccessShoot(TeamPosition.Left))) {
       //どちらもshoot成功になるまで
       mainBloc.shootBakugans();
     }
-    mainBloc.storeCores(PlayerPosition.Right, TeamBakuCorePosition.Pos1);
-    mainBloc.storeCores(PlayerPosition.Left, TeamBakuCorePosition.Pos2);
+    mainBloc.storeCores(TeamPosition.Right, TeamBakuCorePosition.Pos1);
+    mainBloc.storeCores(TeamPosition.Left, TeamBakuCorePosition.Pos2);
 
     // テスト
     // 右プレイヤー
     expect(
         () => mainBloc.storeCores(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.Right, TeamBakuCorePosition.Pos1),
         throwsStateError);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.Right, TeamBakuCorePosition.Pos1),
         true);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos2),
+            TeamPosition.Right, TeamBakuCorePosition.Pos2),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos3),
+            TeamPosition.Right, TeamBakuCorePosition.Pos3),
         false);
     expect(
-        mainBloc.getShotBakuCoreType(PlayerPosition.Right),
+        mainBloc.getShotBakuCoreType(TeamPosition.Right),
         mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1));
+            TeamPosition.Right, TeamBakuCorePosition.Pos1));
     expect(
-        mainBloc.getShotBakuganDamageRate(PlayerPosition.Right),
+        mainBloc.getShotBakuganDamageRate(TeamPosition.Right),
         mainBloc.getTeamsDamageRate(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1));
+            TeamPosition.Right, TeamBakuCorePosition.Pos1));
     // 左プレイヤー
     expect(() =>
-        mainBloc.storeCores(PlayerPosition.Left, TeamBakuCorePosition.Pos2),
+        mainBloc.storeCores(TeamPosition.Left, TeamBakuCorePosition.Pos2),
         throwsStateError);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos1),
+            TeamPosition.Left, TeamBakuCorePosition.Pos1),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos2),
+            TeamPosition.Left, TeamBakuCorePosition.Pos2),
         true);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos3),
+            TeamPosition.Left, TeamBakuCorePosition.Pos3),
         false);
     expect(
-        mainBloc.getShotBakuCoreType(PlayerPosition.Left),
+        mainBloc.getShotBakuCoreType(TeamPosition.Left),
         mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos2));
+            TeamPosition.Left, TeamBakuCorePosition.Pos2));
     expect(
-        mainBloc.getShotBakuganDamageRate(PlayerPosition.Left),
+        mainBloc.getShotBakuganDamageRate(TeamPosition.Left),
         mainBloc.getTeamsDamageRate(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos2));
+            TeamPosition.Left, TeamBakuCorePosition.Pos2));
   });
 
   test('remove Team\'s Bakugans', () {
     // 準備
     var mainBloc = MainBloc();
-    while (!(mainBloc.isSuccessShoot(PlayerPosition.Right) &&
-        mainBloc.isSuccessShoot(PlayerPosition.Left))) {
+    while (!(mainBloc.isSuccessShoot(TeamPosition.Right) &&
+        mainBloc.isSuccessShoot(TeamPosition.Left))) {
       //どちらもshoot成功になるまで
       mainBloc.shootBakugans();
     }
-    mainBloc.storeCores(PlayerPosition.Right, TeamBakuCorePosition.Pos1);
-    mainBloc.removeCores(PlayerPosition.Right, TeamBakuCorePosition.Pos1);
-    mainBloc.storeCores(PlayerPosition.Left, TeamBakuCorePosition.Pos2);
-    mainBloc.removeCores(PlayerPosition.Left, TeamBakuCorePosition.Pos2);
+    mainBloc.storeCores(TeamPosition.Right, TeamBakuCorePosition.Pos1);
+    mainBloc.removeCores(TeamPosition.Right, TeamBakuCorePosition.Pos1);
+    mainBloc.storeCores(TeamPosition.Left, TeamBakuCorePosition.Pos2);
+    mainBloc.removeCores(TeamPosition.Left, TeamBakuCorePosition.Pos2);
 
     // Arenaの状態
     expect(mainBloc.isShotBakugan(), true);
     // 右プレイヤー
-    expect(mainBloc.isSuccessShoot(PlayerPosition.Right), true);
+    expect(mainBloc.isSuccessShoot(TeamPosition.Right), true);
     expect(
-        mainBloc.getShotBakuganDamageRate(PlayerPosition.Right) > -9999, true);
+        mainBloc.getShotBakuganDamageRate(TeamPosition.Right) > -9999, true);
     expect(
-        mainBloc.getShotBakuganBattlePoint(PlayerPosition.Right) > -9999, true);
+        mainBloc.getShotBakuganBattlePoint(TeamPosition.Right) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreType(PlayerPosition.Right) != BakuCoreType.None,
+        mainBloc.getShotBakuCoreType(TeamPosition.Right) != BakuCoreType.None,
         true);
     expect(
-        mainBloc.getShotBakuCoreType(PlayerPosition.Right) !=
+        mainBloc.getShotBakuCoreType(TeamPosition.Right) !=
             BakuCoreType.Failed,
         true);
     // 左プレイヤー
-    expect(mainBloc.isSuccessShoot(PlayerPosition.Left), true);
+    expect(mainBloc.isSuccessShoot(TeamPosition.Left), true);
     expect(
-        mainBloc.getShotBakuganDamageRate(PlayerPosition.Left) > -9999, true);
+        mainBloc.getShotBakuganDamageRate(TeamPosition.Left) > -9999, true);
     expect(
-        mainBloc.getShotBakuganBattlePoint(PlayerPosition.Left) > -9999, true);
+        mainBloc.getShotBakuganBattlePoint(TeamPosition.Left) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreType(PlayerPosition.Left) != BakuCoreType.None,
+        mainBloc.getShotBakuCoreType(TeamPosition.Left) != BakuCoreType.None,
         true);
     expect(
-        mainBloc.getShotBakuCoreType(PlayerPosition.Left) !=
+        mainBloc.getShotBakuCoreType(TeamPosition.Left) !=
             BakuCoreType.Failed,
         true);
 
     // Playerの状態
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.Right, TeamBakuCorePosition.Pos1),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos2),
+            TeamPosition.Right, TeamBakuCorePosition.Pos2),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos3),
+            TeamPosition.Right, TeamBakuCorePosition.Pos3),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos1),
+            TeamPosition.Left, TeamBakuCorePosition.Pos1),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos2),
+            TeamPosition.Left, TeamBakuCorePosition.Pos2),
         false);
     expect(
         mainBloc.isExistTeamsBakuCore(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos3),
+            TeamPosition.Left, TeamBakuCorePosition.Pos3),
         false);
 
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.Right, TeamBakuCorePosition.Pos1),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos2),
+            TeamPosition.Right, TeamBakuCorePosition.Pos2),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos3),
+            TeamPosition.Right, TeamBakuCorePosition.Pos3),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos1),
+            TeamPosition.Left, TeamBakuCorePosition.Pos1),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos2),
+            TeamPosition.Left, TeamBakuCorePosition.Pos2),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsDamageRate(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos3),
+            TeamPosition.Left, TeamBakuCorePosition.Pos3),
         throwsStateError);
 
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.Right, TeamBakuCorePosition.Pos1),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos2),
+            TeamPosition.Right, TeamBakuCorePosition.Pos2),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Right, TeamBakuCorePosition.Pos3),
+            TeamPosition.Right, TeamBakuCorePosition.Pos3),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos1),
+            TeamPosition.Left, TeamBakuCorePosition.Pos1),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos2),
+            TeamPosition.Left, TeamBakuCorePosition.Pos2),
         throwsStateError);
     expect(
         () => mainBloc.getTeamsBakuCoreType(
-            PlayerPosition.Left, TeamBakuCorePosition.Pos3),
+            TeamPosition.Left, TeamBakuCorePosition.Pos3),
         throwsStateError);
   });
 }
