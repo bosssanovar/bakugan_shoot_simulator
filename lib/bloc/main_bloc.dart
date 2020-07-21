@@ -7,13 +7,14 @@ import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 
 class MainBloc {
-  final Map<TeamPosition, Team> _players = Map<TeamPosition, Team>();
-  final Arena _arena = Arena();
 
   MainBloc() {
-    _players[TeamPosition.Left] = Team();
-    _players[TeamPosition.Right] = Team();
+    _players[TeamPosition.left] = Team();
+    _players[TeamPosition.right] = Team();
   }
+
+  final Map<TeamPosition, Team> _players = <TeamPosition, Team>{};
+  final Arena _arena = Arena();
 
   // Player
 

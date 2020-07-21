@@ -29,6 +29,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: "^0.7.3"
+  pedantic_mono: any
 
 flutter_icons:
   image_path: "asset/icon.png"

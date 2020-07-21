@@ -4,22 +4,23 @@ import 'package:bakugan_shoot_simulator/model/baku_core/no_baku_core.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 
 class Team {
-  final _teamBakuCores = Map<TeamBakuCorePosition, BakuCore>();
 
   Team() {
     initTeamBakuCores();
   }
 
+  final _teamBakuCores = <TeamBakuCorePosition, BakuCore>{};
+
   void initTeamBakuCores() {
     _teamBakuCores.clear();
-    _teamBakuCores[TeamBakuCorePosition.Pos1] = NoBakuCore();
-    _teamBakuCores[TeamBakuCorePosition.Pos2] = NoBakuCore();
-    _teamBakuCores[TeamBakuCorePosition.Pos3] = NoBakuCore();
+    _teamBakuCores[TeamBakuCorePosition.pos1] = NoBakuCore();
+    _teamBakuCores[TeamBakuCorePosition.pos2] = NoBakuCore();
+    _teamBakuCores[TeamBakuCorePosition.pos3] = NoBakuCore();
   }
 
   bool isExistBakuCore(TeamBakuCorePosition position) {
-    return (!_teamBakuCores[position].isNoCore &&
-        _teamBakuCores[position].isSuccess);
+    return !_teamBakuCores[position].isNoCore &&
+        _teamBakuCores[position].isSuccess;
   }
 
   void storeTeamBakuCores(BakuCore bakuCore, TeamBakuCorePosition position) {

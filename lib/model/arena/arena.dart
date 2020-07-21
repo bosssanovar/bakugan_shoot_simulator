@@ -6,24 +6,25 @@ import 'package:bakugan_shoot_simulator/model/baku_core/no_baku_core.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 
 class Arena {
-  final _bakuCorePool = BakuCorePool(BakuCoreLineupMine());
-  var _bakuCores = Map<TeamPosition, BakuCore>();
 
   Arena() {
     _bakuCores = {
-      TeamPosition.Left: NoBakuCore(),
-      TeamPosition.Right: NoBakuCore()
+      TeamPosition.left: NoBakuCore(),
+      TeamPosition.right: NoBakuCore()
     };
   }
 
+  final _bakuCorePool = BakuCorePool(BakuCoreLineupMine());
+  var _bakuCores = <TeamPosition, BakuCore>{};
+
   void shootBakgans() {
-    _bakuCores[TeamPosition.Left] = _bakuCorePool.getRandom();
-    _bakuCores[TeamPosition.Right] = _bakuCorePool.getRandom();
+    _bakuCores[TeamPosition.left] = _bakuCorePool.getRandom();
+    _bakuCores[TeamPosition.right] = _bakuCorePool.getRandom();
   }
 
   bool isShotBakugan() {
-    return !(_bakuCores[TeamPosition.Left].isNoCore &&
-        _bakuCores[TeamPosition.Right].isNoCore);
+    return !(_bakuCores[TeamPosition.left].isNoCore &&
+        _bakuCores[TeamPosition.right].isNoCore);
   }
 
   bool isShotSuccess(TeamPosition position) {
@@ -37,28 +38,28 @@ class Arena {
   }
 
   int getBattlePoint(TeamPosition position) {
-    if (!this.isShotSuccess(position)) {
+    if (!isShotSuccess(position)) {
       throw StateError('$position player is failed shooting.');
     }
     return _bakuCores[position].battlePoint;
   }
 
   int getDamageRate(TeamPosition position) {
-    if (!this.isShotSuccess(position)) {
+    if (!isShotSuccess(position)) {
       throw StateError('$position player is failed shooting.');
     }
     return _bakuCores[position].damageRate;
   }
 
   BakuCoreType getBakuCoreType(TeamPosition position) {
-    if (!this.isShotSuccess(position)) {
+    if (!isShotSuccess(position)) {
       throw StateError('$position player is failed shooting.');
     }
     return _bakuCores[position].type;
   }
 
   BakuCore getBakuCore(TeamPosition position) {
-    if (!this.isShotSuccess(position)) {
+    if (!isShotSuccess(position)) {
       throw StateError('$position player is failed shooting.');
     }
     return _bakuCores[position];
@@ -76,8 +77,8 @@ class Arena {
       throw StateError('Bakugan is not shot yet.');
     }
 
-    final temp = _bakuCores[TeamPosition.Right];
-    _bakuCores[TeamPosition.Right] = _bakuCores[TeamPosition.Left];
-    _bakuCores[TeamPosition.Left] = temp;
+    final temp = _bakuCores[TeamPosition.right];
+    _bakuCores[TeamPosition.right] = _bakuCores[TeamPosition.left];
+    _bakuCores[TeamPosition.left] = temp;
   }
 }

@@ -1,29 +1,29 @@
 enum BakuCoreType{
-  Shield,
-  MagicShield,
-  Attack,
-  SuperAttack,
-  Special,
-  Failed,
-  None,
+  shield,
+  magicShield,
+  attack,
+  superAttack,
+  special,
+  failed,
+  none,
 }
 
 extension BakuCoreTypeEx on BakuCoreType{
   String get text {
     switch(this){
-      case BakuCoreType.Shield:
+      case BakuCoreType.shield:
         return 'Shield';
-      case BakuCoreType.MagicShield:
+      case BakuCoreType.magicShield:
         return 'MagicShield';
-      case BakuCoreType.Attack:
+      case BakuCoreType.attack:
         return 'Attack';
-      case BakuCoreType.SuperAttack:
+      case BakuCoreType.superAttack:
         return 'SuperAttack';
-      case BakuCoreType.Special:
+      case BakuCoreType.special:
         return 'Special';
-      case BakuCoreType.Failed:
+      case BakuCoreType.failed:
         return '';
-      case BakuCoreType.None:
+      case BakuCoreType.none:
         return '';
       default:
         throw Error();

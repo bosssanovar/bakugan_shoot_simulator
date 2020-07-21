@@ -29,13 +29,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Bakugan shoot simulator'),
+      home: const MyHomePage(title: 'Bakugan shoot simulator'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
@@ -43,7 +43,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  MainBloc _bloc = MainBloc();
+  final _bloc = MainBloc();
 
   @override
   void initState() {
@@ -74,8 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
               child: _buildLeftPlayerGetBakuCore(context),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const Padding(
+              padding: EdgeInsets.all(16),
               child: Text(
                 'V.S.',
               ),
@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: FloatingActionButton(
                   disabledElevation: 0,
                   backgroundColor: _bloc.isShotBakugan()
@@ -112,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: FloatingActionButton(
                   disabledElevation: 0,
                   backgroundColor: _bloc.isShotBakugan()
@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ? null
                       : () {
                         setState(() {
-                          _bloc.reShootBakugan(TeamPosition.Left);
+                          _bloc.reShootBakugan(TeamPosition.left);
                         });
                       },
                   tooltip: 'shoot left',
@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: FloatingActionButton(
                   disabledElevation: 0,
                   backgroundColor: _bloc.isShotBakugan()
@@ -148,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: FloatingActionButton(
                   disabledElevation: 0,
                   backgroundColor: _bloc.isShotBakugan()
@@ -158,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ? null
                       : () {
                     setState(() {
-                      _bloc.reShootBakugan(TeamPosition.Right);
+                      _bloc.reShootBakugan(TeamPosition.right);
                     });
                   },
                   tooltip: 'shoot right',
@@ -166,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: FloatingActionButton(
                   disabledElevation: 0,
                   backgroundColor: _bloc.isShotBakugan()
@@ -189,7 +189,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: FloatingActionButton(
                   onPressed: () {
                     setState(() {
@@ -214,23 +214,23 @@ class _MyHomePageState extends State<MyHomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         !_bloc.isExistTeamsBakuCore(
-                TeamPosition.Left, TeamBakuCorePosition.Pos1)
+                TeamPosition.left, TeamBakuCorePosition.pos1)
             ? _buildCoreAddButton(
-                TeamPosition.Left, TeamBakuCorePosition.Pos1)
+                TeamPosition.left, TeamBakuCorePosition.pos1)
             : _buildTeamBakuCore(
-                TeamPosition.Left, TeamBakuCorePosition.Pos1),
+                TeamPosition.left, TeamBakuCorePosition.pos1),
         !_bloc.isExistTeamsBakuCore(
-                TeamPosition.Left, TeamBakuCorePosition.Pos2)
+                TeamPosition.left, TeamBakuCorePosition.pos2)
             ? _buildCoreAddButton(
-                TeamPosition.Left, TeamBakuCorePosition.Pos2)
+                TeamPosition.left, TeamBakuCorePosition.pos2)
             : _buildTeamBakuCore(
-                TeamPosition.Left, TeamBakuCorePosition.Pos2),
+                TeamPosition.left, TeamBakuCorePosition.pos2),
         !_bloc.isExistTeamsBakuCore(
-                TeamPosition.Left, TeamBakuCorePosition.Pos3)
+                TeamPosition.left, TeamBakuCorePosition.pos3)
             ? _buildCoreAddButton(
-                TeamPosition.Left, TeamBakuCorePosition.Pos3)
+                TeamPosition.left, TeamBakuCorePosition.pos3)
             : _buildTeamBakuCore(
-                TeamPosition.Left, TeamBakuCorePosition.Pos3),
+                TeamPosition.left, TeamBakuCorePosition.pos3),
       ],
     );
   }
@@ -241,15 +241,15 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Text(
-                  '${_getBattlePointText(TeamPosition.Left)}',
+                  '${_getBattlePointText(TeamPosition.left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
-                  '${_getShotDamageRateText(TeamPosition.Left)}',
+                  '${_getShotDamageRateText(TeamPosition.left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
-                  '${_getShotTypeText(TeamPosition.Left)}',
+                  '${_getShotTypeText(TeamPosition.left)}',
                   style: Theme.of(context).textTheme.display1,
                 ),
               ],
@@ -262,15 +262,15 @@ class _MyHomePageState extends State<MyHomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          '${_getBattlePointText(TeamPosition.Right)}',
+          '${_getBattlePointText(TeamPosition.right)}',
           style: Theme.of(context).textTheme.display1,
         ),
         Text(
-          '${_getShotDamageRateText(TeamPosition.Right)}',
+          '${_getShotDamageRateText(TeamPosition.right)}',
           style: Theme.of(context).textTheme.display1,
         ),
         Text(
-          '${_getShotTypeText(TeamPosition.Right)}',
+          '${_getShotTypeText(TeamPosition.right)}',
           style: Theme.of(context).textTheme.display1,
         ),
       ],
@@ -285,23 +285,23 @@ class _MyHomePageState extends State<MyHomePage> {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         !_bloc.isExistTeamsBakuCore(
-            TeamPosition.Right, TeamBakuCorePosition.Pos1)
+            TeamPosition.right, TeamBakuCorePosition.pos1)
             ? _buildCoreAddButton(
-            TeamPosition.Right, TeamBakuCorePosition.Pos1)
+            TeamPosition.right, TeamBakuCorePosition.pos1)
             : _buildTeamBakuCore(
-            TeamPosition.Right, TeamBakuCorePosition.Pos1),
+            TeamPosition.right, TeamBakuCorePosition.pos1),
         !_bloc.isExistTeamsBakuCore(
-            TeamPosition.Right, TeamBakuCorePosition.Pos2)
+            TeamPosition.right, TeamBakuCorePosition.pos2)
             ? _buildCoreAddButton(
-            TeamPosition.Right, TeamBakuCorePosition.Pos2)
+            TeamPosition.right, TeamBakuCorePosition.pos2)
             : _buildTeamBakuCore(
-            TeamPosition.Right, TeamBakuCorePosition.Pos2),
+            TeamPosition.right, TeamBakuCorePosition.pos2),
         !_bloc.isExistTeamsBakuCore(
-            TeamPosition.Right, TeamBakuCorePosition.Pos3)
+            TeamPosition.right, TeamBakuCorePosition.pos3)
             ? _buildCoreAddButton(
-            TeamPosition.Right, TeamBakuCorePosition.Pos3)
+            TeamPosition.right, TeamBakuCorePosition.pos3)
             : _buildTeamBakuCore(
-            TeamPosition.Right, TeamBakuCorePosition.Pos3),
+            TeamPosition.right, TeamBakuCorePosition.pos3),
       ],
     );
   }
@@ -311,12 +311,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return IconButton(
       onPressed: (){
         if (_isLeft(playerPosition) &&
-            !_bloc.isSuccessShoot(TeamPosition.Left)) {
+            !_bloc.isSuccessShoot(TeamPosition.left)) {
             _showCantAddTeamDialog();
             return;
           }
         if (_isRight(playerPosition) &&
-            !_bloc.isSuccessShoot(TeamPosition.Right)) {
+            !_bloc.isSuccessShoot(TeamPosition.right)) {
             _showCantAddTeamDialog();
             return;
           }
@@ -436,7 +436,7 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        return AlertDialog(
+        return const AlertDialog(
           title: Text('Error'),
           content: Text('You can not keep an invalid core.')
         );
@@ -445,20 +445,22 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<bool> _showRemoveConfirmDialog() async {
-    var result = await showDialog<bool>(
+    final result = await showDialog<bool>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm'),
-          content: Text('Are you sure you want to delete the selected baku core?'),
+          title: const Text('Confirm'),
+          content: const Text(
+              'Are you sure you want to delete the selected baku core?'
+          ),
           actions: <Widget>[
             FlatButton(
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
               onPressed: () => Navigator.of(context).pop(false),
             ),
             FlatButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () => Navigator.of(context).pop(true),
             ),
           ],
@@ -471,9 +473,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   bool _isLeft(TeamPosition pos) {
     switch(pos){
-      case TeamPosition.Right:
+      case TeamPosition.right:
         return false;
-      case TeamPosition.Left:
+      case TeamPosition.left:
         return true;
     }
     throw Error();

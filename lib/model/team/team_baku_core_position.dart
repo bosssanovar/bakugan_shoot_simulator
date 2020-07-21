@@ -1,1 +1,1 @@
-enum TeamBakuCorePosition { Pos1, Pos2, Pos3 }
+enum TeamBakuCorePosition { pos1, pos2, pos3 }

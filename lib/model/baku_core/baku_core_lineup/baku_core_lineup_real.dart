@@ -7,42 +7,42 @@ class BakuCoreLineupMine implements BakuCoreLineup {
   List<BakuCore> getBakuCoreList() {
     return [
       // 失敗の確率を個数で制御
-      BakuCore(0, 0, BakuCoreType.Failed),
-      BakuCore(1, 1, BakuCoreType.Failed),
-      BakuCore(2, 2, BakuCoreType.Failed),
-      BakuCore(3, 3, BakuCoreType.Failed),
-      BakuCore(4, 4, BakuCoreType.Failed),
-      BakuCore(5, 5, BakuCoreType.Failed),
+      const BakuCore(0, 0, BakuCoreType.failed),
+      const BakuCore(1, 1, BakuCoreType.failed),
+      const BakuCore(2, 2, BakuCoreType.failed),
+      const BakuCore(3, 3, BakuCoreType.failed),
+      const BakuCore(4, 4, BakuCoreType.failed),
+      const BakuCore(5, 5, BakuCoreType.failed),
 
       // Attack
-      BakuCore(0,2,BakuCoreType.Attack),
-      BakuCore(0,3,BakuCoreType.Attack),
-      BakuCore(150,2,BakuCoreType.Attack),
-      BakuCore(0,-1,BakuCoreType.Attack),
-      BakuCore(100,3,BakuCoreType.Attack),
-      BakuCore(100,0,BakuCoreType.Attack),
+      const BakuCore(0,2,BakuCoreType.attack),
+      const BakuCore(0,3,BakuCoreType.attack),
+      const BakuCore(150,2,BakuCoreType.attack),
+      const BakuCore(0,-1,BakuCoreType.attack),
+      const BakuCore(100,3,BakuCoreType.attack),
+      const BakuCore(100,0,BakuCoreType.attack),
 
       // Super Attack
-      BakuCore(0,5,BakuCoreType.SuperAttack),
-      BakuCore(0,6,BakuCoreType.SuperAttack),
-      BakuCore(150,4,BakuCoreType.SuperAttack),
-      BakuCore(0,-1,BakuCoreType.SuperAttack),
+      const BakuCore(0,5,BakuCoreType.superAttack),
+      const BakuCore(0,6,BakuCoreType.superAttack),
+      const BakuCore(150,4,BakuCoreType.superAttack),
+      const BakuCore(0,-1,BakuCoreType.superAttack),
 
       // Shield
-      BakuCore(100,0,BakuCoreType.Shield),
-      BakuCore(150,0,BakuCoreType.Shield),
-      BakuCore(200,0,BakuCoreType.Shield),
-      BakuCore(300,0,BakuCoreType.Shield),
-      BakuCore(-200,0,BakuCoreType.Shield),
-      BakuCore(400,0,BakuCoreType.Shield),
-      BakuCore(0,0,BakuCoreType.Shield),
+      const BakuCore(100,0,BakuCoreType.shield),
+      const BakuCore(150,0,BakuCoreType.shield),
+      const BakuCore(200,0,BakuCoreType.shield),
+      const BakuCore(300,0,BakuCoreType.shield),
+      const BakuCore(-200,0,BakuCoreType.shield),
+      const BakuCore(400,0,BakuCoreType.shield),
+      const BakuCore(0,0,BakuCoreType.shield),
 
       // Magic Shield
-      BakuCore(600,0,BakuCoreType.MagicShield),
+      const BakuCore(600,0,BakuCoreType.magicShield),
 
       // Special
-      BakuCore(500,-1,BakuCoreType.Special),
-      BakuCore(-100,4,BakuCoreType.Special),
+      const BakuCore(500,-1,BakuCoreType.special),
+      const BakuCore(-100,4,BakuCoreType.special),
     ];
   }
 
