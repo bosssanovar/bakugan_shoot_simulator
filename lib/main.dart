@@ -22,12 +22,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        textTheme: Theme.of(context).textTheme.apply(
-              bodyColor: Colors.white,
-              displayColor: Colors.white,
-            ),
-        iconTheme: IconThemeData(color: Colors.white),
-        dialogBackgroundColor: const Color.fromARGB(0xff, 0x33, 0x33, 0x44),
       ),
       home: const HomePage(title: 'Bakugan shoot simulator'),
     );
