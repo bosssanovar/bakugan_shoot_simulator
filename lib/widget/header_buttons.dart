@@ -1,20 +1,33 @@
-import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
-import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HeaderButtons extends StatefulWidget {
-  const HeaderButtons({
-    Key key,
-    this.bloc,
-    this.onUpdate,
-  }) : super(key: key);
+  HeaderButtons(
+      {
+        Key key,
+        this.isShotBakugan = false,
+        this.onPressSwap,
+        this.onPressReshootLeft,
+        this.onPressReshootRight,
+      }) : super(key: key) {
+    if(onPressSwap == null){
+      throw ArgumentError();
+    }
+    if(onPressReshootLeft == null){
+      throw ArgumentError();
+    }
+    if(onPressReshootRight == null){
+      throw ArgumentError();
+    }
+  }
 
   @override
   _HeaderButtonsState createState() => _HeaderButtonsState();
 
-  final MainBloc bloc;
-  final Function(Function) onUpdate;
+  final bool isShotBakugan;
+  final Function onPressSwap;
+  final Function onPressReshootLeft;
+  final Function onPressReshootRight;
 }
 
 class _HeaderButtonsState extends State<HeaderButtons> {
@@ -27,16 +40,15 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           padding: const EdgeInsets.all(8),
           child: FloatingActionButton(
             disabledElevation: 0,
-            backgroundColor: widget.bloc.isShotBakugan()
-                ? Colors.lightBlueAccent
-                : Colors.grey,
-            onPressed: !widget.bloc.isShotBakugan()
+            backgroundColor:
+            widget.isShotBakugan ? Colors.lightBlueAccent : Colors.grey,
+            onPressed: !widget.isShotBakugan
                 ? null
                 : () {
-//                      widget.onUpdate(() {
+//                      setState(() {
 //                        _bloc.reShootBakugan(PlayerPosition.Right);
 //                      });
-                  },
+            },
             tooltip: 'add left',
             child: Icon(Icons.plus_one),
           ),
@@ -46,14 +58,12 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           child: FloatingActionButton(
             disabledElevation: 0,
             backgroundColor:
-            widget.bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
-            onPressed: !widget.bloc.isShotBakugan()
+            widget.isShotBakugan ? Colors.lightBlueAccent : Colors.grey,
+            onPressed: !widget.isShotBakugan
                 ? null
                 : () {
-              widget.onUpdate(() {
-                widget.bloc.reShootBakugan(TeamPosition.left);
-              });
-            },
+                    widget.onPressReshootLeft();
+                  },
             tooltip: 'shoot left',
             child: Icon(Icons.repeat_one),
           ),
@@ -63,13 +73,11 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           child: FloatingActionButton(
             disabledElevation: 0,
             backgroundColor:
-            widget.bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
-            onPressed: !widget.bloc.isShotBakugan()
+            widget.isShotBakugan ? Colors.lightBlueAccent : Colors.grey,
+            onPressed: !widget.isShotBakugan
                 ? null
                 : () {
-              widget.onUpdate(() {
-                widget.bloc.swapBakuCores();
-              });
+             widget.onPressSwap();
             },
             tooltip: 'swap',
             child: Icon(Icons.swap_horiz),
@@ -80,13 +88,11 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           child: FloatingActionButton(
             disabledElevation: 0,
             backgroundColor:
-            widget.bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
-            onPressed: !widget.bloc.isShotBakugan()
+            widget.isShotBakugan ? Colors.lightBlueAccent : Colors.grey,
+            onPressed: !widget.isShotBakugan
                 ? null
                 : () {
-              widget.onUpdate(() {
-                widget.bloc.reShootBakugan(TeamPosition.right);
-              });
+                widget.onPressReshootRight();
             },
             tooltip: 'shoot right',
             child: Icon(Icons.repeat_one),
@@ -97,11 +103,11 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           child: FloatingActionButton(
             disabledElevation: 0,
             backgroundColor:
-            widget.bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
-            onPressed: !widget.bloc.isShotBakugan()
+            widget.isShotBakugan ? Colors.lightBlueAccent : Colors.grey,
+            onPressed: !widget.isShotBakugan
                 ? null
                 : () {
-//                      widget.onUpdate(() {
+//                      setState(() {
 //                        _bloc.reShootBakugan(PlayerPosition.Right);
 //                      });
             },
