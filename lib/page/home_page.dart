@@ -4,6 +4,7 @@ import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
+import 'package:bakugan_shoot_simulator/widget/header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -84,95 +85,21 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildHeaderButtons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
-            disabledElevation: 0,
-            backgroundColor:
-                _bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
-            onPressed: !_bloc.isShotBakugan()
-                ? null
-                : () {
-//                      setState(() {
-//                        _bloc.reShootBakugan(PlayerPosition.Right);
-//                      });
-                  },
-            tooltip: 'add left',
-            child: Icon(Icons.plus_one),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
-            disabledElevation: 0,
-            backgroundColor:
-                _bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
-            onPressed: !_bloc.isShotBakugan()
-                ? null
-                : () {
-                    setState(() {
-                      _bloc.reShootBakugan(TeamPosition.left);
-                    });
-                  },
-            tooltip: 'shoot left',
-            child: Icon(Icons.repeat_one),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
-            disabledElevation: 0,
-            backgroundColor:
-                _bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
-            onPressed: !_bloc.isShotBakugan()
-                ? null
-                : () {
-                    setState(() {
-                      _bloc.swapBakuCores();
-                    });
-                  },
-            tooltip: 'swap',
-            child: Icon(Icons.swap_horiz),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
-            disabledElevation: 0,
-            backgroundColor:
-                _bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
-            onPressed: !_bloc.isShotBakugan()
-                ? null
-                : () {
-                    setState(() {
-                      _bloc.reShootBakugan(TeamPosition.right);
-                    });
-                  },
-            tooltip: 'shoot right',
-            child: Icon(Icons.repeat_one),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
-            disabledElevation: 0,
-            backgroundColor:
-                _bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
-            onPressed: !_bloc.isShotBakugan()
-                ? null
-                : () {
-//                      setState(() {
-//                        _bloc.reShootBakugan(PlayerPosition.Right);
-//                      });
-                  },
-            tooltip: 'add right',
-            child: Icon(Icons.plus_one),
-          ),
-        ),
-      ],
+    return HeaderButtons(
+      isShotBakugan: _bloc.isShotBakugan(),
+      onPressSwap: () {
+        setState(_bloc.swapBakuCores);
+      },
+      onPressReshootLeft: (){
+        setState(() {
+          _bloc.reShootBakugan(TeamPosition.left);
+        });
+      },
+      onPressReshootRight: () {
+        setState(() {
+          _bloc.reShootBakugan(TeamPosition.right);
+        });
+      },
     );
   }
 
