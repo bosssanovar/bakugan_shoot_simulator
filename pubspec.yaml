@@ -32,9 +32,10 @@ dev_dependencies:
   pedantic_mono: any
 
 flutter_icons:
-  image_path: "asset/icon.png"
+  image_path: "asset/launch_icon.png"
   android: true
   ios: true
+  adaptive_icon_background: #cc5555
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
