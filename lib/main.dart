@@ -242,15 +242,15 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Text(
                   '${_getBattlePointText(TeamPosition.left)}',
-                  style: Theme.of(context).textTheme.display1,
+                  style: Theme.of(context).textTheme.headline4,
                 ),
                 Text(
                   '${_getShotDamageRateText(TeamPosition.left)}',
-                  style: Theme.of(context).textTheme.display1,
+                  style: Theme.of(context).textTheme.headline4,
                 ),
                 Text(
                   '${_getShotTypeText(TeamPosition.left)}',
-                  style: Theme.of(context).textTheme.display1,
+                  style: Theme.of(context).textTheme.headline4,
                 ),
               ],
             );
@@ -263,15 +263,15 @@ class _MyHomePageState extends State<MyHomePage> {
       children: <Widget>[
         Text(
           '${_getBattlePointText(TeamPosition.right)}',
-          style: Theme.of(context).textTheme.display1,
+          style: Theme.of(context).textTheme.headline4,
         ),
         Text(
           '${_getShotDamageRateText(TeamPosition.right)}',
-          style: Theme.of(context).textTheme.display1,
+          style: Theme.of(context).textTheme.headline4,
         ),
         Text(
           '${_getShotTypeText(TeamPosition.right)}',
-          style: Theme.of(context).textTheme.display1,
+          style: Theme.of(context).textTheme.headline4,
         ),
       ],
     );
