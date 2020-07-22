@@ -237,15 +237,15 @@ class _HomePageState extends State<HomePage> {
           style: Theme
               .of(context)
               .textTheme
-              .headline4,
+              .display1,
         ),
         Text(
           '${_getShotDamageRateText(teamPosition)}',
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.display1,
         ),
         Text(
           '${_getShotTypeText(teamPosition)}',
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.display1,
         ),
       ],
     );
