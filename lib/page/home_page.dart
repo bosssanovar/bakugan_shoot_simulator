@@ -4,7 +4,8 @@ import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
-import 'package:bakugan_shoot_simulator/widget/header.dart';
+import 'package:bakugan_shoot_simulator/widget/footer_buttons.dart';
+import 'package:bakugan_shoot_simulator/widget/header_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -104,22 +105,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildFooterButtons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
-            onPressed: () {
-              setState(() {
-                _bloc.shootBakugans();
-              });
-            },
-            tooltip: 'shoot',
-            child: Icon(Icons.refresh),
-          ),
-        ),
-      ],
+    return FooterButtons(
+      onShootBakugans: (){
+        setState(_bloc.shootBakugans);
+      },
     );
   }
 
