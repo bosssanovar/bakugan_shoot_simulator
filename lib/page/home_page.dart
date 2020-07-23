@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
-import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
+import 'package:bakugan_shoot_simulator/widget/current_area.dart';
 import 'package:bakugan_shoot_simulator/widget/footer_buttons.dart';
 import 'package:bakugan_shoot_simulator/widget/header_buttons.dart';
 import 'package:bakugan_shoot_simulator/widget/team_area.dart';
@@ -98,8 +98,11 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildFooterButtons() {
     return FooterButtons(
-      onShootBakugans: (){
-        setState(_bloc.shootBakugans);
+      bloc: _bloc,
+      onUpdate: (func) {
+        setState(() {
+          func();
+        });
       },
     );
   }
@@ -113,59 +116,9 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildPlayerGetBakuCore(
       BuildContext context, TeamPosition teamPosition) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: teamPosition == TeamPosition.left
-          ? CrossAxisAlignment.end
-          : CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          '${_getBattlePointText(teamPosition)}',
-          style: Theme
-              .of(context)
-              .textTheme
-              .display1,
-        ),
-        Text(
-          '${_getShotDamageRateText(teamPosition)}',
-          style: Theme.of(context).textTheme.display1,
-        ),
-        Text(
-          '${_getShotTypeText(teamPosition)}',
-          style: Theme.of(context).textTheme.display1,
-        ),
-      ],
+    return CurrentArea(
+      position: teamPosition,
+      bloc: _bloc,
     );
-  }
-  String _getBattlePointText(TeamPosition position) {
-    if (!_bloc.isShotBakugan()) {
-      return '';
-    }
-    if (!_bloc.isSuccessShoot(position)) {
-      return '-';
-    }
-    return 'BP : ${_bloc.getShotBakuganBattlePoint(position)}';
-  }
-
-  String _getShotDamageRateText(TeamPosition position) {
-    if (!_bloc.isShotBakugan()) {
-      return '';
-    }
-    if (!_bloc.isSuccessShoot(position)) {
-      return '-';
-    }
-    return 'DR : ${_bloc.getShotBakuganDamageRate(position)}';
-  }
-
-  String _getShotTypeText(TeamPosition position) {
-    if (!_bloc.isShotBakugan()) {
-      return '';
-    }
-    if (!_bloc.isSuccessShoot(position)) {
-      return '-';
-    }
-    return '${_bloc
-        .getShotBakuCoreType(position)
-        .text}';
   }
 }
