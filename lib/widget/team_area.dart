@@ -5,8 +5,8 @@ import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:flutter/material.dart';
 
 class TeamArea extends StatefulWidget {
-  TeamArea({Key key, this.teamPosition = TeamPosition.left, this.bloc})
-      : super(key: key) {}
+  const TeamArea({Key key, this.teamPosition = TeamPosition.left, this.bloc})
+      : super(key: key);
 
   @override
   _TeamAreaState createState() => _TeamAreaState();
