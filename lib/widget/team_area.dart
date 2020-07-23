@@ -27,7 +27,7 @@ class TeamArea extends StatefulWidget {
 
   final bool isLeft;
   final bool isShotSuccess;
-  Map<BakuCorePosition, TeamAreaElement> elements =
+  final Map<BakuCorePosition, TeamAreaElement> elements =
       <BakuCorePosition, TeamAreaElement>{};
   final Function(BakuCorePosition) onStoreBakuCore;
   final Function(BakuCorePosition) onRemoveBakuCore;
