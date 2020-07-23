@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
-import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:bakugan_shoot_simulator/widget/footer_buttons.dart';
 import 'package:bakugan_shoot_simulator/widget/header_buttons.dart';
@@ -115,38 +114,8 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildTeam(TeamPosition teamPosition) {
     return TeamArea(
-        isLeft: teamPosition == TeamPosition.left,
-        isShotSuccess: _bloc.isSuccessShoot(teamPosition),
-        team1:
-            _bloc.isExistTeamsBakuCore(teamPosition, TeamBakuCorePosition.pos1)
-                ? createTeamAreaElement(teamPosition, TeamBakuCorePosition.pos1)
-                : null,
-        team2:
-            _bloc.isExistTeamsBakuCore(teamPosition, TeamBakuCorePosition.pos2)
-                ? createTeamAreaElement(teamPosition, TeamBakuCorePosition.pos2)
-                : null,
-        team3:
-            _bloc.isExistTeamsBakuCore(teamPosition, TeamBakuCorePosition.pos3)
-                ? createTeamAreaElement(teamPosition, TeamBakuCorePosition.pos3)
-                : null,
-        onStoreBakuCore: (position) {
-          setState(() {
-            _bloc.storeCores(teamPosition, getTeamBakuCorePosition(position));
-          });
-        },
-        onRemoveBakuCore: (position) {
-          setState(() {
-            _bloc.removeCores(teamPosition, getTeamBakuCorePosition(position));
-          });
-        });
-  }
-
-  TeamAreaElement createTeamAreaElement(
-      TeamPosition teamPosition, TeamBakuCorePosition teamBakuCorePosition) {
-    return TeamAreaElement(
-      damageRate: _bloc.getTeamsDamageRate(teamPosition, teamBakuCorePosition),
-      bakuCoreType:
-          _bloc.getTeamsBakuCoreType(teamPosition, teamBakuCorePosition).text,
+      teamPosition: teamPosition,
+      bloc: _bloc,
     );
   }
 
@@ -206,17 +175,5 @@ class _HomePageState extends State<HomePage> {
     return '${_bloc
         .getShotBakuCoreType(position)
         .text}';
-  }
-
-  TeamBakuCorePosition getTeamBakuCorePosition(BakuCorePosition position) {
-    switch (position) {
-      case BakuCorePosition.pos1:
-        return TeamBakuCorePosition.pos1;
-      case BakuCorePosition.pos2:
-        return TeamBakuCorePosition.pos2;
-      case BakuCorePosition.pos3:
-        return TeamBakuCorePosition.pos3;
-    }
-    throw ArgumentError();
   }
 }
