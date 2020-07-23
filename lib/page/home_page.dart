@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
+import 'package:bakugan_shoot_simulator/widget/background.dart';
 import 'package:bakugan_shoot_simulator/widget/current_area.dart';
 import 'package:bakugan_shoot_simulator/widget/footer_buttons.dart';
 import 'package:bakugan_shoot_simulator/widget/header_buttons.dart';
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
 //      ),
       body: Stack(
         children: <Widget>[
+          const Background(),
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
