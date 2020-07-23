@@ -6,6 +6,7 @@ import 'package:bakugan_shoot_simulator/widget/current_area.dart';
 import 'package:bakugan_shoot_simulator/widget/footer_buttons.dart';
 import 'package:bakugan_shoot_simulator/widget/header_buttons.dart';
 import 'package:bakugan_shoot_simulator/widget/team_area.dart';
+import 'package:bakugan_shoot_simulator/widget/versus_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -43,7 +44,6 @@ class _HomePageState extends State<HomePage> {
 //      ),
       body: Stack(
         children: <Widget>[
-          _buildBackGrounds(),
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -52,12 +52,7 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: _buildPlayerGetBakuCore(context, TeamPosition.left),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Text(
-                    'V.S.',
-                  ),
-                ),
+                const VersusArea(),
                 Expanded(
                   child: _buildPlayerGetBakuCore(context, TeamPosition.right),
                 ),
@@ -69,10 +64,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-  }
-
-  Widget _buildBackGrounds() {
-    return Container();
   }
 
   Widget _buildButtons() {
