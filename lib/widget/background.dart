@@ -5,82 +5,37 @@ class Background extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        buildWallpaper(),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            buildHeaderButtonsBackground(),
-            buildFooterButtonsBackground(),
-          ],
-        )
+        CustomPaint(painter: _MyPainter()),
+        Container(
+          color: Colors.blue,
+        ),
+        Container(
+          color: Colors.yellow,
+        ),
       ],
     );
   }
-
-  Widget buildWallpaper() {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('asset/background.png'),
-            fit: BoxFit.none,
-            repeat: ImageRepeat.repeat),
-      ),
-    );
-  }
-
-  Widget buildHeaderButtonsBackground() {
-    return CustomPaint(
-      painter: _HeaderButtonBackgroundPainter(),
-      child: Container(
-        height: 75,
-      ),
-    );
-  }
-
-  Widget buildFooterButtonsBackground() {
-    return CustomPaint(
-      painter: _FooterButtonBackgroundPainter(),
-      child: Container(
-        height: 75,
-      ),
-    );
-  }
 }
 
-class _HeaderButtonBackgroundPainter extends CustomPainter {
+class _MyPainter extends CustomPainter {
   @override
-  void paint(Canvas canvas, Size size) {
-    // header buttons area
-    final paint = Paint()..color = Colors.black;
-    final path = Path()
-      ..moveTo(size.width / 2 - 230, 0)
-      ..lineTo(size.width / 2 - 180, size.height)
-      ..lineTo(size.width / 2 + 180, size.height)
-      ..lineTo(size.width / 2 + 230, 0)
-      ..close();
-    canvas.drawPath(path, paint);
+  bool shouldRepaint(_MyPainter oldDelegate) {
+    return false;
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
-}
-
-class _FooterButtonBackgroundPainter extends CustomPainter {
-  @override
   void paint(Canvas canvas, Size size) {
-    // footer buttons area
-    final paint = Paint()..color = Colors.black;
-    final path = Path()
-      ..moveTo(size.width / 2 - 180, 0)
-      ..lineTo(size.width / 2 - 230, size.height)
-      ..lineTo(size.width / 2 + 230, size.height)
-      ..lineTo(size.width / 2 + 180, 0)
-      ..close();
-    canvas.drawPath(path, paint);
+    final stroke = Paint()
+      ..color = Colors.red
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 5;
+    canvas
+      ..drawCircle(const Offset(0, 100), 30, stroke)
+      ..drawCircle(const Offset(0, 200), 30, stroke)
+      ..drawCircle(const Offset(0, 300), 30, stroke)
+      ..drawCircle(const Offset(0, 400), 30, stroke);
   }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
