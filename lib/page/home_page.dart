@@ -87,18 +87,10 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildHeaderButtons() {
     return HeaderButtons(
-      isShotBakugan: _bloc.isShotBakugan(),
-      onPressSwap: () {
-        setState(_bloc.swapBakuCores);
-      },
-      onPressReshootLeft: (){
+      bloc: _bloc,
+      onUpdate: (func) {
         setState(() {
-          _bloc.reShootBakugan(TeamPosition.left);
-        });
-      },
-      onPressReshootRight: () {
-        setState(() {
-          _bloc.reShootBakugan(TeamPosition.right);
+          func();
         });
       },
     );
