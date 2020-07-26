@@ -8,7 +8,13 @@ class Background extends StatelessWidget {
     return Stack(
       children: <Widget>[
         buildWallpaper(),
-       // buildButtonsBackground()
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            buildHeaderButtonsBackground(),
+            buildFooterButtonsBackground(),
+          ],
+        )
       ],
     );
   }
@@ -24,34 +30,54 @@ class Background extends StatelessWidget {
     );
   }
 
-  Widget buildButtonsBackground() {
+  Widget buildHeaderButtonsBackground() {
     return CustomPaint(
-      painter: _MyPainter(),
+      painter: _HeaderButtonBackgroundPainter(),
       child: Container(
-        height: 50,
+        height: 75,
+      ),
+    );
+  }
+
+  Widget buildFooterButtonsBackground() {
+    return CustomPaint(
+      painter: _FooterButtonBackgroundPainter(),
+      child: Container(
+        height: 75,
       ),
     );
   }
 }
 
-class _MyPainter extends CustomPainter {
-
+class _HeaderButtonBackgroundPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint();
-
     // header buttons area
-    paint = new Paint()
-      ..color = Colors.teal
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2;
-    var path = Path();
-    path.moveTo(size.width / 3, size.height / 5 * 3);
-    path.lineTo(size.width / 3, size.height / 5 * 4);
-    path.lineTo(size.width / 3 * 2, size.height / 5 * 4);
-    path.lineTo(size.width / 3 * 2, size.height / 5 * 3);
-    path.close();
+    final paint = Paint()..color = Colors.black;
+    final path = Path()
+      ..moveTo(size.width / 2 - 230, 0)
+      ..lineTo(size.width / 2 - 180, size.height)
+      ..lineTo(size.width / 2 + 180, size.height)
+      ..lineTo(size.width / 2 + 230, 0)
+      ..close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+class _FooterButtonBackgroundPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // footer buttons area
+    final paint = Paint()..color = Colors.black;
+    final path = Path()
+      ..moveTo(size.width / 2 - 180, 0)
+      ..lineTo(size.width / 2 - 230, size.height)
+      ..lineTo(size.width / 2 + 230, size.height)
+      ..lineTo(size.width / 2 + 180, 0)
+      ..close();
     canvas.drawPath(path, paint);
   }
 
