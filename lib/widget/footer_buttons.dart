@@ -23,6 +23,18 @@ class _FooterButtonsState extends State<FooterButtons> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Padding(
+          padding: const EdgeInsets.only(right: 80),
+          child: FloatingActionButton(
+            onPressed: () {
+              widget.onUpdate(() {
+                widget.bloc.shootBakugans();
+              });
+            },
+            tooltip: 'left shoot',
+            child: Icon(Icons.repeat_one),
+          ),
+        ),
+        Padding(
           padding: const EdgeInsets.all(8),
           child: FloatingActionButton(
             onPressed: () {
@@ -32,6 +44,18 @@ class _FooterButtonsState extends State<FooterButtons> {
             },
             tooltip: 'shoot',
             child: Icon(Icons.refresh),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 80),
+          child: FloatingActionButton(
+            onPressed: () {
+              widget.onUpdate(() {
+                widget.bloc.shootBakugans();
+              });
+            },
+            tooltip: 'right shoot',
+            child: Icon(Icons.repeat_one),
           ),
         ),
       ],
