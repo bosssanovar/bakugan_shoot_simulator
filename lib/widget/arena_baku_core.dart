@@ -15,6 +15,25 @@ class ArenaBakuCore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Stack(
+      alignment: position == TeamPosition.left
+          ? Alignment.centerRight
+          : Alignment.centerLeft,
+      children: <Widget>[
+        buildBakuCore(),
+        buildParameters(context),
+      ],
+    );
+  }
+
+  Widget buildBakuCore() {
+    return CustomPaint(
+      painter: _ArenaBakuCorePainter(),
+      child: Container(),
+    );
+  }
+
+  Widget buildParameters(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: position == TeamPosition.left
@@ -64,6 +83,37 @@ class ArenaBakuCore extends StatelessWidget {
     if (!bloc.isSuccessShoot(position)) {
       return '-';
     }
-    return '${bloc.getShotBakuCoreType(position).text}';
+    return '${bloc
+        .getShotBakuCoreType(position)
+        .text}';
   }
+}
+
+
+class _ArenaBakuCorePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // footer buttons area
+    var paint = Paint()
+      ..color = Colors.grey;
+    var path = Path()
+      ..moveTo(0, 0)
+      ..lineTo(0, size.height)..lineTo(size.width, size.height)..lineTo(
+          size.width, 0)
+      ..close();
+    canvas.drawPath(path, paint);
+
+    paint = Paint()
+      ..color = Colors.orange;
+    path = Path()
+      ..moveTo(size.width / 2 - 50, size.height / 2 - 50)
+      ..lineTo(size.width / 2 - 50, size.height / 2 + 50)..lineTo(
+          size.width / 2 + 50, size.height / 2 + 50)..lineTo(
+          size.width / 2 + 50, size.height / 2 - 50)
+      ..close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
