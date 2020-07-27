@@ -16,9 +16,7 @@ class ArenaBakuCore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: position == TeamPosition.left
-          ? Alignment.centerRight
-          : Alignment.centerLeft,
+    alignment: Alignment.center,
       children: <Widget>[
         buildBakuCore(),
         buildParameters(context),
@@ -36,9 +34,6 @@ class ArenaBakuCore extends StatelessWidget {
   Widget buildParameters(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: position == TeamPosition.left
-          ? CrossAxisAlignment.end
-          : CrossAxisAlignment.start,
       children: <Widget>[
         Text(
           '${_getBattlePointText(position)}',
@@ -94,22 +89,23 @@ class _ArenaBakuCorePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // footer buttons area
-    var paint = Paint()
-      ..color = Colors.grey;
+    var paint = Paint()..color = Colors.white;
     var path = Path()
       ..moveTo(0, 0)
-      ..lineTo(0, size.height)..lineTo(size.width, size.height)..lineTo(
-          size.width, 0)
+      ..lineTo(0, size.height)
+      ..lineTo(size.width, size.height)
+      ..lineTo(size.width, 0)
       ..close();
     canvas.drawPath(path, paint);
 
-    paint = Paint()
-      ..color = Colors.orange;
+    paint = Paint()..color = Colors.orange;
     path = Path()
-      ..moveTo(size.width / 2 - 50, size.height / 2 - 50)
-      ..lineTo(size.width / 2 - 50, size.height / 2 + 50)..lineTo(
-          size.width / 2 + 50, size.height / 2 + 50)..lineTo(
-          size.width / 2 + 50, size.height / 2 - 50)
+      ..moveTo(size.width / 2 - 50, size.height / 2 - 77)
+      ..lineTo(size.width / 2 - 90, size.height / 2)
+      ..lineTo(size.width / 2 - 50, size.height / 2 + 77)
+      ..lineTo(size.width / 2 + 50, size.height / 2 + 77)
+      ..lineTo(size.width / 2 + 90, size.height / 2)
+      ..lineTo(size.width / 2 + 50, size.height / 2 - 77)
       ..close();
     canvas.drawPath(path, paint);
   }
