@@ -86,26 +86,38 @@ class ArenaBakuCore extends StatelessWidget {
 
 
 class _ArenaBakuCorePainter extends CustomPainter {
+  static const int _centerX = 0;
+  static const int _centerY = 0;
+  static const int _radius = 50;
+
   @override
   void paint(Canvas canvas, Size size) {
+    final x0 = size.width / 2 + _centerX;
+    final y0 = size.height / 2 + _centerY;
     // footer buttons area
-    var paint = Paint()..color = Colors.white;
+    var paint = Paint()..color = Colors.grey;
     var path = Path()
-      ..moveTo(0, 0)
-      ..lineTo(0, size.height)
-      ..lineTo(size.width, size.height)
-      ..lineTo(size.width, 0)
+      ..moveTo(x0 - 50, y0 - 77)
+      ..lineTo(x0 - 90, y0)
+      ..lineTo(x0 - 50, y0 + 77)
+      ..lineTo(x0 + 50, y0 + 77)
+      ..lineTo(x0 + 90, y0)
+      ..lineTo(x0 + 50, y0 - 77)
       ..close();
     canvas.drawPath(path, paint);
 
-    paint = Paint()..color = Colors.orange;
+    paint = new Paint()
+      ..color = Colors.black
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 10;
     path = Path()
-      ..moveTo(size.width / 2 - 50, size.height / 2 - 77)
-      ..lineTo(size.width / 2 - 90, size.height / 2)
-      ..lineTo(size.width / 2 - 50, size.height / 2 + 77)
-      ..lineTo(size.width / 2 + 50, size.height / 2 + 77)
-      ..lineTo(size.width / 2 + 90, size.height / 2)
-      ..lineTo(size.width / 2 + 50, size.height / 2 - 77)
+      ..moveTo(x0 - 50, y0 - 86)
+      ..lineTo(x0 - 100, y0)
+      ..lineTo(x0 - 50, y0 + 86)
+      ..lineTo(x0 + 50, y0 + 86)
+      ..lineTo(x0 + 100, y0)
+      ..lineTo(x0 + 50, y0 - 86)
       ..close();
     canvas.drawPath(path, paint);
   }
