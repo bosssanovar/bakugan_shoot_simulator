@@ -33,9 +33,9 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
-//                      widget.onUpdate(() {
-//                        _bloc.reShootBakugan(PlayerPosition.Right);
-//                      });
+                      widget.onUpdate(() {
+                        widget.bloc.getOneMoreCore(TeamPosition.left);
+                      });
                   },
             tooltip: 'add left',
             child: Icon(Icons.plus_one),
@@ -101,9 +101,9 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
-//                      widget.onUpdate(() {
-//                        _bloc.reShootBakugan(PlayerPosition.Right);
-//                      });
+              widget.onUpdate(() {
+                widget.bloc.getOneMoreCore(TeamPosition.right);
+              });
             },
             tooltip: 'add right',
             child: Icon(Icons.plus_one),

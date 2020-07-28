@@ -21,7 +21,7 @@ class MainBloc {
   void storeCores(
       TeamPosition teamPosition, TeamBakuCorePosition teamBakuCorePosition) {
     _players[teamPosition].storeTeamBakuCores(
-        _arena.getBakuCore(teamPosition), teamBakuCorePosition);
+        _arena.getBakuCores(teamPosition), teamBakuCorePosition);
   }
 
   void removeCores(TeamPosition teamPosition,
@@ -34,7 +34,7 @@ class MainBloc {
     return _players[teamPosition].getDamageRate(teamBakuCorePosition);
   }
 
-  BakuCoreType getTeamsBakuCoreType(TeamPosition teamPosition,
+  List<BakuCoreType> getTeamsBakuCoreType(TeamPosition teamPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     return _players[teamPosition].getBakuCoreType(teamBakuCorePosition);
   }
@@ -58,8 +58,8 @@ class MainBloc {
     return _arena.getDamageRate(teamPosition);
   }
 
-  BakuCoreType getShotBakuCoreType(TeamPosition teamPosition) {
-    return _arena.getBakuCoreType(teamPosition);
+  List<BakuCoreType> getShotBakuCoreType(TeamPosition teamPosition) {
+    return _arena.getBakuCoreTypes(teamPosition);
   }
 
   bool isShotBakugan() {
@@ -76,5 +76,9 @@ class MainBloc {
 
   void swapBakuCores() {
     _arena.swapBakuCores();
+  }
+
+  void getOneMoreCore(TeamPosition teamPosition){
+    _arena.shootToGetOneMoreBakuCore(teamPosition);
   }
 }
