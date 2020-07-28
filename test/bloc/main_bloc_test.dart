@@ -122,11 +122,12 @@ void main() {
     expect(
         mainBloc.getShotBakuganBattlePoint(TeamPosition.right) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreTypes(TeamPosition.right) != BakuCoreType.none,
+        !mainBloc.getShotBakuCoreTypes(TeamPosition.right)
+            .contains(BakuCoreType.none),
         true);
     expect(
-        mainBloc.getShotBakuCoreTypes(TeamPosition.right) !=
-            BakuCoreType.failed,
+        !mainBloc.getShotBakuCoreTypes(TeamPosition.right)
+            .contains(BakuCoreType.failed),
         true);
     // 左プレイヤー
     expect(mainBloc.isSuccessShoot(TeamPosition.left), true);
@@ -135,11 +136,12 @@ void main() {
     expect(
         mainBloc.getShotBakuganBattlePoint(TeamPosition.left) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreTypes(TeamPosition.left) != BakuCoreType.none,
+        !mainBloc.getShotBakuCoreTypes(TeamPosition.left)
+            .contains(BakuCoreType.none),
         true);
     expect(
-        mainBloc.getShotBakuCoreTypes(TeamPosition.left) !=
-            BakuCoreType.failed,
+        !mainBloc.getShotBakuCoreTypes(TeamPosition.left)
+            .contains(BakuCoreType.failed),
         true);
   });
 
@@ -247,11 +249,12 @@ void main() {
     expect(
         mainBloc.getShotBakuganBattlePoint(TeamPosition.right) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreTypes(TeamPosition.right) != BakuCoreType.none,
+        !mainBloc.getShotBakuCoreTypes(TeamPosition.right)
+            .contains(BakuCoreType.none),
         true);
     expect(
-        mainBloc.getShotBakuCoreTypes(TeamPosition.right) !=
-            BakuCoreType.failed,
+        !mainBloc.getShotBakuCoreTypes(TeamPosition.right)
+            .contains(BakuCoreType.failed),
         true);
     // 左プレイヤー
     expect(mainBloc.isSuccessShoot(TeamPosition.left), true);
@@ -260,11 +263,12 @@ void main() {
     expect(
         mainBloc.getShotBakuganBattlePoint(TeamPosition.left) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreTypes(TeamPosition.left) != BakuCoreType.none,
+        !mainBloc.getShotBakuCoreTypes(TeamPosition.left)
+            .contains(BakuCoreType.none),
         true);
     expect(
-        mainBloc.getShotBakuCoreTypes(TeamPosition.left) !=
-            BakuCoreType.failed,
+        !mainBloc.getShotBakuCoreTypes(TeamPosition.left)
+            .contains(BakuCoreType.failed),
         true);
 
     // Playerの状態

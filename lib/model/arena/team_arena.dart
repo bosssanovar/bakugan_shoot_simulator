@@ -1,7 +1,6 @@
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_cores.dart';
-import 'package:bakugan_shoot_simulator/model/baku_core/no_baku_core.dart';
 
 class TeamArena {
   final BakuCores _bakuCores = BakuCores();
