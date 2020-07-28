@@ -78,9 +78,11 @@ class ArenaBakuCore extends StatelessWidget {
     if (!bloc.isSuccessShoot(position)) {
       return '-';
     }
-    return '${bloc
-        .getShotBakuCoreType(position)
-        .text}';
+    final sb = StringBuffer();
+    for(final type in bloc.getShotBakuCoreType(position)){
+      sb.write('${type.text}, ');
+    }
+    return sb.toString();
   }
 }
 

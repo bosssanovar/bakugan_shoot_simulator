@@ -113,11 +113,12 @@ class _TeamAreaState extends State<TeamArea> {
   }
 
   String _getTeamsBakuCoreTypeText(TeamBakuCorePosition position) {
-    return '${
-        widget.bloc
-            .getTeamsBakuCoreType(widget.teamPosition, position)
-            .text
-    }';
+    final sb = StringBuffer();
+    for(final type in widget.bloc
+        .getTeamsBakuCoreType(widget.teamPosition, position)){
+      sb.write('${type.text}, ');
+    }
+    return sb.toString();
   }
 
   void _showCantAddTeamDialog() {

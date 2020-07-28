@@ -1,6 +1,6 @@
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
-import 'package:bakugan_shoot_simulator/model/baku_core/no_baku_core.dart';
+import 'package:bakugan_shoot_simulator/model/baku_core/baku_cores.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 
 class Team {
@@ -9,45 +9,51 @@ class Team {
     initTeamBakuCores();
   }
 
-  final _teamBakuCores = <TeamBakuCorePosition, BakuCore>{};
+  final _teamBakuCores = <TeamBakuCorePosition, BakuCores>{};
 
   void initTeamBakuCores() {
-    _teamBakuCores.clear();
-    _teamBakuCores[TeamBakuCorePosition.pos1] = NoBakuCore();
-    _teamBakuCores[TeamBakuCorePosition.pos2] = NoBakuCore();
-    _teamBakuCores[TeamBakuCorePosition.pos3] = NoBakuCore();
+    _teamBakuCores[TeamBakuCorePosition.pos1]?.clear();
+    _teamBakuCores[TeamBakuCorePosition.pos2]?.clear();
+    _teamBakuCores[TeamBakuCorePosition.pos3]?.clear();
+    _teamBakuCores[TeamBakuCorePosition.pos1] = BakuCores();
+    _teamBakuCores[TeamBakuCorePosition.pos2] = BakuCores();
+    _teamBakuCores[TeamBakuCorePosition.pos3] = BakuCores();
   }
 
   bool isExistBakuCore(TeamBakuCorePosition position) {
-    return !_teamBakuCores[position].isNoCore &&
-        _teamBakuCores[position].isSuccess;
+    return !_teamBakuCores[position].isNoCore() &&
+        _teamBakuCores[position].isSuccessCurrentCore();
   }
 
-  void storeTeamBakuCores(BakuCore bakuCore, TeamBakuCorePosition position) {
-    if (!_teamBakuCores[position].isNoCore) {
+  void storeTeamBakuCores(
+      List<BakuCore> bakuCores,
+      TeamBakuCorePosition position) {
+    if (!_teamBakuCores[position].isNoCore()) {
       throw StateError('$position is already stored.');
     }
-    if (!bakuCore.isSuccess) {
-      throw ArgumentError();
+    for(final core in bakuCores) {
+      if (!core.isSuccess) {
+        throw ArgumentError();
+      }
     }
-    _teamBakuCores[position] = bakuCore;
+    _teamBakuCores[position].addAll(bakuCores);
   }
 
   void removeTeamBakuCore(TeamBakuCorePosition position) {
-    _teamBakuCores[position] = NoBakuCore();
+    _teamBakuCores[position].clear();
   }
 
   int getDamageRate(TeamBakuCorePosition position) {
     if (!isExistBakuCore(position)) {
       throw StateError('$position is not stored baku core yet.');
     }
-    return _teamBakuCores[position].damageRate;
+    return _teamBakuCores[position].getTotalDamageRate();
   }
 
-  BakuCoreType getBakuCoreType(TeamBakuCorePosition position) {
+  List<BakuCoreType> getBakuCoreType(TeamBakuCorePosition position) {
     if (!isExistBakuCore(position)) {
       throw StateError('$position is not stored baku core yet.');
     }
-    return _teamBakuCores[position].type;
+    return _teamBakuCores[position].getTypes();
   }
 }
