@@ -103,9 +103,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: !_bloc.isShotBakugan()
                       ? null
                       : () {
-//                      setState(() {
-//                        _bloc.reShootBakugan(PlayerPosition.Right);
-//                      });
+                    setState(() {
+                      _bloc.shootToGetOneMoreBakuCore(TeamPosition.left);
+                    });
                       },
                   tooltip: 'add left',
                   child: Icon(Icons.plus_one),
@@ -175,9 +175,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: !_bloc.isShotBakugan()
                     ? null
                     : () {
-//                      setState(() {
-//                        _bloc.reShootBakugan(PlayerPosition.Right);
-//                      });
+                      setState(() {
+                        _bloc.shootToGetOneMoreBakuCore(TeamPosition.right);
+                      });
                     },
                   tooltip: 'add right',
                   child: Icon(Icons.plus_one),
@@ -242,15 +242,15 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Text(
                   '${_getBattlePointText(TeamPosition.left)}',
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
                   '${_getShotDamageRateText(TeamPosition.left)}',
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.display1,
                 ),
                 Text(
                   '${_getShotTypeText(TeamPosition.left)}',
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.display1,
                 ),
               ],
             );
@@ -263,15 +263,15 @@ class _MyHomePageState extends State<MyHomePage> {
       children: <Widget>[
         Text(
           '${_getBattlePointText(TeamPosition.right)}',
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.display1,
         ),
         Text(
           '${_getShotDamageRateText(TeamPosition.right)}',
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.display1,
         ),
         Text(
           '${_getShotTypeText(TeamPosition.right)}',
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.display1,
         ),
       ],
     );
@@ -409,9 +409,12 @@ class _MyHomePageState extends State<MyHomePage> {
     if (!_bloc.isSuccessShoot(position)) {
       return '-';
     }
-    return '${_bloc
-        .getShotBakuCoreType(position)
-        .text}';
+    final sb = StringBuffer();
+    for(final type in
+    _bloc.getShotBakuCoreTypes(position)){
+      sb.write('${type.text}, ');
+    }
+    return sb.toString();
   }
 
   String _getTeamsDamageRateText(TeamPosition playerPosition,
@@ -424,11 +427,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String _getTeamsBakuCoreTypeText(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
-    return '${
-        _bloc
-            .getTeamsBakuCoreType(playerPosition, teamBakuCorePosition)
-            .text
-    }';
+    final sb = StringBuffer();
+    for(final type in
+      _bloc.getTeamsBakuCoreType(playerPosition, teamBakuCorePosition)){
+      sb.write('${type.text}, ');
+    }
+    return sb.toString();
   }
 
   void _showCantAddTeamDialog() {

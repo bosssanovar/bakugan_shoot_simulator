@@ -9,39 +9,39 @@ import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart'
 class MainBloc {
 
   MainBloc() {
-    _players[TeamPosition.left] = Team();
-    _players[TeamPosition.right] = Team();
+    _teams[TeamPosition.left] = Team();
+    _teams[TeamPosition.right] = Team();
   }
 
-  final Map<TeamPosition, Team> _players = <TeamPosition, Team>{};
+  final Map<TeamPosition, Team> _teams = <TeamPosition, Team>{};
   final Arena _arena = Arena();
 
-  // Player
+  // Team
 
   void storeCores(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
-    _players[playerPosition].storeTeamBakuCores(
-        _arena.getBakuCore(playerPosition), teamBakuCorePosition);
+    _teams[playerPosition].storeTeamBakuCores(
+        _arena.getBakuCores(playerPosition), teamBakuCorePosition);
   }
 
   void removeCores(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
-    _players[playerPosition].removeTeamBakuCore(teamBakuCorePosition);
+    _teams[playerPosition].removeTeamBakuCore(teamBakuCorePosition);
   }
 
   int getTeamsDamageRate(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
-    return _players[playerPosition].getDamageRate(teamBakuCorePosition);
+    return _teams[playerPosition].getDamageRate(teamBakuCorePosition);
   }
 
-  BakuCoreType getTeamsBakuCoreType(TeamPosition playerPosition,
+  List<BakuCoreType> getTeamsBakuCoreType(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
-    return _players[playerPosition].getBakuCoreType(teamBakuCorePosition);
+    return _teams[playerPosition].getBakuCoreType(teamBakuCorePosition);
   }
 
   bool isExistTeamsBakuCore(TeamPosition playerPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
-    return _players[playerPosition].isExistBakuCore(teamBakuCorePosition);
+    return _teams[playerPosition].isExistBakuCore(teamBakuCorePosition);
   }
 
   // Arena
@@ -58,8 +58,8 @@ class MainBloc {
     return _arena.getDamageRate(playerPosition);
   }
 
-  BakuCoreType getShotBakuCoreType(TeamPosition playerPosition) {
-    return _arena.getBakuCoreType(playerPosition);
+  List<BakuCoreType> getShotBakuCoreTypes(TeamPosition playerPosition) {
+    return _arena.getBakuCoreTypes(playerPosition);
   }
 
   bool isShotBakugan() {
@@ -76,5 +76,9 @@ class MainBloc {
 
   void swapBakuCores(){
     _arena.swapBakuCores();
+  }
+
+  void shootToGetOneMoreBakuCore(TeamPosition position) {
+    _arena.shootToGetOneMoreBakuCore(position);
   }
 }

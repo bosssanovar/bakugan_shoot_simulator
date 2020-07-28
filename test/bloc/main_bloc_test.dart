@@ -14,9 +14,9 @@ void main() {
     expect(mainBloc.isShotBakugan(), false);
     expect(mainBloc.isSuccessShoot(TeamPosition.right), false);
     expect(mainBloc.isSuccessShoot(TeamPosition.left), false);
-    expect(() => mainBloc.getShotBakuCoreType(TeamPosition.right),
+    expect(() => mainBloc.getShotBakuCoreTypes(TeamPosition.right),
         throwsStateError);
-    expect(() => mainBloc.getShotBakuCoreType(TeamPosition.left),
+    expect(() => mainBloc.getShotBakuCoreTypes(TeamPosition.left),
         throwsStateError);
     expect(() => mainBloc.getShotBakuganBattlePoint(TeamPosition.right),
         throwsStateError);
@@ -122,10 +122,10 @@ void main() {
     expect(
         mainBloc.getShotBakuganBattlePoint(TeamPosition.right) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreType(TeamPosition.right) != BakuCoreType.none,
+        mainBloc.getShotBakuCoreTypes(TeamPosition.right) != BakuCoreType.none,
         true);
     expect(
-        mainBloc.getShotBakuCoreType(TeamPosition.right) !=
+        mainBloc.getShotBakuCoreTypes(TeamPosition.right) !=
             BakuCoreType.failed,
         true);
     // 左プレイヤー
@@ -135,10 +135,10 @@ void main() {
     expect(
         mainBloc.getShotBakuganBattlePoint(TeamPosition.left) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreType(TeamPosition.left) != BakuCoreType.none,
+        mainBloc.getShotBakuCoreTypes(TeamPosition.left) != BakuCoreType.none,
         true);
     expect(
-        mainBloc.getShotBakuCoreType(TeamPosition.left) !=
+        mainBloc.getShotBakuCoreTypes(TeamPosition.left) !=
             BakuCoreType.failed,
         true);
   });
@@ -191,7 +191,7 @@ void main() {
             TeamPosition.right, TeamBakuCorePosition.pos3),
         false);
     expect(
-        mainBloc.getShotBakuCoreType(TeamPosition.right),
+        mainBloc.getShotBakuCoreTypes(TeamPosition.right),
         mainBloc.getTeamsBakuCoreType(
             TeamPosition.right, TeamBakuCorePosition.pos1));
     expect(
@@ -215,7 +215,7 @@ void main() {
             TeamPosition.left, TeamBakuCorePosition.pos3),
         false);
     expect(
-        mainBloc.getShotBakuCoreType(TeamPosition.left),
+        mainBloc.getShotBakuCoreTypes(TeamPosition.left),
         mainBloc.getTeamsBakuCoreType(
             TeamPosition.left, TeamBakuCorePosition.pos2));
     expect(
@@ -247,10 +247,10 @@ void main() {
     expect(
         mainBloc.getShotBakuganBattlePoint(TeamPosition.right) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreType(TeamPosition.right) != BakuCoreType.none,
+        mainBloc.getShotBakuCoreTypes(TeamPosition.right) != BakuCoreType.none,
         true);
     expect(
-        mainBloc.getShotBakuCoreType(TeamPosition.right) !=
+        mainBloc.getShotBakuCoreTypes(TeamPosition.right) !=
             BakuCoreType.failed,
         true);
     // 左プレイヤー
@@ -260,10 +260,10 @@ void main() {
     expect(
         mainBloc.getShotBakuganBattlePoint(TeamPosition.left) > -9999, true);
     expect(
-        mainBloc.getShotBakuCoreType(TeamPosition.left) != BakuCoreType.none,
+        mainBloc.getShotBakuCoreTypes(TeamPosition.left) != BakuCoreType.none,
         true);
     expect(
-        mainBloc.getShotBakuCoreType(TeamPosition.left) !=
+        mainBloc.getShotBakuCoreTypes(TeamPosition.left) !=
             BakuCoreType.failed,
         true);
 
