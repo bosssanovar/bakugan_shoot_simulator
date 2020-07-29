@@ -53,13 +53,13 @@ class _HomePageState extends State<HomePage> {
                 Expanded(child: _buildTeam(TeamPosition.left)),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 60, left: 40),
+                    padding: const EdgeInsets.only(bottom: 90, left: 70),
                     child: _buildCurrentBakuCore(context, TeamPosition.left),
                   ),
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 60, right: 40),
+                    padding: const EdgeInsets.only(top: 90, right: 70),
                     child: _buildCurrentBakuCore(context, TeamPosition.right),
                   ),
                 ),

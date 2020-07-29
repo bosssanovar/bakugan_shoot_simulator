@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
+import 'package:bakugan_shoot_simulator/widget/painter/baku_core_pattern_paint.dart';
 import 'package:flutter/material.dart';
 
 import 'painter/baku_core_paint.dart';
@@ -19,25 +20,29 @@ class ArenaBakuCore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return bloc.isShotBakugan() ? _buildBakuCore(context) : Container();
+  }
+
+  Widget _buildBakuCore(BuildContext context) {
     return bloc.isSuccessShoot(position)
         ? Stack(
             alignment: Alignment.center,
             children: <Widget>[
-              buildBakuCore(),
-              buildParameters(context),
+              _buildBakuCoreBackground(),
+              _buildParameters(context),
             ],
           )
-        : Container();
+        : _buildBakuCoreShape();
   }
 
-  Widget buildBakuCore() {
+  Widget _buildBakuCoreBackground() {
     return CustomPaint(
       painter: _ArenaBakuCorePainter(),
       child: Container(),
     );
   }
 
-  Widget buildParameters(BuildContext context) {
+  Widget _buildParameters(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -96,6 +101,15 @@ class ArenaBakuCore extends StatelessWidget {
     }
     return sb.toString();
   }
+
+  Widget _buildBakuCoreShape() {
+    return Center(
+      child: CustomPaint(
+        painter: _BakuCoreShapePainter(),
+        child: Container(),
+      ),
+    );
+  }
 }
 
 
@@ -104,6 +118,17 @@ class _ArenaBakuCorePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     paintArenaBakuCore(canvas, size, const Point(0, 0), 90);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+class _BakuCoreShapePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    paintBakuCorePattern(canvas, size, const Point(0, 0), 90,
+        const Color.fromARGB(0xff, 0x22, 0x22, 0x22));
   }
 
   @override
