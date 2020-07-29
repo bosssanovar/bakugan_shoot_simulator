@@ -25,29 +25,28 @@ class TeamArea extends StatefulWidget {
 class _TeamAreaState extends State<TeamArea> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment:
-      widget.teamPosition == TeamPosition.left
-          ? CrossAxisAlignment.start
-          : CrossAxisAlignment.end,
-      children: <Widget>[
-        !widget.bloc.isExistTeamsBakuCore(
-            widget.teamPosition,
-            TeamBakuCorePosition.pos1)
-            ? _buildCoreAddButton(TeamBakuCorePosition.pos1)
-            : _buildTeamBakuCore(TeamBakuCorePosition.pos1),
-        !widget.bloc.isExistTeamsBakuCore(
-            widget.teamPosition,
-            TeamBakuCorePosition.pos2)
-            ? _buildCoreAddButton(TeamBakuCorePosition.pos2)
-            : _buildTeamBakuCore(TeamBakuCorePosition.pos2),
-        !widget.bloc.isExistTeamsBakuCore(
-            widget.teamPosition,
-            TeamBakuCorePosition.pos3)
-            ? _buildCoreAddButton(TeamBakuCorePosition.pos3)
-            : _buildTeamBakuCore(TeamBakuCorePosition.pos3),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 40),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: widget.teamPosition == TeamPosition.left
+            ? CrossAxisAlignment.start
+            : CrossAxisAlignment.end,
+        children: <Widget>[
+          !widget.bloc.isExistTeamsBakuCore(
+                  widget.teamPosition, TeamBakuCorePosition.pos1)
+              ? _buildCoreAddButton(TeamBakuCorePosition.pos1)
+              : _buildTeamBakuCore(TeamBakuCorePosition.pos1),
+          !widget.bloc.isExistTeamsBakuCore(
+                  widget.teamPosition, TeamBakuCorePosition.pos2)
+              ? _buildCoreAddButton(TeamBakuCorePosition.pos2)
+              : _buildTeamBakuCore(TeamBakuCorePosition.pos2),
+          !widget.bloc.isExistTeamsBakuCore(
+                  widget.teamPosition, TeamBakuCorePosition.pos3)
+              ? _buildCoreAddButton(TeamBakuCorePosition.pos3)
+              : _buildTeamBakuCore(TeamBakuCorePosition.pos3),
+        ],
+      ),
     );
   }
 
