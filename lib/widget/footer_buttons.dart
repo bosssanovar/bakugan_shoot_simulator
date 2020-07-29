@@ -26,9 +26,7 @@ class _FooterButtonsState extends State<FooterButtons> {
         Padding(
           padding: const EdgeInsets.only(right: 80),
           child: FloatingActionButton(
-            backgroundColor: widget.bloc.isShotBakugan()
-                ? Colors.lightBlueAccent
-                : Colors.black54,
+            backgroundColor: widget.bloc.isShotBakugan() ? Colors.blueGrey : Colors.white12,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
@@ -38,6 +36,10 @@ class _FooterButtonsState extends State<FooterButtons> {
             },
             tooltip: 'left shoot',
             child: Icon(Icons.repeat_one),
+            foregroundColor:
+            widget.bloc.isShotBakugan()
+                ? null
+                : Colors.white30,
           ),
         ),
         Padding(
@@ -56,8 +58,8 @@ class _FooterButtonsState extends State<FooterButtons> {
           padding: const EdgeInsets.only(left: 80),
           child: FloatingActionButton(
             backgroundColor: widget.bloc.isShotBakugan()
-                ? Colors.lightBlueAccent
-                : Colors.black54,
+                ? Colors.blueGrey
+                : Colors.white12,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
@@ -67,6 +69,10 @@ class _FooterButtonsState extends State<FooterButtons> {
             },
             tooltip: 'right shoot',
             child: Icon(Icons.repeat_one),
+            foregroundColor:
+            widget.bloc.isShotBakugan()
+                ? null
+                : Colors.white30,
           ),
         ),
       ],

@@ -28,8 +28,8 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           child: FloatingActionButton(
             disabledElevation: 0,
             backgroundColor: widget.bloc.isTeamBakuCoreFull(TeamPosition.left)
-                ? Colors.lightBlueAccent
-                : Colors.black54,
+                ? Colors.blueGrey
+                : Colors.white12,
             onPressed: !widget.bloc.isTeamBakuCoreFull(TeamPosition.left)
                 ? null
                 : () {
@@ -39,16 +39,19 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                   },
             tooltip: 'clear left',
             child: Icon(Icons.delete),
+            foregroundColor: widget.bloc.isTeamBakuCoreFull(TeamPosition.left)
+                ? null
+                : Colors.white30,
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(8),
           child: FloatingActionButton(
             disabledElevation: 0,
-            backgroundColor: widget.bloc.isShotBakugan()
-                ? Colors.lightBlueAccent
-                : Colors.black54,
-            onPressed: !widget.bloc.isShotBakugan()
+            backgroundColor: widget.bloc.isSuccessShoot(TeamPosition.left)
+                ? Colors.blueGrey
+                : Colors.white12,
+            onPressed: !widget.bloc.isSuccessShoot(TeamPosition.left)
                 ? null
                 : () {
                       widget.onUpdate(() {
@@ -57,6 +60,10 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                   },
             tooltip: 'add left',
             child: Icon(Icons.plus_one),
+            foregroundColor:
+            widget.bloc.isSuccessShoot(TeamPosition.left)
+                ? null
+                : Colors.white30,
           ),
         ),
         Padding(
@@ -64,8 +71,8 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           child: FloatingActionButton(
             disabledElevation: 0,
             backgroundColor: widget.bloc.isShotBakugan()
-                ? Colors.lightBlueAccent
-                : Colors.black54,
+                ? Colors.blueGrey
+                : Colors.white12,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
@@ -75,6 +82,10 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             },
             tooltip: 'swap',
             child: Icon(Icons.swap_horiz),
+            foregroundColor:
+            widget.bloc.isShotBakugan()
+                ? null
+                : Colors.white30,
           ),
         ),
         Padding(
@@ -82,10 +93,10 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           child: FloatingActionButton(
             disabledElevation: 0,
             backgroundColor:
-            widget.bloc.isShotBakugan()
-                ? Colors.lightBlueAccent
-                : Colors.black54,
-            onPressed: !widget.bloc.isShotBakugan()
+            widget.bloc.isSuccessShoot(TeamPosition.right)
+                ? Colors.blueGrey
+                : Colors.white12,
+            onPressed: !widget.bloc.isSuccessShoot(TeamPosition.right)
                 ? null
                 : () {
               widget.onUpdate(() {
@@ -94,6 +105,10 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             },
             tooltip: 'add right',
             child: Icon(Icons.plus_one),
+            foregroundColor:
+            widget.bloc.isSuccessShoot(TeamPosition.right)
+                ? null
+                : Colors.white30,
           ),
         ),
         Padding(
@@ -102,8 +117,8 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             disabledElevation: 0,
             backgroundColor:
             widget.bloc.isTeamBakuCoreFull(TeamPosition.right)
-                ? Colors.lightBlueAccent
-                : Colors.black54,
+                ? Colors.blueGrey
+                : Colors.white12,
             onPressed: !widget.bloc.isTeamBakuCoreFull(TeamPosition.right)
                 ? null
                 : () {
@@ -111,8 +126,12 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                 widget.bloc.clearTeamBakuCores(TeamPosition.right);
               });
             },
-            tooltip: 'shoot right',
+            tooltip: 'clear right',
             child: Icon(Icons.delete),
+            foregroundColor:
+            widget.bloc.isTeamBakuCoreFull(TeamPosition.right)
+                ? null
+                : Colors.white30,
           ),
         ),
       ],
