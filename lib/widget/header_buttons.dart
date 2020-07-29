@@ -33,29 +33,30 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
-                      widget.onUpdate(() {
-                        widget.bloc.getOneMoreCore(TeamPosition.left);
-                      });
+                    widget.onUpdate(() {
+                      //widget.bloc.reShootBakugan(TeamPosition.left);
+                    });
                   },
-            tooltip: 'add left',
-            child: Icon(Icons.plus_one),
+            tooltip: 'clear left',
+            child: Icon(Icons.delete),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(8),
           child: FloatingActionButton(
             disabledElevation: 0,
-            backgroundColor:
-            widget.bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
+            backgroundColor: widget.bloc.isShotBakugan()
+                ? Colors.lightBlueAccent
+                : Colors.grey,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
-              widget.onUpdate(() {
-                widget.bloc.reShootBakugan(TeamPosition.left);
-              });
-            },
-            tooltip: 'shoot left',
-            child: Icon(Icons.repeat_one),
+                      widget.onUpdate(() {
+                        widget.bloc.getOneMoreCore(TeamPosition.left);
+                      });
+                  },
+            tooltip: 'add left',
+            child: Icon(Icons.plus_one),
           ),
         ),
         Padding(
@@ -85,11 +86,11 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                 ? null
                 : () {
               widget.onUpdate(() {
-                widget.bloc.reShootBakugan(TeamPosition.right);
+                widget.bloc.getOneMoreCore(TeamPosition.right);
               });
             },
-            tooltip: 'shoot right',
-            child: Icon(Icons.repeat_one),
+            tooltip: 'add right',
+            child: Icon(Icons.plus_one),
           ),
         ),
         Padding(
@@ -102,11 +103,11 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                 ? null
                 : () {
               widget.onUpdate(() {
-                widget.bloc.getOneMoreCore(TeamPosition.right);
+                //widget.bloc.reShootBakugan(TeamPosition.right);
               });
             },
-            tooltip: 'add right',
-            child: Icon(Icons.plus_one),
+            tooltip: 'shoot right',
+            child: Icon(Icons.delete),
           ),
         ),
       ],

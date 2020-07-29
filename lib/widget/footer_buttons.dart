@@ -1,4 +1,5 @@
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
+import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -25,9 +26,14 @@ class _FooterButtonsState extends State<FooterButtons> {
         Padding(
           padding: const EdgeInsets.only(right: 80),
           child: FloatingActionButton(
-            onPressed: () {
-              widget.onUpdate(() {
-                widget.bloc.shootBakugans();
+            backgroundColor: widget.bloc.isShotBakugan()
+                ? Colors.lightBlueAccent
+                : Colors.grey,
+            onPressed: !widget.bloc.isShotBakugan()
+                ? null
+                : () {
+                    widget.onUpdate(() {
+                widget.bloc.reShootBakugan(TeamPosition.left);
               });
             },
             tooltip: 'left shoot',
@@ -49,9 +55,13 @@ class _FooterButtonsState extends State<FooterButtons> {
         Padding(
           padding: const EdgeInsets.only(left: 80),
           child: FloatingActionButton(
-            onPressed: () {
+            backgroundColor:
+            widget.bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
+            onPressed: !widget.bloc.isShotBakugan()
+                ? null
+                : () {
               widget.onUpdate(() {
-                widget.bloc.shootBakugans();
+                widget.bloc.reShootBakugan(TeamPosition.right);
               });
             },
             tooltip: 'right shoot',
