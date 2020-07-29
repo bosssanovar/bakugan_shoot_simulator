@@ -103,11 +103,16 @@ class ArenaBakuCore extends StatelessWidget {
   }
 
   Widget _buildBakuCoreShape() {
-    return Center(
-      child: CustomPaint(
-        painter: _BakuCoreShapePainter(),
-        child: Container(),
-      ),
+    return Stack(
+      children: <Widget>[
+        Center(
+          child: CustomPaint(
+            painter: _BakuCoreShapePainter(),
+            child: Container(),
+          ),
+        ),
+        const Center(child: Text('miss...')),
+      ],
     );
   }
 }
