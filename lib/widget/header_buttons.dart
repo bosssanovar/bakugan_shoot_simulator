@@ -27,14 +27,14 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           padding: const EdgeInsets.all(8),
           child: FloatingActionButton(
             disabledElevation: 0,
-            backgroundColor: widget.bloc.isShotBakugan()
+            backgroundColor: widget.bloc.isTeamBakuCoreFull(TeamPosition.left)
                 ? Colors.lightBlueAccent
-                : Colors.grey,
-            onPressed: !widget.bloc.isShotBakugan()
+                : Colors.black54,
+            onPressed: !widget.bloc.isTeamBakuCoreFull(TeamPosition.left)
                 ? null
                 : () {
                     widget.onUpdate(() {
-                      //widget.bloc.reShootBakugan(TeamPosition.left);
+                      widget.bloc.clearTeamBakuCores(TeamPosition.left);
                     });
                   },
             tooltip: 'clear left',
@@ -47,7 +47,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             disabledElevation: 0,
             backgroundColor: widget.bloc.isShotBakugan()
                 ? Colors.lightBlueAccent
-                : Colors.grey,
+                : Colors.black54,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
@@ -63,8 +63,9 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           padding: const EdgeInsets.all(8),
           child: FloatingActionButton(
             disabledElevation: 0,
-            backgroundColor:
-            widget.bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
+            backgroundColor: widget.bloc.isShotBakugan()
+                ? Colors.lightBlueAccent
+                : Colors.black54,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
@@ -81,7 +82,9 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           child: FloatingActionButton(
             disabledElevation: 0,
             backgroundColor:
-            widget.bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
+            widget.bloc.isShotBakugan()
+                ? Colors.lightBlueAccent
+                : Colors.black54,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
@@ -98,12 +101,14 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           child: FloatingActionButton(
             disabledElevation: 0,
             backgroundColor:
-            widget.bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
-            onPressed: !widget.bloc.isShotBakugan()
+            widget.bloc.isTeamBakuCoreFull(TeamPosition.right)
+                ? Colors.lightBlueAccent
+                : Colors.black54,
+            onPressed: !widget.bloc.isTeamBakuCoreFull(TeamPosition.right)
                 ? null
                 : () {
               widget.onUpdate(() {
-                //widget.bloc.reShootBakugan(TeamPosition.right);
+                widget.bloc.clearTeamBakuCores(TeamPosition.right);
               });
             },
             tooltip: 'shoot right',

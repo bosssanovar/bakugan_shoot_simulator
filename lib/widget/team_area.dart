@@ -5,7 +5,11 @@ import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:flutter/material.dart';
 
 class TeamArea extends StatefulWidget {
-  const TeamArea({Key key, this.teamPosition = TeamPosition.left, this.bloc})
+  const TeamArea(
+      {Key key,
+      this.teamPosition = TeamPosition.left,
+      this.bloc,
+      this.onUpdate})
       : super(key: key);
 
   @override
@@ -13,6 +17,7 @@ class TeamArea extends StatefulWidget {
 
   final TeamPosition teamPosition;
   final MainBloc bloc;
+  final Function(Function) onUpdate;
 }
 
 class _TeamAreaState extends State<TeamArea> {
@@ -52,7 +57,7 @@ class _TeamAreaState extends State<TeamArea> {
           return;
         }
 
-        setState(() {
+        widget.onUpdate(() {
           widget.bloc.storeCores(widget.teamPosition, position);
         });
       },
@@ -101,7 +106,7 @@ class _TeamAreaState extends State<TeamArea> {
       return;
     }
 
-    setState(() {
+    widget.onUpdate(() {
       widget.bloc.removeCores(widget.teamPosition, position);
     });
   }

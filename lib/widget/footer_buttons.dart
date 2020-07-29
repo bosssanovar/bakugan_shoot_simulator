@@ -28,7 +28,7 @@ class _FooterButtonsState extends State<FooterButtons> {
           child: FloatingActionButton(
             backgroundColor: widget.bloc.isShotBakugan()
                 ? Colors.lightBlueAccent
-                : Colors.grey,
+                : Colors.black54,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
@@ -55,8 +55,9 @@ class _FooterButtonsState extends State<FooterButtons> {
         Padding(
           padding: const EdgeInsets.only(left: 80),
           child: FloatingActionButton(
-            backgroundColor:
-            widget.bloc.isShotBakugan() ? Colors.lightBlueAccent : Colors.grey,
+            backgroundColor: widget.bloc.isShotBakugan()
+                ? Colors.lightBlueAccent
+                : Colors.black54,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {

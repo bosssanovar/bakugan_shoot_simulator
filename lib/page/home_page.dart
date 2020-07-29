@@ -104,6 +104,11 @@ class _HomePageState extends State<HomePage> {
     return TeamArea(
       teamPosition: teamPosition,
       bloc: _bloc,
+      onUpdate: (func) {
+        setState(() {
+          func();
+        });
+      },
     );
   }
 
