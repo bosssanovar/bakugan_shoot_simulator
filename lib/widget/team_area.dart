@@ -100,7 +100,6 @@ class _TeamAreaState extends State<TeamArea> {
     return CustomPaint(
       painter: _TeamBakuCorePainter(),
       child: Container(
-        color: Colors.red,
       ),
     );
   }

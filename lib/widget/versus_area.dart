@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:bakugan_shoot_simulator/widget/painter/baku_core_pattern_paint.dart';
 import 'package:flutter/material.dart';
 
 class VersusArea extends StatelessWidget {
@@ -7,27 +10,41 @@ class VersusArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        _buildBackground(),
-        const Center(
-          child: Padding(
-            padding: EdgeInsets.all(0),
-            child: Text(
-              'V.S.',
+    return Center(
+      child: Container(
+        height: 100,
+        width: 100,
+        child: Stack(
+          children: <Widget>[
+            _buildBackground(),
+            const Center(
+              child: Text(
+                'V.S.',
+              ),
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 
   Widget _buildBackground() {
     return Center(
-        child: Container(
-      color: Colors.black87,
-      height: 50,
-      width: 50,
-    ));
+      child: CustomPaint(
+        painter: _VersusBackgroundPainter(),
+        child: Container(),
+      ),
+    );
   }
+}
+
+class _VersusBackgroundPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    paintBakuCorePattern(canvas, size, const Point(0, 0), 20,
+        const Color.fromARGB(0xff, 0xaa, 0x30, 0x30));
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

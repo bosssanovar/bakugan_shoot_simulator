@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           _buildButtons(),
-          const Center(child: VersusArea()),
+          const VersusArea(),
         ],
       ),
     );
