@@ -23,6 +23,9 @@ class _HeaderButtonsState extends State<HeaderButtons> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        Expanded(
+          child: Container(),
+        ),
         Padding(
           padding: const EdgeInsets.all(8),
           child: FloatingActionButton(
@@ -132,6 +135,26 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             widget.bloc.isTeamBakuCoreFull(TeamPosition.right)
                 ? null
                 : Colors.white30,
+          ),
+        ),
+        Expanded(
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                child: Container(),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: IconButton(
+                  iconSize: 32,
+                  icon: Icon(
+                    Icons.menu,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+            ],
           ),
         ),
       ],
