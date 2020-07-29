@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:flutter/material.dart';
+
+import 'painter/baku_core_paint.dart';
 
 class ArenaBakuCore extends StatelessWidget {
   const ArenaBakuCore({
@@ -16,7 +20,7 @@ class ArenaBakuCore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-    alignment: Alignment.center,
+      alignment: Alignment.center,
       children: <Widget>[
         buildBakuCore(),
         buildParameters(context),
@@ -88,40 +92,10 @@ class ArenaBakuCore extends StatelessWidget {
 
 
 class _ArenaBakuCorePainter extends CustomPainter {
-  static const int _centerX = 0;
-  static const int _centerY = 0;
-  static const int _radius = 50;
 
   @override
   void paint(Canvas canvas, Size size) {
-    final x0 = size.width / 2 + _centerX;
-    final y0 = size.height / 2 + _centerY;
-    // footer buttons area
-    var paint = Paint()..color = Colors.grey;
-    var path = Path()
-      ..moveTo(x0 - 50, y0 - 77)
-      ..lineTo(x0 - 90, y0)
-      ..lineTo(x0 - 50, y0 + 77)
-      ..lineTo(x0 + 50, y0 + 77)
-      ..lineTo(x0 + 90, y0)
-      ..lineTo(x0 + 50, y0 - 77)
-      ..close();
-    canvas.drawPath(path, paint);
-
-    paint = new Paint()
-      ..color = Colors.black
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 10;
-    path = Path()
-      ..moveTo(x0 - 50, y0 - 86)
-      ..lineTo(x0 - 100, y0)
-      ..lineTo(x0 - 50, y0 + 86)
-      ..lineTo(x0 + 50, y0 + 86)
-      ..lineTo(x0 + 100, y0)
-      ..lineTo(x0 + 50, y0 - 86)
-      ..close();
-    canvas.drawPath(path, paint);
+    paintArenaBakuCore(canvas, size, const Point(0, 0), 100);
   }
 
   @override
