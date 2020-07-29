@@ -1,15 +1,17 @@
+import 'dart:math';
+
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
+import 'package:bakugan_shoot_simulator/widget/painter/baku_core_paint.dart';
 import 'package:flutter/material.dart';
 
 class TeamArea extends StatefulWidget {
-  const TeamArea(
-      {Key key,
-      this.teamPosition = TeamPosition.left,
-      this.bloc,
-      this.onUpdate})
+  const TeamArea({Key key,
+    this.teamPosition = TeamPosition.left,
+    this.bloc,
+    this.onUpdate})
       : super(key: key);
 
   @override
@@ -75,20 +77,31 @@ class _TeamAreaState extends State<TeamArea> {
         widget.teamPosition == TeamPosition.left
             ? _buildRemoveButton(position)
             : Container(),
-        Column(
-          crossAxisAlignment:
-          widget.teamPosition == TeamPosition.left
-              ? CrossAxisAlignment.start
-              : CrossAxisAlignment.end,
+        Stack(
+          alignment: Alignment.center,
           children: <Widget>[
-            Text(_getTeamsDamageRateText(position)),
-            Text(_getTeamsBakuCoreTypeText(position)),
+            _buildBakuCoreShape(),
+            Column(
+              children: <Widget>[
+                Text(_getTeamsDamageRateText(position)),
+                Text(_getTeamsBakuCoreTypeText(position)),
+              ],
+            ),
           ],
         ),
         widget.teamPosition == TeamPosition.right
             ? _buildRemoveButton(position)
             : Container()
       ],
+    );
+  }
+
+  Widget _buildBakuCoreShape() {
+    return CustomPaint(
+      painter: _TeamBakuCorePainter(),
+      child: Container(
+        color: Colors.red,
+      ),
     );
   }
 
@@ -163,4 +176,14 @@ class _TeamAreaState extends State<TeamArea> {
 
     return result;
   }
+}
+
+class _TeamBakuCorePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    paintTeamBakuCore(canvas, size, const Point(0, 0), 50);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

@@ -3,8 +3,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 void paintArenaBakuCore(Canvas canvas, Size size, Point origin, int radius) {
-  _paintBakuCoreBase(canvas, size, const Point(0, 0), 100);
-  _paintBakuCoreBorder(canvas, size, const Point(0, 0), 100, 10);
+  _paintBakuCoreBase(canvas, size, const Point(0, 0), radius);
+  _paintBakuCoreBorder(canvas, size, const Point(0, 0), radius, 10);
+}
+
+void paintTeamBakuCore(Canvas canvas, Size size, Point origin, int radius) {
+  _paintBakuCoreBase(canvas, size, const Point(0, 0), radius);
+  _paintBakuCoreBorder(canvas, size, const Point(0, 0), radius, 3);
 }
 
 void _paintBakuCoreBase(Canvas canvas, Size size, Point origin, int radius) {

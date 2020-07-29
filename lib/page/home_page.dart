@@ -52,17 +52,23 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 Expanded(child: _buildTeam(TeamPosition.left)),
                 Expanded(
-                  child: _buildPlayerGetBakuCore(context, TeamPosition.left),
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 60, left: 40),
+                    child: _buildCurrentBakuCore(context, TeamPosition.left),
+                  ),
                 ),
-                const VersusArea(),
                 Expanded(
-                  child: _buildPlayerGetBakuCore(context, TeamPosition.right),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 60, right: 40),
+                    child: _buildCurrentBakuCore(context, TeamPosition.right),
+                  ),
                 ),
                 Expanded(child: _buildTeam(TeamPosition.right)),
               ],
             ),
           ),
           _buildButtons(),
+          const Center(child: VersusArea()),
         ],
       ),
     );
@@ -112,7 +118,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildPlayerGetBakuCore(
+  Widget _buildCurrentBakuCore(
       BuildContext context, TeamPosition teamPosition) {
     return CurrentArea(
       position: teamPosition,

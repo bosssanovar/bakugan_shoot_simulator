@@ -41,15 +41,21 @@ class ArenaBakuCore extends StatelessWidget {
       children: <Widget>[
         Text(
           '${_getBattlePointText(position)}',
-          style: Theme.of(context).textTheme.display1,
+          style: Theme.of(context).textTheme.headline,
         ),
         Text(
           '${_getShotDamageRateText(position)}',
-          style: Theme.of(context).textTheme.display1,
+          style: Theme
+              .of(context)
+              .textTheme
+              .headline,
         ),
         Text(
           '${_getShotTypeText(position)}',
-          style: Theme.of(context).textTheme.display1,
+          style: Theme
+              .of(context)
+              .textTheme
+              .headline,
         ),
       ],
     );
@@ -95,7 +101,7 @@ class _ArenaBakuCorePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    paintArenaBakuCore(canvas, size, const Point(0, 0), 100);
+    paintArenaBakuCore(canvas, size, const Point(0, 0), 90);
   }
 
   @override
