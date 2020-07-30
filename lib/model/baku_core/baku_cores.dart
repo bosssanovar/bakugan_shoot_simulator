@@ -52,9 +52,11 @@ class BakuCores {
   }
 
   List<BakuCoreType> getTypes(){
-    List<BakuCoreType> ret = [];
+    final ret = <BakuCoreType>[];
     for(final core in _bakuCores){
-      ret.add(core.type);
+      if(!ret.contains(core.type)){
+        ret.add(core.type);
+      }
     }
     return ret;
   }

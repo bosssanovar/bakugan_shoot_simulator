@@ -20,6 +20,18 @@ class Team {
     _teamBakuCores[TeamBakuCorePosition.pos3] = BakuCores();
   }
 
+  bool isBakuCoreFull() {
+    return isExistBakuCore(TeamBakuCorePosition.pos1) &&
+        isExistBakuCore(TeamBakuCorePosition.pos2) &&
+        isExistBakuCore(TeamBakuCorePosition.pos3);
+  }
+
+  void clearTeamBakuCores() {
+    removeTeamBakuCore(TeamBakuCorePosition.pos1);
+    removeTeamBakuCore(TeamBakuCorePosition.pos2);
+    removeTeamBakuCore(TeamBakuCorePosition.pos3);
+  }
+
   bool isExistBakuCore(TeamBakuCorePosition position) {
     return !_teamBakuCores[position].isNoCore() &&
         _teamBakuCores[position].isSuccessCurrentCore();
