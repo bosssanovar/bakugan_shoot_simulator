@@ -37,13 +37,19 @@ class _CurrentAreaState extends State<CurrentArea> {
             child: Container(
           width: 50,
           height: 50,
-          color: Colors.red,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey, width: 2),
+            borderRadius: BorderRadius.circular(10),
+          ),
         )),
         _buildActionCardsPosition(
             child: Container(
           width: 120,
           height: 80,
-          color: Colors.blue,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.red, width: 2),
+                borderRadius: BorderRadius.circular(10),
+              ),
         )),
       ],
     );
@@ -55,13 +61,19 @@ class _CurrentAreaState extends State<CurrentArea> {
         : Positioned(bottom: 0, left: 5, child: child);
   }
 
-  Positioned _buildBakuCoresPosition({Widget child}) {
+  Widget _buildBakuCoresPosition({Widget child}) {
+    if (!widget.bloc.isSuccessShoot(widget.position)) {
+      return Container();
+    }
     return widget.position == TeamPosition.left
         ? Positioned(top: 5, left: 50, child: child)
         : Positioned(bottom: 5, right: 50, child: child);
   }
 
-  Positioned _buildActionCardsPosition({Widget child}) {
+  Widget _buildActionCardsPosition({Widget child}) {
+    if (!widget.bloc.isSuccessShoot(widget.position)) {
+      return Container();
+    }
     return widget.position == TeamPosition.left
         ? Positioned(bottom: 25, left: 0, child: child)
         : Positioned(top: 25, right: 0, child: child);
