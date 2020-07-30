@@ -1,8 +1,11 @@
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
+import 'package:bakugan_shoot_simulator/widget/arena_action_cards.dart';
 import 'package:bakugan_shoot_simulator/widget/arena_baku_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'arena_baku_cores.dart';
 
 class CurrentArea extends StatefulWidget {
   const CurrentArea({
@@ -40,25 +43,13 @@ class _CurrentAreaState extends State<CurrentArea> {
     );
   }
 
-  Container _buildBakuCores() {
-    return Container(
-      width: 50,
-      height: 50,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey, width: 2),
-        borderRadius: BorderRadius.circular(10),
-      ),
-    );
+  Widget _buildBakuCores() {
+    return ArenaBakuCores(bloc: widget.bloc);
   }
 
-  Container _buildActionCards() {
-    return Container(
-      width: 120,
-      height: 80,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.red, width: 2),
-        borderRadius: BorderRadius.circular(10),
-      ),
+  Widget _buildActionCards() {
+    return ArenaActionCards(
+      bloc: widget.bloc,
     );
   }
 
