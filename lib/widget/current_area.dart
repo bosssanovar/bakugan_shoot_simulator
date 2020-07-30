@@ -44,7 +44,10 @@ class _CurrentAreaState extends State<CurrentArea> {
   }
 
   Widget _buildBakuCores() {
-    return ArenaBakuCores(bloc: widget.bloc);
+    return ArenaBakuCores(
+      bloc: widget.bloc,
+      position: widget.position,
+    );
   }
 
   Widget _buildActionCards() {
@@ -64,8 +67,8 @@ class _CurrentAreaState extends State<CurrentArea> {
       return Container();
     }
     return widget.position == TeamPosition.left
-        ? Positioned(top: 5, left: 50, child: child)
-        : Positioned(bottom: 5, right: 50, child: child);
+        ? Positioned(top: 5, left: 80, child: child)
+        : Positioned(bottom: 5, right: 80, child: child);
   }
 
   Widget _buildActionCardsPosition({Widget child}) {

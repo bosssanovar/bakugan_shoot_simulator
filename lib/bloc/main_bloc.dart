@@ -86,7 +86,11 @@ class MainBloc {
     _arena.swapBakuCores();
   }
 
-  void getOneMoreCore(TeamPosition teamPosition){
+  void shootToGetOneMoreCore(TeamPosition teamPosition) {
     _arena.shootToGetOneMoreBakuCore(teamPosition);
+  }
+
+  int getCurrentBakuCoresCount(TeamPosition teamPosition) {
+    return _arena.getBakuCores(teamPosition).length;
   }
 }

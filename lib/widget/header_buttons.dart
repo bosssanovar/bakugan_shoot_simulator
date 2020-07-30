@@ -52,8 +52,8 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                 ? null
                 : () {
                       widget.onUpdate(() {
-                        widget.bloc.getOneMoreCore(TeamPosition.left);
-                      });
+                      widget.bloc.shootToGetOneMoreCore(TeamPosition.left);
+                    });
                   },
             tooltip: 'add left',
             child: Icon(Icons.plus_one),
@@ -91,7 +91,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                 ? null
                 : () {
               widget.onUpdate(() {
-                widget.bloc.getOneMoreCore(TeamPosition.right);
+                widget.bloc.shootToGetOneMoreCore(TeamPosition.right);
               });
             },
             tooltip: 'add right',
