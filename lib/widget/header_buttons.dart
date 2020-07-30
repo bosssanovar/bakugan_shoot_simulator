@@ -20,15 +20,12 @@ class HeaderButtons extends StatefulWidget {
 class _HeaderButtonsState extends State<HeaderButtons> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Expanded(
-          child: Container(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
+    return Container(
+      width: 380,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          FloatingActionButton(
             disabledElevation: 0,
             backgroundColor: widget.bloc.isTeamBakuCoreFull(TeamPosition.left)
                 ? Colors.blueGrey
@@ -46,10 +43,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                 ? null
                 : Colors.white30,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
+          FloatingActionButton(
             disabledElevation: 0,
             backgroundColor: widget.bloc.isSuccessShoot(TeamPosition.left)
                 ? Colors.blueGrey
@@ -68,10 +62,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                 ? null
                 : Colors.white30,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
+          FloatingActionButton(
             disabledElevation: 0,
             backgroundColor: widget.bloc.isShotBakugan()
                 ? Colors.blueGrey
@@ -90,10 +81,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                 ? null
                 : Colors.white30,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
+          FloatingActionButton(
             disabledElevation: 0,
             backgroundColor:
             widget.bloc.isSuccessShoot(TeamPosition.right)
@@ -113,10 +101,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                 ? null
                 : Colors.white30,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
+          FloatingActionButton(
             disabledElevation: 0,
             backgroundColor:
             widget.bloc.isTeamBakuCoreFull(TeamPosition.right)
@@ -136,28 +121,8 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                 ? null
                 : Colors.white30,
           ),
-        ),
-        Expanded(
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: IconButton(
-                  iconSize: 32,
-                  icon: Icon(
-                    Icons.menu,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {},
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

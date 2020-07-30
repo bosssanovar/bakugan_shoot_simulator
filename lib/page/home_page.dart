@@ -52,16 +52,10 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 Expanded(child: _buildTeam(TeamPosition.left)),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 90, left: 70),
-                    child: _buildAllBakuCoreParam(TeamPosition.left),
-                  ),
+                  child: _buildAllBakuCoreParam(TeamPosition.left),
                 ),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 90, right: 70),
-                    child: _buildAllBakuCoreParam(TeamPosition.right),
-                  ),
+                  child: _buildAllBakuCoreParam(TeamPosition.right),
                 ),
                 Expanded(child: _buildTeam(TeamPosition.right)),
               ],
@@ -75,11 +69,21 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildButtons() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Row(
       children: <Widget>[
-        _buildHeaderButtons(),
-        _buildFooterButtons(),
+        Expanded(
+          child: Container(),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            _buildHeaderButtons(),
+            _buildFooterButtons(),
+          ],
+        ),
+        Expanded(
+          child: Container(),
+        ),
       ],
     );
   }

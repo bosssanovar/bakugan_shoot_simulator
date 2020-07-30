@@ -20,13 +20,14 @@ class FooterButtons extends StatefulWidget {
 class _FooterButtonsState extends State<FooterButtons> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(right: 80),
-          child: FloatingActionButton(
-            backgroundColor: widget.bloc.isShotBakugan() ? Colors.blueGrey : Colors.white12,
+    return Container(
+      width: 380,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          FloatingActionButton(
+            backgroundColor:
+                widget.bloc.isShotBakugan() ? Colors.blueGrey : Colors.white12,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
@@ -41,10 +42,7 @@ class _FooterButtonsState extends State<FooterButtons> {
                 ? null
                 : Colors.white30,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: FloatingActionButton(
+          FloatingActionButton(
             onPressed: () {
               widget.onUpdate(() {
                 widget.bloc.shootBakugans();
@@ -53,10 +51,7 @@ class _FooterButtonsState extends State<FooterButtons> {
             tooltip: 'shoot',
             child: Icon(Icons.refresh),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 80),
-          child: FloatingActionButton(
+          FloatingActionButton(
             backgroundColor: widget.bloc.isShotBakugan()
                 ? Colors.blueGrey
                 : Colors.white12,
@@ -74,8 +69,8 @@ class _FooterButtonsState extends State<FooterButtons> {
                 ? null
                 : Colors.white30,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
