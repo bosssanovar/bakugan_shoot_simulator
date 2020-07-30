@@ -52,6 +52,12 @@ class _HomePageState extends State<HomePage> {
               bottom: 0,
               width: 150,
               child: _buildTeam(TeamPosition.left)),
+          Positioned(
+              top: 60,
+              right: 0,
+              bottom: 0,
+              width: 150,
+              child: _buildTeam(TeamPosition.right)),
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -67,12 +73,6 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          Positioned(
-              top: 60,
-              right: 0,
-              bottom: 0,
-              width: 150,
-              child: _buildTeam(TeamPosition.right)),
           _buildButtons(),
           const VersusArea(),
         ],
