@@ -52,10 +52,10 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 Expanded(child: _buildTeam(TeamPosition.left)),
                 Expanded(
-                  child: _buildAllBakuCoreParam(TeamPosition.left),
+                  child: _buildCurrentArea(TeamPosition.left),
                 ),
                 Expanded(
-                  child: _buildAllBakuCoreParam(TeamPosition.right),
+                  child: _buildCurrentArea(TeamPosition.right),
                 ),
                 Expanded(child: _buildTeam(TeamPosition.right)),
               ],
@@ -69,6 +69,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildButtons() {
+    return Stack(
+      children: <Widget>[
+        Positioned(
+          top: 10,
+          right: 10,
+          width: 50,
+          height: 50,
+          child: IconButton(
+            icon: Icon(Icons.menu),
+            iconSize: 32,
+            onPressed: () {},
+          ),
+        ),
+        _buildControlButtons(),
+      ],
+    );
+  }
+
+  Widget _buildControlButtons() {
     return Row(
       children: <Widget>[
         Expanded(
@@ -122,7 +141,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildAllBakuCoreParam(TeamPosition teamPosition) {
+  Widget _buildCurrentArea(TeamPosition teamPosition) {
     return CurrentArea(
       position: teamPosition,
       bloc: _bloc,
