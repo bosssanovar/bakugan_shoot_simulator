@@ -41,8 +41,8 @@ class _ActionCardsPainter extends CustomPainter {
     final x0 = size.width / 2;
     final y0 = size.height / 2;
 
-    final height = 40;
-    final width = 80;
+    const height = 40;
+    const width = 80;
 
     final paint = Paint()
       ..color = const Color.fromARGB(0x99, 0xff, 0x00, 0x00);
