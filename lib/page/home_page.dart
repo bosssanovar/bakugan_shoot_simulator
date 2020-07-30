@@ -62,14 +62,15 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Expanded(child: Container()),
-                Expanded(
+                Container(
+                  width: 250,
+                  height: 260,
                   child: _buildCurrentArea(TeamPosition.left),
                 ),
-                Expanded(
-                  child: _buildCurrentArea(TeamPosition.right),
-                ),
-                Expanded(child: Container()),
+                Container(
+                    width: 250,
+                    height: 260,
+                    child: _buildCurrentArea(TeamPosition.right)),
               ],
             ),
           ),

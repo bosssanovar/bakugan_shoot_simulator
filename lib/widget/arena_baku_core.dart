@@ -20,19 +20,19 @@ class ArenaBakuCore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return bloc.isShotBakugan() ? _buildBakuCore(context) : Container();
-  }
-
-  Widget _buildBakuCore(BuildContext context) {
-    return bloc.isSuccessShoot(position)
-        ? Stack(
-            alignment: Alignment.center,
-            children: <Widget>[
-              _buildBakuCoreBackground(),
-              _buildParameters(context),
-            ],
-          )
-        : _buildBakuCoreShape();
+    return Container(
+      width: 150,
+      height: 150,
+      child: bloc.isSuccessShoot(position)
+          ? Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                _buildBakuCoreBackground(),
+                _buildParameters(context),
+              ],
+            )
+          : _buildBakuCoreShape(),
+    );
   }
 
   Widget _buildBakuCoreBackground() {
