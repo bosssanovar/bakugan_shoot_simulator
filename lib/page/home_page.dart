@@ -106,12 +106,15 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           child: Container(),
         ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            _buildHeaderButtons(),
-            _buildFooterButtons(),
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              _buildHeaderButtons(),
+              _buildFooterButtons(),
+            ],
+          ),
         ),
         Expanded(
           child: Container(),
