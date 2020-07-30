@@ -21,7 +21,10 @@ class ArenaBakuCores extends StatelessWidget {
       child: CustomPaint(
         painter: _BakCoresPainter(),
         child: Container(
-          child: Text('${bloc.getCurrentBakuCoresCount(position)}'),
+          child: Text(
+            '${bloc.getCurrentBakuCoresCount(position)}',
+            style: Theme.of(context).textTheme.headline,
+          ),
         ),
       ),
       onTap: () {},

@@ -18,8 +18,14 @@ class ArenaActionCards extends StatelessWidget {
         child: Container(
           child: Column(
             children: <Widget>[
-              Text('BP : ${bloc.getCurrentBakuCoresCount(position)}'),
-              Text('DR : ${bloc.getCurrentBakuCoresCount(position)}'),
+              Text(
+                'BP : ${bloc.getCurrentBakuCoresCount(position)}',
+                style: Theme.of(context).textTheme.headline,
+              ),
+              Text(
+                'DR : ${bloc.getCurrentBakuCoresCount(position)}',
+                style: Theme.of(context).textTheme.headline,
+              ),
             ],
           ),
         ),
@@ -35,8 +41,8 @@ class _ActionCardsPainter extends CustomPainter {
     final x0 = size.width / 2;
     final y0 = size.height / 2;
 
-    final height = 30;
-    final width = 60;
+    final height = 40;
+    final width = 80;
 
     final paint = Paint()
       ..color = const Color.fromARGB(0x99, 0xff, 0x00, 0x00);
