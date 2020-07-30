@@ -73,17 +73,21 @@ class _TeamAreaState extends State<TeamArea> {
         widget.teamPosition == TeamPosition.left
             ? _buildRemoveButton(position)
             : Container(),
-        Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            _buildBakuCoreShape(),
-            Column(
-              children: <Widget>[
-                Text(_getTeamsDamageRateText(position)),
-                Text(_getTeamsBakuCoreTypeText(position)),
-              ],
-            ),
-          ],
+        Container(
+          width: 100,
+          child: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              _buildBakuCoreShape(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(_getTeamsDamageRateText(position)),
+                  Text(_getTeamsBakuCoreTypeText(position)),
+                ],
+              ),
+            ],
+          ),
         ),
         widget.teamPosition == TeamPosition.right
             ? _buildRemoveButton(position)

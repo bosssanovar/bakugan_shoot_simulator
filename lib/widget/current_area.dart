@@ -33,25 +33,32 @@ class _CurrentAreaState extends State<CurrentArea> {
             bloc: widget.bloc,
           ),
         ),
-        _buildBakuCoresPosition(
-            child: Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey, width: 2),
-            borderRadius: BorderRadius.circular(10),
-          ),
-        )),
+        _buildBakuCoresPosition(child: _buildBakuCores()),
         _buildActionCardsPosition(
-            child: Container(
-          width: 120,
-          height: 80,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.red, width: 2),
-                borderRadius: BorderRadius.circular(10),
-              ),
-        )),
+            child: _buildActionCards()),
       ],
+    );
+  }
+
+  Container _buildBakuCores() {
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey, width: 2),
+        borderRadius: BorderRadius.circular(10),
+      ),
+    );
+  }
+
+  Container _buildActionCards() {
+    return Container(
+      width: 120,
+      height: 80,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.red, width: 2),
+        borderRadius: BorderRadius.circular(10),
+      ),
     );
   }
 
