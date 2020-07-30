@@ -46,21 +46,33 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: <Widget>[
           const Background(),
+          Positioned(
+              top: 60,
+              left: 0,
+              bottom: 0,
+              width: 150,
+              child: _buildTeam(TeamPosition.left)),
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Expanded(child: _buildTeam(TeamPosition.left)),
+                Expanded(child: Container()),
                 Expanded(
                   child: _buildCurrentArea(TeamPosition.left),
                 ),
                 Expanded(
                   child: _buildCurrentArea(TeamPosition.right),
                 ),
-                Expanded(child: _buildTeam(TeamPosition.right)),
+                Expanded(child: Container()),
               ],
             ),
           ),
+          Positioned(
+              top: 60,
+              right: 0,
+              bottom: 0,
+              width: 150,
+              child: _buildTeam(TeamPosition.right)),
           _buildButtons(),
           const VersusArea(),
         ],
