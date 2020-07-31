@@ -50,27 +50,28 @@ class _HomePageState extends State<HomePage> {
               top: 60,
               left: 0,
               bottom: 0,
-              width: 150,
+              width: 155,
               child: _buildTeam(TeamPosition.left)),
           Positioned(
               top: 60,
               right: 0,
               bottom: 0,
-              width: 150,
+              width: 155,
               child: _buildTeam(TeamPosition.right)),
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  width: 250,
+                  width: 270,
                   height: 260,
                   child: _buildCurrentArea(TeamPosition.left),
                 ),
                 Container(
-                    width: 250,
-                    height: 260,
-                    child: _buildCurrentArea(TeamPosition.right)),
+                  width: 270,
+                  height: 260,
+                  child: _buildCurrentArea(TeamPosition.right),
+                ),
               ],
             ),
           ),

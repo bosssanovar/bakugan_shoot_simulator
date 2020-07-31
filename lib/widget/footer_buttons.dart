@@ -27,18 +27,18 @@ class _FooterButtonsState extends State<FooterButtons> {
         children: <Widget>[
           FloatingActionButton(
             backgroundColor:
-                widget.bloc.isShotBakugan() ? Colors.blueGrey : Colors.white12,
+                widget.bloc.isShotBakugan() ? null : Colors.white12,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
                     widget.onUpdate(() {
-                widget.bloc.reShootBakugan(TeamPosition.left);
-              });
-            },
+                      widget.bloc.reShootBakugan(TeamPosition.left);
+                    });
+                  },
             tooltip: 'left shoot',
             child: Icon(Icons.repeat_one),
             foregroundColor:
-            widget.bloc.isShotBakugan()
+                widget.bloc.isShotBakugan()
                 ? null
                 : Colors.white30,
           ),
@@ -53,7 +53,7 @@ class _FooterButtonsState extends State<FooterButtons> {
           ),
           FloatingActionButton(
             backgroundColor: widget.bloc.isShotBakugan()
-                ? Colors.blueGrey
+                ? null
                 : Colors.white12,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null

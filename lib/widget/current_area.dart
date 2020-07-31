@@ -68,8 +68,8 @@ class _CurrentAreaState extends State<CurrentArea> {
       return Container();
     }
     return widget.position == TeamPosition.left
-        ? Positioned(top: 30, left: 60, child: child)
-        : Positioned(bottom: 30, right: 60, child: child);
+        ? Positioned(top: 30, left: 90, child: child)
+        : Positioned(bottom: 30, right: 90, child: child);
   }
 
   Widget _buildActionCardsPosition({Widget child}) {

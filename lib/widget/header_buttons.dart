@@ -28,7 +28,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           FloatingActionButton(
             disabledElevation: 0,
             backgroundColor: widget.bloc.isTeamBakuCoreFull(TeamPosition.left)
-                ? Colors.blueGrey
+                ? null
                 : Colors.white12,
             onPressed: !widget.bloc.isTeamBakuCoreFull(TeamPosition.left)
                 ? null
@@ -46,7 +46,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           FloatingActionButton(
             disabledElevation: 0,
             backgroundColor: widget.bloc.isSuccessShoot(TeamPosition.left)
-                ? Colors.blueGrey
+                ? null
                 : Colors.white12,
             onPressed: !widget.bloc.isSuccessShoot(TeamPosition.left)
                 ? null
@@ -64,9 +64,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           ),
           FloatingActionButton(
             disabledElevation: 0,
-            backgroundColor: widget.bloc.isShotBakugan()
-                ? Colors.blueGrey
-                : Colors.white12,
+            backgroundColor: widget.bloc.isShotBakugan() ? null : Colors.white12,
             onPressed: !widget.bloc.isShotBakugan()
                 ? null
                 : () {
@@ -85,7 +83,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             disabledElevation: 0,
             backgroundColor:
             widget.bloc.isSuccessShoot(TeamPosition.right)
-                ? Colors.blueGrey
+                ? null
                 : Colors.white12,
             onPressed: !widget.bloc.isSuccessShoot(TeamPosition.right)
                 ? null
@@ -105,7 +103,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             disabledElevation: 0,
             backgroundColor:
             widget.bloc.isTeamBakuCoreFull(TeamPosition.right)
-                ? Colors.blueGrey
+                ? null
                 : Colors.white12,
             onPressed: !widget.bloc.isTeamBakuCoreFull(TeamPosition.right)
                 ? null
