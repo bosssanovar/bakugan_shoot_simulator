@@ -14,33 +14,30 @@ class ArenaActionCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        position == TeamPosition.left ? _buildAddButtons() : Container(),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 20, right: 5),
+          child: CustomPaint(
+            painter: _ActionCardsButtonPainter(),
+            child: Container(
+                alignment: Alignment.center,
+                width: 40,
+                height: 50,
+                child: const Text('+BP')),
+          ),
+        ),
         _buildComputedParam(context),
-        position == TeamPosition.right ? _buildAddButtons() : Container(),
+        Padding(
+          padding: const EdgeInsets.only(top: 20, left: 5),
+          child: CustomPaint(
+            painter: _ActionCardsButtonPainter(),
+            child: Container(
+                alignment: Alignment.center,
+                width: 40,
+                height: 40,
+                child: const Text('+DR')),
+          ),
+        ),
       ],
-    );
-  }
-
-  Container _buildAddButtons() {
-    return Container(
-      width: 50,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          FlatButton(
-            color: const Color.fromARGB(0xff, 0x99, 0x00, 0x00),
-            child: Icon(Icons.add_circle_outline),
-            textColor: Colors.white,
-            onPressed: () {},
-          ),
-          FlatButton(
-            color: const Color.fromARGB(0xff, 0x99, 0x00, 0x00),
-            child: Icon(Icons.add_circle_outline),
-            textColor: Colors.white,
-            onPressed: () {},
-          ),
-        ],
-      ),
     );
   }
 
@@ -50,17 +47,38 @@ class ArenaActionCards extends StatelessWidget {
         painter: _ActionCardsPainter(),
         child: Container(
           height: 60,
-          width: 140,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          width: 120,
+          child: Stack(
             children: <Widget>[
-              Text(
-                'BP : 9999',
-                style: Theme.of(context).textTheme.headline,
+              Positioned(
+                top: 5,
+                left: 0,
+                width: 90,
+                height: 30,
+                child: Center(
+                  child: Text(
+                    'BP : 9999',
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .headline,
+                  ),
+                ),
               ),
-              Text(
-                'DR : 99',
-                style: Theme.of(context).textTheme.headline,
+              Positioned(
+                bottom: 5,
+                right: 0,
+                width: 70,
+                height: 30,
+                child: Center(
+                  child: Text(
+                    'DR : 99',
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .headline,
+                  ),
+                ),
               ),
             ],
           ),
@@ -107,3 +125,37 @@ class _ActionCardsPainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
 
+class _ActionCardsButtonPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final x0 = size.width / 2;
+    final y0 = size.height / 2;
+
+    const height = 20;
+    const width = 20;
+
+    var paint = Paint()
+      ..color = const Color.fromARGB(0x99, 0xff, 0x00, 0x00);
+    var path = Path()
+      ..moveTo(x0 - width, y0 - height)
+      ..lineTo(x0 - width, y0 + height)..lineTo(
+          x0 + width, y0 + height)..lineTo(x0 + width, y0 - height)
+      ..close();
+    canvas.drawPath(path, paint);
+
+    paint = Paint()
+      ..color = Colors.black
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 5;
+    path = Path()
+      ..moveTo(x0 - width, y0 - height)
+      ..lineTo(x0 - width, y0 + height)..lineTo(
+          x0 + width, y0 + height)..lineTo(x0 + width, y0 - height)
+      ..close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
