@@ -97,7 +97,7 @@ class ArenaBakuCore extends StatelessWidget {
     }
     final sb = StringBuffer();
     for(final type in bloc.getShotBakuCoreType(position)){
-      sb.write('${type.text}, ');
+      sb.write('${type.shotText}, ');
     }
     return sb.toString();
   }
