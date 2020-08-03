@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum BakuCoreType{
   shield,
   magicShield,
@@ -30,7 +32,7 @@ extension BakuCoreTypeEx on BakuCoreType{
     }
   }
 
-  String get shotText {
+  String get shortText {
     switch (this) {
       case BakuCoreType.shield:
         return 'S';
@@ -46,6 +48,27 @@ extension BakuCoreTypeEx on BakuCoreType{
         return '';
       case BakuCoreType.none:
         return '';
+      default:
+        throw Error();
+    }
+  }
+
+  Color get color {
+    switch (this) {
+      case BakuCoreType.shield:
+        return Colors.amber;
+      case BakuCoreType.magicShield:
+        return Colors.blue;
+      case BakuCoreType.attack:
+        return Colors.green;
+      case BakuCoreType.superAttack:
+        return Colors.red;
+      case BakuCoreType.special:
+        return Colors.black;
+      case BakuCoreType.failed:
+        return null;
+      case BakuCoreType.none:
+        return null;
       default:
         throw Error();
     }

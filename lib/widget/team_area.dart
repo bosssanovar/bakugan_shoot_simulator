@@ -133,7 +133,7 @@ class _TeamAreaState extends State<TeamArea> {
     final sb = StringBuffer();
     for(final type in widget.bloc
         .getTeamsBakuCoreType(widget.teamPosition, position)){
-      sb.write('${type.shotText}, ');
+      sb.write('${type.shortText}, ');
     }
     return sb.toString();
   }

@@ -44,7 +44,7 @@ class ArenaBakuCore extends StatelessWidget {
 
   Widget _buildParameters(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         Text(
           '${_getShotDamageRateText(position)}',
@@ -53,18 +53,39 @@ class ArenaBakuCore extends StatelessWidget {
               .textTheme
               .headline,
         ),
-        Text(
-          '${_getShotTypeText(position)}',
-          style: Theme
-              .of(context)
-              .textTheme
-              .headline,
-        ),
+        _buildBakuCoreTypeParameter(context),
         Text(
           '${_getBattlePointText(position)}',
           style: Theme.of(context).textTheme.headline,
         ),
       ],
+    );
+  }
+
+  Widget _buildBakuCoreTypeParameter(BuildContext context) {
+    if (!bloc.isShotBakugan()) {
+      return Container();
+    }
+    if (!bloc.isSuccessShoot(position)) {
+      return Container();
+    }
+    final wl = <Container>[];
+    for (final type in bloc.getShotBakuCoreType(position)) {
+      wl.add(Container(
+        color: type.color,
+        width: 30,
+        height: 30,
+        child: Center(
+          child: Text(
+            '${type.shortText}',
+            style: Theme.of(context).textTheme.headline,
+          ),
+        ),
+      ));
+    }
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: wl,
     );
   }
 
@@ -86,20 +107,6 @@ class ArenaBakuCore extends StatelessWidget {
       return '-';
     }
     return 'DR : ${bloc.getShotBakuganDamageRate(position)}';
-  }
-
-  String _getShotTypeText(TeamPosition position) {
-    if (!bloc.isShotBakugan()) {
-      return '';
-    }
-    if (!bloc.isSuccessShoot(position)) {
-      return '-';
-    }
-    final sb = StringBuffer();
-    for(final type in bloc.getShotBakuCoreType(position)){
-      sb.write('${type.shotText}, ');
-    }
-    return sb.toString();
   }
 
   Widget _buildBakuCoreShape() {
