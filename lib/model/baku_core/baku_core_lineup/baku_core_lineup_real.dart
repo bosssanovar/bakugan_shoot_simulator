@@ -10,9 +10,6 @@ class BakuCoreLineupMine implements BakuCoreLineup {
       const BakuCore(0, 0, BakuCoreType.failed),
       const BakuCore(1, 1, BakuCoreType.failed),
       const BakuCore(2, 2, BakuCoreType.failed),
-      const BakuCore(3, 3, BakuCoreType.failed),
-      const BakuCore(4, 4, BakuCoreType.failed),
-      const BakuCore(5, 5, BakuCoreType.failed),
 
       // Attack
       const BakuCore(0,2,BakuCoreType.attack),
