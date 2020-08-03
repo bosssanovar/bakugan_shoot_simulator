@@ -12,33 +12,35 @@ class ArenaActionCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20, right: 5),
-          child: CustomPaint(
-            painter: _ActionCardsButtonPainter(),
-            child: Container(
-                alignment: Alignment.center,
-                width: 40,
-                height: 50,
-                child: const Text('+BP')),
-          ),
-        ),
-        _buildComputedParam(context),
-        Padding(
-          padding: const EdgeInsets.only(top: 20, left: 5),
-          child: CustomPaint(
-            painter: _ActionCardsButtonPainter(),
-            child: Container(
-                alignment: Alignment.center,
-                width: 40,
-                height: 40,
-                child: const Text('+DR')),
-          ),
-        ),
-      ],
-    );
+    return Container();
+    // TODO K.I : いったんマスク
+//    return Row(
+//      children: <Widget>[
+//        Padding(
+//          padding: const EdgeInsets.only(bottom: 20, right: 5),
+//          child: CustomPaint(
+//            painter: _ActionCardsButtonPainter(),
+//            child: Container(
+//                alignment: Alignment.center,
+//                width: 40,
+//                height: 50,
+//                child: const Text('+BP')),
+//          ),
+//        ),
+//        _buildComputedParam(context),
+//        Padding(
+//          padding: const EdgeInsets.only(top: 20, left: 5),
+//          child: CustomPaint(
+//            painter: _ActionCardsButtonPainter(),
+//            child: Container(
+//                alignment: Alignment.center,
+//                width: 40,
+//                height: 40,
+//                child: const Text('+DR')),
+//          ),
+//        ),
+//      ],
+//    );
   }
 
   GestureDetector _buildComputedParam(BuildContext context) {
