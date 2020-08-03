@@ -44,12 +44,8 @@ class ArenaBakuCore extends StatelessWidget {
 
   Widget _buildParameters(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        Text(
-          '${_getBattlePointText(position)}',
-          style: Theme.of(context).textTheme.headline,
-        ),
         Text(
           '${_getShotDamageRateText(position)}',
           style: Theme
@@ -63,6 +59,10 @@ class ArenaBakuCore extends StatelessWidget {
               .of(context)
               .textTheme
               .headline,
+        ),
+        Text(
+          '${_getBattlePointText(position)}',
+          style: Theme.of(context).textTheme.headline,
         ),
       ],
     );
