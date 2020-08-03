@@ -64,8 +64,14 @@ class _HeaderButtonsState extends State<HeaderButtons> {
           ),
           FloatingActionButton(
             disabledElevation: 0,
-            backgroundColor: widget.bloc.isShotBakugan() ? null : Colors.white12,
-            onPressed: !widget.bloc.isShotBakugan()
+            backgroundColor: (widget.bloc.isShotBakugan() &&
+                    widget.bloc.isSuccessShoot(TeamPosition.left) &&
+                    widget.bloc.isSuccessShoot(TeamPosition.right))
+                ? null
+                : Colors.white12,
+            onPressed: (!widget.bloc.isShotBakugan() ||
+                    !widget.bloc.isSuccessShoot(TeamPosition.left) ||
+                    !widget.bloc.isSuccessShoot(TeamPosition.right))
                 ? null
                 : () {
               widget.onUpdate(() {
@@ -75,7 +81,9 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             tooltip: 'swap',
             child: Icon(Icons.swap_horiz),
             foregroundColor:
-            widget.bloc.isShotBakugan()
+            (widget.bloc.isShotBakugan()
+                && widget.bloc.isSuccessShoot(TeamPosition.left)
+                && widget.bloc.isSuccessShoot(TeamPosition.right))
                 ? null
                 : Colors.white30,
           ),
