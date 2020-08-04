@@ -11,6 +11,10 @@ class Team {
 
   final _teamBakuCores = <TeamBakuCorePosition, BakuCores>{};
 
+  int getBakuCoreCount(TeamBakuCorePosition position) {
+    return _teamBakuCores[position].getBakuCores().length;
+  }
+
   void initTeamBakuCores() {
     _teamBakuCores[TeamBakuCorePosition.pos1]?.clear();
     _teamBakuCores[TeamBakuCorePosition.pos2]?.clear();

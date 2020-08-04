@@ -39,6 +39,11 @@ class MainBloc {
     return _teams[teamPosition].getBakuCoreType(teamBakuCorePosition);
   }
 
+  int getTeamsBakuCoreCount(
+      TeamPosition teamPosition, TeamBakuCorePosition teamBakuCorePosition) {
+    return _teams[teamPosition].getBakuCoreCount(teamBakuCorePosition);
+  }
+
   bool isExistTeamsBakuCore(TeamPosition teamPosition,
       TeamBakuCorePosition teamBakuCorePosition) {
     return _teams[teamPosition].isExistBakuCore(teamBakuCorePosition);

@@ -4,6 +4,7 @@ import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:bakugan_shoot_simulator/widget/painter/baku_core_paint.dart';
+import 'package:bakugan_shoot_simulator/widget/painter/baku_core_pattern_paint.dart';
 import 'package:flutter/material.dart';
 
 class TeamArea extends StatefulWidget {
@@ -47,48 +48,88 @@ class _TeamAreaState extends State<TeamArea> {
   }
 
   Widget _buildCoreAddButton(TeamBakuCorePosition position) {
-    return IconButton(
-      onPressed: () {
-        if (!widget.bloc.isSuccessShoot(widget.teamPosition)) {
-          _showCantAddTeamDialog();
-          return;
-        }
+    return Container(
+      height: 100,
+      child: IconButton(
+        onPressed: () {
+          if (!widget.bloc.isSuccessShoot(widget.teamPosition)) {
+            _showCantAddTeamDialog();
+            return;
+          }
 
-        widget.onUpdate(() {
-          widget.bloc.storeCores(widget.teamPosition, position);
-        });
-      },
-      icon: Icon(Icons.add_circle_outline),
+          widget.onUpdate(() {
+            widget.bloc.storeCores(widget.teamPosition, position);
+          });
+        },
+        icon: Icon(Icons.add_circle_outline),
+      ),
     );
   }
 
   Widget _buildTeamBakuCore(TeamBakuCorePosition position) {
-    return Row(
-      mainAxisAlignment:
-      widget.teamPosition == TeamPosition.left
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.end,
-      children: <Widget>[
-        widget.teamPosition == TeamPosition.left
-            ? _buildRemoveButton(position)
-            : Container(),
-        Container(
-          width: 100,
-          child: Stack(
-            alignment: Alignment.center,
+    return Container(
+      height: 100,
+      child: Stack(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: widget.teamPosition == TeamPosition.left
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.end,
             children: <Widget>[
-              _buildBakuCoreShape(),
-              Text(
-                _getTeamsDamageRateText(position),
-                style: Theme.of(context).textTheme.headline,
+              widget.teamPosition == TeamPosition.left
+                  ? _buildRemoveButton(position)
+                  : Container(),
+              Container(
+                width: 100,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: <Widget>[
+                    _buildBakuCoreShape(),
+                    Text(
+                      _getTeamsDamageRateText(position),
+                      style: Theme.of(context).textTheme.headline,
+                    ),
+                  ],
+                ),
               ),
+              widget.teamPosition == TeamPosition.right
+                  ? _buildRemoveButton(position)
+                  : Container()
             ],
           ),
+          widget.teamPosition == TeamPosition.left
+              ? Positioned(
+                  top: 0,
+                  left: 35,
+                  width: 30,
+                  height: 30,
+                  child: _buildBakuCoreCount(position),
+                )
+              : Positioned(
+                  top: 0,
+                  right: 35,
+                  width: 30,
+                  height: 30,
+                  child: _buildBakuCoreCount(position),
+                ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBakuCoreCount(TeamBakuCorePosition position) {
+    return CustomPaint(
+      painter: _BakuCoreShapePainter(),
+      child: Container(
+        child: Center(
+            child: Text(
+                '${
+                    widget.bloc.getTeamsBakuCoreCount(
+                        widget.teamPosition,
+                        position
+                    )}')
         ),
-        widget.teamPosition == TeamPosition.right
-            ? _buildRemoveButton(position)
-            : Container()
-      ],
+      ),
     );
   }
 
@@ -173,3 +214,15 @@ class _TeamBakuCorePainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
+
+class _BakuCoreShapePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    paintBakuCorePattern(canvas, size, const Point(0, 0), 15,
+        Colors.grey);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
