@@ -3,6 +3,8 @@ import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'add_action_card_dialog.dart';
+
 class ArenaActionCards extends StatelessWidget {
   const ArenaActionCards({
     @required this.bloc, @required this.position});
@@ -12,35 +14,50 @@ class ArenaActionCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
-    // TODO K.I : いったんマスク
-//    return Row(
-//      children: <Widget>[
-//        Padding(
-//          padding: const EdgeInsets.only(bottom: 20, right: 5),
-//          child: CustomPaint(
-//            painter: _ActionCardsButtonPainter(),
-//            child: Container(
-//                alignment: Alignment.center,
-//                width: 40,
-//                height: 50,
-//                child: const Text('+BP')),
-//          ),
-//        ),
-//        _buildComputedParam(context),
-//        Padding(
-//          padding: const EdgeInsets.only(top: 20, left: 5),
-//          child: CustomPaint(
-//            painter: _ActionCardsButtonPainter(),
-//            child: Container(
-//                alignment: Alignment.center,
-//                width: 40,
-//                height: 40,
-//                child: const Text('+DR')),
-//          ),
-//        ),
-//      ],
-//    );
+    return Row(
+      children: <Widget>[
+        position == TeamPosition.left
+            ? Padding(
+                padding: const EdgeInsets.only(right: 5),
+                child: CustomPaint(
+                  painter: _ActionCardsButtonPainter(),
+                  child: _buildAddButton(context),
+                ),
+              )
+            : Container(),
+        _buildComputedParam(context),
+        position == TeamPosition.right
+            ? Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: CustomPaint(
+                  painter: _ActionCardsButtonPainter(),
+                  child: _buildAddButton(context),
+                ),
+              )
+            : Container(),
+      ],
+    );
+  }
+
+  Widget _buildAddButton(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        showDialog<void>(
+          context: context,
+          builder: (_) {
+            return AddActionCardDialog(addActionCard: (param) {});
+          },
+        );
+      },
+      child: Container(
+          alignment: Alignment.center,
+          width: 40,
+          height: 40,
+          child: Text(
+            '+',
+            style: Theme.of(context).textTheme.headline,
+          )),
+    );
   }
 
   GestureDetector _buildComputedParam(BuildContext context) {
@@ -48,38 +65,34 @@ class ArenaActionCards extends StatelessWidget {
       child: CustomPaint(
         painter: _ActionCardsPainter(),
         child: Container(
-          height: 60,
+          height: 70,
           width: 120,
           child: Stack(
             children: <Widget>[
               Positioned(
                 top: 5,
                 left: 0,
-                width: 90,
+                width: 130,
                 height: 30,
-                child: Center(
-                  child: Text(
-                    'BP : 9999',
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .headline,
-                  ),
+                child: Text(
+                  'BP : 9999',
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .headline,
                 ),
               ),
               Positioned(
                 bottom: 5,
                 right: 0,
-                width: 70,
+                width: 80,
                 height: 30,
-                child: Center(
-                  child: Text(
-                    'DR : 99',
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .headline,
-                  ),
+                child: Text(
+                  'DR : 99',
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .headline,
                 ),
               ),
             ],
@@ -98,7 +111,7 @@ class _ActionCardsPainter extends CustomPainter {
     final y0 = size.height / 2;
 
     const height = 30;
-    const width = 60;
+    const width = 65;
 
     var paint = Paint()
       ..color = const Color.fromARGB(0x99, 0xff, 0x00, 0x00);
@@ -133,7 +146,7 @@ class _ActionCardsButtonPainter extends CustomPainter {
     final x0 = size.width / 2;
     final y0 = size.height / 2;
 
-    const height = 20;
+    const height = 30;
     const width = 20;
 
     var paint = Paint()
