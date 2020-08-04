@@ -106,7 +106,7 @@ class _TeamAreaState extends State<TeamArea> {
                   child: _buildBakuCoreCount(position),
                 )
               : Positioned(
-                  top: 0,
+                  bottom: 0,
                   right: 35,
                   width: 30,
                   height: 30,
