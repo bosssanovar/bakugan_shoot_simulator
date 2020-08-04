@@ -72,7 +72,8 @@ class ArenaBakuCore extends StatelessWidget {
     final wl = <Container>[];
     for (final type in bloc.getShotBakuCoreType(position)) {
       wl.add(Container(
-        color: type.color,
+        color: Color.fromARGB(
+            0x99, type.color.red, type.color.green, type.color.blue),
         width: 30,
         height: 30,
         child: Center(
