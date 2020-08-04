@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
-import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:bakugan_shoot_simulator/widget/painter/baku_core_paint.dart';
@@ -79,12 +78,9 @@ class _TeamAreaState extends State<TeamArea> {
             alignment: Alignment.center,
             children: <Widget>[
               _buildBakuCoreShape(),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(_getTeamsDamageRateText(position)),
-                  Text(_getTeamsBakuCoreTypeText(position)),
-                ],
+              Text(
+                _getTeamsDamageRateText(position),
+                style: Theme.of(context).textTheme.headline,
               ),
             ],
           ),
@@ -127,15 +123,6 @@ class _TeamAreaState extends State<TeamArea> {
     return 'DR : ${
         widget.bloc.getTeamsDamageRate(widget.teamPosition, position)
     }';
-  }
-
-  String _getTeamsBakuCoreTypeText(TeamBakuCorePosition position) {
-    final sb = StringBuffer();
-    for(final type in widget.bloc
-        .getTeamsBakuCoreType(widget.teamPosition, position)){
-      sb.write('${type.shortText}, ');
-    }
-    return sb.toString();
   }
 
   void _showCantAddTeamDialog() {
