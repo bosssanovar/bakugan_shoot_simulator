@@ -59,8 +59,8 @@ class _CurrentAreaState extends State<CurrentArea> {
 
   Positioned _buildArenaBakuCorePosition({Widget child}) {
     return widget.position == TeamPosition.left
-        ? Positioned(top: 20, right: 15, child: child)
-        : Positioned(bottom: 20, left: 15, child: child);
+        ? Positioned(top: 20, right: 35, child: child)
+        : Positioned(bottom: 20, left: 35, child: child);
   }
 
   Widget _buildBakuCoresPosition({Widget child}) {
@@ -68,8 +68,8 @@ class _CurrentAreaState extends State<CurrentArea> {
       return Container();
     }
     return widget.position == TeamPosition.left
-        ? Positioned(top: 30, left: 90, child: child)
-        : Positioned(bottom: 30, right: 90, child: child);
+        ? Positioned(top: 30, left: 70, child: child)
+        : Positioned(bottom: 30, right: 70, child: child);
   }
 
   Widget _buildActionCardsPosition({Widget child}) {
@@ -77,7 +77,7 @@ class _CurrentAreaState extends State<CurrentArea> {
       return Container();
     }
     return widget.position == TeamPosition.left
-        ? Positioned(bottom: 10, left: 50, child: child)
-        : Positioned(top: 10, right: 50, child: child);
+        ? Positioned(bottom: 10, left: 10, child: child)
+        : Positioned(top: 10, right: 10, child: child);
   }
 }

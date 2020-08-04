@@ -18,14 +18,14 @@ class ArenaActionCards extends StatelessWidget {
       children: <Widget>[
         position == TeamPosition.left
             ? Padding(
-                padding: const EdgeInsets.only(right: 15),
+                padding: const EdgeInsets.only(right: 10),
                 child: _buildAddButton(context),
               )
             : Container(),
         _buildComputedParam(context),
         position == TeamPosition.right
             ? Padding(
-          padding: const EdgeInsets.only(left: 15),
+          padding: const EdgeInsets.only(left: 10),
           child: _buildAddButton(context),
               )
             : Container(),
@@ -65,7 +65,7 @@ class ArenaActionCards extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               Positioned(
-                top: 5,
+                top: 8,
                 left: 0,
                 width: 130,
                 height: 30,
@@ -78,7 +78,7 @@ class ArenaActionCards extends StatelessWidget {
                 ),
               ),
               Positioned(
-                bottom: 5,
+                bottom: 8,
                 right: 0,
                 width: 80,
                 height: 30,
@@ -109,7 +109,7 @@ class _ActionCardsPainter extends CustomPainter {
     const width = 65;
 
     var paint = Paint()
-      ..color = const Color.fromARGB(0x99, 0xff, 0x00, 0x00);
+      ..color = const Color.fromARGB(0x77, 0xff, 0x00, 0x00);
     var path = Path()
       ..moveTo(x0 - width, y0 - height)
       ..lineTo(x0 - width, y0 + height)..lineTo(
@@ -145,7 +145,7 @@ class _ActionCardsButtonPainter extends CustomPainter {
     const width = 20;
 
     var paint = Paint()
-      ..color = const Color.fromARGB(0x99, 0xff, 0x00, 0x00);
+      ..color = const Color.fromARGB(0x77, 0xff, 0x00, 0x00);
     var path = Path()
       ..moveTo(x0 - width, y0 - height)
       ..lineTo(x0 - width, y0 + height)..lineTo(
