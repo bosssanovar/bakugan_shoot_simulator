@@ -18,21 +18,15 @@ class ArenaActionCards extends StatelessWidget {
       children: <Widget>[
         position == TeamPosition.left
             ? Padding(
-                padding: const EdgeInsets.only(right: 5),
-                child: CustomPaint(
-                  painter: _ActionCardsButtonPainter(),
-                  child: _buildAddButton(context),
-                ),
+                padding: const EdgeInsets.only(right: 15),
+                child: _buildAddButton(context),
               )
             : Container(),
         _buildComputedParam(context),
         position == TeamPosition.right
             ? Padding(
-                padding: const EdgeInsets.only(left: 5),
-                child: CustomPaint(
-                  painter: _ActionCardsButtonPainter(),
-                  child: _buildAddButton(context),
-                ),
+          padding: const EdgeInsets.only(left: 15),
+          child: _buildAddButton(context),
               )
             : Container(),
       ],
@@ -44,14 +38,20 @@ class ArenaActionCards extends StatelessWidget {
       onTap: () {
         AddActionCardDialog(context).showCustomDialog();
       },
-      child: Container(
-          alignment: Alignment.center,
-          width: 40,
-          height: 40,
-          child: Text(
-            '+',
-            style: Theme.of(context).textTheme.headline,
-          )),
+      child: CustomPaint(
+        painter: _ActionCardsButtonPainter(),
+        child: Container(
+            alignment: Alignment.center,
+            width: 40,
+            height: 40,
+            child: Text(
+              '+',
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .headline,
+            )),
+      ),
     );
   }
 
