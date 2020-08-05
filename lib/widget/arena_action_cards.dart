@@ -3,7 +3,7 @@ import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../dialog/add_action_card_dialog.dart';
+import '../dialog/sample_custom_dialog.dart';
 
 class ArenaActionCards extends StatelessWidget {
   const ArenaActionCards({
@@ -36,7 +36,7 @@ class ArenaActionCards extends StatelessWidget {
   Widget _buildAddButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AddActionCardDialog(context).showCustomDialog();
+        sampleCustomDialog(context).showCustomDialog();
       },
       child: CustomPaint(
         painter: _ActionCardsButtonPainter(),
