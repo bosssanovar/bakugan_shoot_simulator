@@ -33,9 +33,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             onPressed: !widget.bloc.isTeamBakuCoreFull(TeamPosition.left)
                 ? null
                 : () {
-                    widget.onUpdate(() {
-                      widget.bloc.clearTeamBakuCores(TeamPosition.left);
-                    });
+                    _clearTeamBakuCores(TeamPosition.left);
                   },
             tooltip: 'clear left',
             child: Icon(Icons.delete),
@@ -116,9 +114,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
             onPressed: !widget.bloc.isTeamBakuCoreFull(TeamPosition.right)
                 ? null
                 : () {
-              widget.onUpdate(() {
-                widget.bloc.clearTeamBakuCores(TeamPosition.right);
-              });
+              _clearTeamBakuCores(TeamPosition.right);
             },
             tooltip: 'clear right',
             child: Icon(Icons.delete),
@@ -130,5 +126,40 @@ class _HeaderButtonsState extends State<HeaderButtons> {
         ],
       ),
     );
+  }
+
+  Future _clearTeamBakuCores(TeamPosition teamPosition) async {
+    if (!(await _showClearConfirmDialog())) {
+      return;
+    }
+    widget.onUpdate(() {
+      widget.bloc.clearTeamBakuCores(teamPosition);
+    });
+  }
+
+  Future<bool> _showClearConfirmDialog() async {
+    final result = await showDialog<bool>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Confirm'),
+          content: const Text(
+              'Are you sure you want to clear all team baku cores?'),
+          actions: <Widget>[
+            FlatButton(
+              child: const Text('Cancel'),
+              onPressed: () => Navigator.of(context).pop(false),
+            ),
+            FlatButton(
+              child: const Text('OK'),
+              onPressed: () => Navigator.of(context).pop(true),
+            ),
+          ],
+        );
+      },
+    );
+
+    return result;
   }
 }
