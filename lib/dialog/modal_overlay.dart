@@ -6,16 +6,16 @@ import 'package:flutter/material.dart';
  * モーダルオーバーレイ
  */
 class ModalOverlay extends ModalRoute<void> {
+  ModalOverlay(this.contents, {this.isAndroidBackEnable = true}) : super();
+
   // ダイアログ内のWidget
   final Widget contents;
 
   // Androidのバックボタンを有効にするか
   final bool isAndroidBackEnable;
 
-  ModalOverlay(this.contents, {this.isAndroidBackEnable = true}) : super();
-
   @override
-  Duration get transitionDuration => Duration(milliseconds: 100);
+  Duration get transitionDuration => const Duration(milliseconds: 100);
 
   @override
   bool get opaque => false;
@@ -33,17 +33,15 @@ class ModalOverlay extends ModalRoute<void> {
   bool get maintainState => true;
 
   @override
-  Widget buildPage(
-    BuildContext context,
-    Animation<double> animation,
-    Animation<double> secondaryAnimation,
-  ) {
+  Widget buildPage(BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,) {
     return Material(
       type: MaterialType.transparency,
       child: Platform.isIOS
           ? SafeArea(
-              child: _buildOverlayContent(context),
-            )
+        child: _buildOverlayContent(context),
+      )
           : _buildOverlayContent(context),
     );
   }
@@ -68,7 +66,7 @@ class ModalOverlay extends ModalRoute<void> {
 
   Widget dialogContent(BuildContext context) {
     return WillPopScope(
-      child: this.contents,
+      child: contents,
       onWillPop: () {
         return Future(() => isAndroidBackEnable);
       },

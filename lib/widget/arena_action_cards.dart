@@ -36,7 +36,7 @@ class ArenaActionCards extends StatelessWidget {
   Widget _buildAddButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        sampleCustomDialog(context).showCustomDialog();
+        SampleCustomDialog(context).showCustomDialog();
       },
       child: CustomPaint(
         painter: _ActionCardsButtonPainter(),

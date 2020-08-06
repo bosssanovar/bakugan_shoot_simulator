@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'modal_overlay.dart';
 
-class sampleCustomDialog {
-  sampleCustomDialog(this.context) : super();
+class SampleCustomDialog {
+  SampleCustomDialog(this.context) : super();
 
   BuildContext context;
 
@@ -33,7 +33,7 @@ class sampleCustomDialog {
                             style: Theme.of(context).textTheme.headline,
                           ),
                           FlatButton(
-                            child: Text('+100'),
+                            child: const Text('+100'),
                             onPressed: () {},
                           )
                         ],
@@ -53,7 +53,7 @@ class sampleCustomDialog {
                 FlatButton(
                   color: Colors.grey,
                   child: Text(
-                    "Cancel",
+                    'Cancel',
                     style: Theme.of(context).textTheme.body1,
                   ),
                   onPressed: hideCustomDialog,
@@ -64,7 +64,7 @@ class sampleCustomDialog {
                 FlatButton(
                   color: Colors.blue,
                   child: Text(
-                    "OK",
+                    'OK',
                     style: Theme.of(context).textTheme.body1,
                   ),
                   onPressed: hideCustomDialog,
