@@ -1,8 +1,9 @@
+import 'package:bakugan_shoot_simulator/model/action_card/action_cards.dart';
 import 'package:bakugan_shoot_simulator/model/arena/team_arena.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_lineup/baku_core_lineup_real.dart';
-import 'package:bakugan_shoot_simulator/model/baku_core_gacha/baku_core_pool.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
+import 'package:bakugan_shoot_simulator/model/baku_core_gacha/baku_core_pool.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 
 class Arena {
@@ -12,6 +13,12 @@ class Arena {
     TeamPosition.left: TeamArena(),
     TeamPosition.right: TeamArena()
   };
+  final _actionCards = <TeamPosition, ActionCards>{
+    TeamPosition.left: ActionCards(),
+    TeamPosition.right: ActionCards(),
+  };
+
+  // baku core
 
   void shootBakgans() {
     _bakuCores[TeamPosition.left].setBakuCore(_bakuCorePool.getRandom());
@@ -51,7 +58,7 @@ class Arena {
     if (!isShotSuccess(position)) {
       throw StateError('$position player is failed shooting.');
     }
-    
+
     return _bakuCores[position].getBakuCoresType();
   }
 
@@ -85,4 +92,7 @@ class Arena {
     }
     _bakuCores[position].addBakuCore(_bakuCorePool.getRandom());
   }
+
+// action card
+
 }

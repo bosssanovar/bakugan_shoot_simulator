@@ -1,5 +1,6 @@
 import 'dart:core';
 
+import 'package:bakugan_shoot_simulator/model/action_card/action_card.dart';
 import 'package:bakugan_shoot_simulator/model/arena/arena.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/model/team/team.dart';
@@ -7,13 +8,10 @@ import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart'
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 
 class MainBloc {
-
-  MainBloc() {
-    _teams[TeamPosition.left] = Team();
-    _teams[TeamPosition.right] = Team();
-  }
-
-  final Map<TeamPosition, Team> _teams = <TeamPosition, Team>{};
+  final Map<TeamPosition, Team> _teams = <TeamPosition, Team>{
+    TeamPosition.left: Team(),
+    TeamPosition.right: Team(),
+  };
   final Arena _arena = Arena();
 
   // Team
@@ -97,5 +95,28 @@ class MainBloc {
 
   int getCurrentBakuCoresCount(TeamPosition teamPosition) {
     return _arena.getBakuCores(teamPosition).length;
+  }
+
+  // action card
+
+  void addActionCard(int battlePoint, int damageRate,
+      TeamPosition teamPosition) {
+
+  }
+
+  int getActionCardBattlePointTotal(TeamPosition teamPosition) {
+    return 0;
+  }
+
+  int getActionCardDamageRate(TeamPosition teamPosition) {
+    return 0;
+  }
+
+  List<ActionCard> getActionCards(TeamPosition teamPosition) {
+    return <ActionCard>[];
+  }
+
+  void clearActionCards() {
+
   }
 }

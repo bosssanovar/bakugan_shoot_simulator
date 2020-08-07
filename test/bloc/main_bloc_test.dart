@@ -1,7 +1,7 @@
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
-import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_baku_core_position.dart';
+import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -346,5 +346,47 @@ void main() {
         () => mainBloc.getTeamsBakuCoreType(
             TeamPosition.left, TeamBakuCorePosition.pos3),
         throwsStateError);
+  });
+
+  test('add/clear ActionCards', () {
+    // 準備
+    final mainBloc = MainBloc();
+
+    // 初期状態テスト
+    expect(mainBloc.getActionCards(TeamPosition.left).length, 0);
+    expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.left), 0);
+    expect(mainBloc.getActionCardDamageRate(TeamPosition.left), 0);
+    expect(mainBloc.getActionCards(TeamPosition.right).length, 0);
+    expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.right), 0);
+    expect(mainBloc.getActionCardDamageRate(TeamPosition.right), 0);
+
+    // 追加
+    mainBloc
+      ..addActionCard(100, 1, TeamPosition.left)
+      ..addActionCard(200, 2, TeamPosition.left)
+      ..addActionCard(300, 3, TeamPosition.left)
+      ..addActionCard(-100, -1, TeamPosition.right)
+      ..addActionCard(200, 2, TeamPosition.right)
+      ..addActionCard(300, 3, TeamPosition.right)
+      ..addActionCard(400, 4, TeamPosition.right);
+
+    // 追加結果テスト
+    expect(mainBloc.getActionCards(TeamPosition.left).length, 3);
+    expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.left), 600);
+    expect(mainBloc.getActionCardDamageRate(TeamPosition.left), 6);
+    expect(mainBloc.getActionCards(TeamPosition.right).length, 4);
+    expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.right), 800);
+    expect(mainBloc.getActionCardDamageRate(TeamPosition.right), 8);
+
+    // クリア
+    mainBloc.clearActionCards();
+
+    // クリア結果テスト
+    expect(mainBloc.getActionCards(TeamPosition.left).length, 0);
+    expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.left), 0);
+    expect(mainBloc.getActionCardDamageRate(TeamPosition.left), 0);
+    expect(mainBloc.getActionCards(TeamPosition.right).length, 0);
+    expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.right), 0);
+    expect(mainBloc.getActionCardDamageRate(TeamPosition.right), 0);
   });
 }
