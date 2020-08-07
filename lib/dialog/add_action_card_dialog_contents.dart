@@ -1,8 +1,26 @@
 import 'package:bakugan_shoot_simulator/dialog/ok_cancel_dialog_contents.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class AddActionCardDialogContents extends OkCancelDialogContents {
+class AddActionCardDialogContents implements OkCancelDialogContents {
+  @override
+  Widget build(BuildContext context) {
+    return AddActionCardDialogWidget();
+  }
+
+  @override
+  void onCancel() {}
+
+  @override
+  void onOk() {}
+}
+
+class AddActionCardDialogWidget extends StatefulWidget {
+  @override
+  _AddActionCardDialogWidgetState createState() =>
+      _AddActionCardDialogWidgetState();
+}
+
+class _AddActionCardDialogWidgetState extends State<AddActionCardDialogWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -32,10 +50,4 @@ class AddActionCardDialogContents extends OkCancelDialogContents {
       ],
     );
   }
-
-  @override
-  void onCancel() {}
-
-  @override
-  void onOk() {}
 }
