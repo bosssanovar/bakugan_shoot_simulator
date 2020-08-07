@@ -99,24 +99,25 @@ class MainBloc {
 
   // action card
 
-  void addActionCard(int battlePoint, int damageRate,
-      TeamPosition teamPosition) {
-
+  void addActionCard(TeamPosition teamPosition,
+      {int battlePoint = 0, int damageRate = 0}) {
+    _arena.addCard(teamPosition,
+        battlePoint: battlePoint, damageRate: damageRate);
   }
 
   int getActionCardBattlePointTotal(TeamPosition teamPosition) {
-    return 0;
+    return _arena.getActionCardBattlePointTotal(teamPosition);
   }
 
   int getActionCardDamageRate(TeamPosition teamPosition) {
-    return 0;
+    return _arena.getActionCardDamageRate(teamPosition);
   }
 
   List<ActionCard> getActionCards(TeamPosition teamPosition) {
-    return <ActionCard>[];
+    return _arena.getActionCards(teamPosition);
   }
 
   void clearActionCards() {
-
+    _arena.clearActionCard();
   }
 }

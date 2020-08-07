@@ -362,21 +362,23 @@ void main() {
 
     // 追加
     mainBloc
-      ..addActionCard(100, 1, TeamPosition.left)
-      ..addActionCard(200, 2, TeamPosition.left)
-      ..addActionCard(300, 3, TeamPosition.left)
-      ..addActionCard(-100, -1, TeamPosition.right)
-      ..addActionCard(200, 2, TeamPosition.right)
-      ..addActionCard(300, 3, TeamPosition.right)
-      ..addActionCard(400, 4, TeamPosition.right);
+      ..addActionCard(TeamPosition.left, battlePoint: 100, damageRate: 1)
+      ..addActionCard(TeamPosition.left, battlePoint: 200, damageRate: 2)
+      ..addActionCard(TeamPosition.left, battlePoint: 300, damageRate: 3)
+      ..addActionCard(TeamPosition.right, battlePoint: -100, damageRate: -1)
+      ..addActionCard(TeamPosition.right, battlePoint: 200, damageRate: 2)
+      ..addActionCard(TeamPosition.right, battlePoint: 300, damageRate: 3)
+      ..addActionCard(TeamPosition.right, battlePoint: 400, damageRate: 4)
+      ..addActionCard(TeamPosition.right, battlePoint: 500)
+      ..addActionCard(TeamPosition.right, damageRate: 5);
 
     // 追加結果テスト
     expect(mainBloc.getActionCards(TeamPosition.left).length, 3);
     expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.left), 600);
     expect(mainBloc.getActionCardDamageRate(TeamPosition.left), 6);
-    expect(mainBloc.getActionCards(TeamPosition.right).length, 4);
-    expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.right), 800);
-    expect(mainBloc.getActionCardDamageRate(TeamPosition.right), 8);
+    expect(mainBloc.getActionCards(TeamPosition.right).length, 6);
+    expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.right), 1300);
+    expect(mainBloc.getActionCardDamageRate(TeamPosition.right), 13);
 
     // クリア
     mainBloc.clearActionCards();

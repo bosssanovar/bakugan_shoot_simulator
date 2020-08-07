@@ -1,4 +1,4 @@
-import 'package:bakugan_shoot_simulator/model/action_card/action_cards.dart';
+import 'package:bakugan_shoot_simulator/model/action_card/action_card.dart';
 import 'package:bakugan_shoot_simulator/model/arena/team_arena.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_lineup/baku_core_lineup_real.dart';
@@ -9,32 +9,28 @@ import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 class Arena {
 
   final _bakuCorePool = BakuCorePool(BakuCoreLineupMine());
-  final _bakuCores = <TeamPosition, TeamArena>{
+  final _teams = <TeamPosition, TeamArena>{
     TeamPosition.left: TeamArena(),
     TeamPosition.right: TeamArena()
-  };
-  final _actionCards = <TeamPosition, ActionCards>{
-    TeamPosition.left: ActionCards(),
-    TeamPosition.right: ActionCards(),
   };
 
   // baku core
 
   void shootBakgans() {
-    _bakuCores[TeamPosition.left].setBakuCore(_bakuCorePool.getRandom());
-    _bakuCores[TeamPosition.right].setBakuCore(_bakuCorePool.getRandom());
+    _teams[TeamPosition.left].setBakuCore(_bakuCorePool.getRandom());
+    _teams[TeamPosition.right].setBakuCore(_bakuCorePool.getRandom());
   }
 
   bool isShotBakugan() {
-    return !(_bakuCores[TeamPosition.left].isNoCore ||
-        _bakuCores[TeamPosition.right].isNoCore);
+    return !(_teams[TeamPosition.left].isNoCore ||
+        _teams[TeamPosition.right].isNoCore);
   }
 
   bool isShotSuccess(TeamPosition position) {
     if (!isShotBakugan()) {
       return false;
     }
-    if (!_bakuCores[position].isSuccess) {
+    if (!_teams[position].isSuccess) {
       return false;
     }
     return true;
@@ -44,14 +40,14 @@ class Arena {
     if (!isShotSuccess(position)) {
       throw StateError('$position player is failed shooting.');
     }
-    return _bakuCores[position].getTotalBattlePoint();
+    return _teams[position].getTotalBattlePoint();
   }
 
   int getDamageRate(TeamPosition position) {
     if (!isShotSuccess(position)) {
       throw StateError('$position player is failed shooting.');
     }
-    return _bakuCores[position].getTotalDamageRate();
+    return _teams[position].getTotalDamageRate();
   }
 
   List<BakuCoreType> getBakuCoreTypes(TeamPosition position) {
@@ -59,40 +55,62 @@ class Arena {
       throw StateError('$position player is failed shooting.');
     }
 
-    return _bakuCores[position].getBakuCoresType();
+    return _teams[position].getBakuCoresType();
   }
 
   List<BakuCore> getBakuCores(TeamPosition position) {
     if (!isShotSuccess(position)) {
       throw StateError('$position player is failed shooting.');
     }
-    return _bakuCores[position].getBakuCores();
+    return _teams[position].getBakuCores();
   }
 
   void reShootBakugan(TeamPosition position) {
-    if(!isShotBakugan()){
+    if (!isShotBakugan()) {
       throw StateError('Bakugan is not shot yet.');
     }
-    _bakuCores[position].setBakuCore(_bakuCorePool.getRandom());
+    _teams[position].setBakuCore(_bakuCorePool.getRandom());
   }
 
   void swapBakuCores() {
-    if(!isShotBakugan()){
+    if (!isShotBakugan()) {
       throw StateError('Bakugan is not shot yet.');
     }
 
-    final temp = _bakuCores[TeamPosition.right];
-    _bakuCores[TeamPosition.right] = _bakuCores[TeamPosition.left];
-    _bakuCores[TeamPosition.left] = temp;
+    final temp = _teams[TeamPosition.right];
+    _teams[TeamPosition.right] = _teams[TeamPosition.left];
+    _teams[TeamPosition.left] = temp;
   }
 
   void shootToGetOneMoreBakuCore(TeamPosition position) {
-    if(!isShotSuccess(position)){
+    if (!isShotSuccess(position)) {
       throw StateError('on this side, not success.');
     }
-    _bakuCores[position].addBakuCore(_bakuCorePool.getRandom());
+    _teams[position].addBakuCore(_bakuCorePool.getRandom());
   }
 
-// action card
+  // action card
+  void addCard(TeamPosition teamPosition,
+      {int battlePoint = 0, int damageRate = 0}) {
+    _teams[teamPosition]
+        .addCard(battlePoint: battlePoint, damageRate: damageRate);
+  }
 
+  int getActionCardBattlePointTotal(TeamPosition teamPosition) {
+    return _teams[teamPosition].getBattlePointTotal();
+  }
+
+  int getActionCardDamageRate(TeamPosition teamPosition) {
+    return _teams[teamPosition].getDamageRateTotal();
+  }
+
+  void clearActionCard() {
+    _teams.forEach((key, value) {
+      value.clear();
+    });
+  }
+
+  List<ActionCard> getActionCards(TeamPosition teamPosition) {
+    return _teams[teamPosition].getActionCards();
+  }
 }
