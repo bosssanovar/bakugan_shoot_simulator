@@ -90,8 +90,13 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
                 width: 80,
                 height: 30,
                 child: Text(
-                  'DR : ${widget.bloc.getActionCardDamageRate(widget.position)}',
-                  style: Theme.of(context).textTheme.headline,
+                  'DR : ${
+                      widget.bloc.getActionCardDamageRate(widget.position)
+                  }',
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .headline,
                 ),
               ),
             ],
