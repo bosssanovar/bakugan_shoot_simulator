@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:bakugan_shoot_simulator/widget/painter/baku_core_pattern_paint.dart';
-import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 
 class VersusArea extends StatelessWidget {
@@ -18,12 +17,8 @@ class VersusArea extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             _buildBackground(),
-            Center(
-              child: BorderedText(
-                strokeWidth: 1,
-                strokeColor: Colors.black,
-                child: const Text('V.S.'),
-              ),
+            const Center(
+              child: Text('V.S.'),
             ),
           ],
         ),

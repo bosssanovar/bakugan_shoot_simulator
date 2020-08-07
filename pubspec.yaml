@@ -30,7 +30,6 @@ dev_dependencies:
     sdk: flutter
   flutter_launcher_icons: "^0.7.3"
   pedantic_mono: any
-  bordered_text: ^1.0.0
 
 flutter_icons:
   image_path: "asset/launch_icon.png"

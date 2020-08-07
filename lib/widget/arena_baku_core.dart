@@ -4,7 +4,6 @@ import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/model/baku_core/baku_core_type.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:bakugan_shoot_simulator/widget/painter/baku_core_pattern_paint.dart';
-import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 
 import 'painter/baku_core_paint.dart';
@@ -47,27 +46,19 @@ class ArenaBakuCore extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        BorderedText(
-          strokeWidth: 2,
-          strokeColor: Colors.black54,
-          child: Text(
-            '${_getShotDamageRateText(position)}',
+        Text(
+          '${_getShotDamageRateText(position)}',
             style: Theme.of(context).textTheme.headline,
           ),
-        ),
         _buildBakuCoreTypeParameter(context),
 
-        BorderedText(
-          strokeWidth: 2,
-          strokeColor: Colors.black54,
-          child: Text(
+        Text(
             '${_getBattlePointText(position)}',
             style: Theme
                 .of(context)
                 .textTheme
                 .headline,
           ),
-        ),
       ],
     );
   }
@@ -84,10 +75,7 @@ class ArenaBakuCore extends StatelessWidget {
       wl.add(Container(
         color: type.color.withAlpha(0x99),
         child: Center(
-          child: BorderedText(
-            strokeWidth: 2,
-            strokeColor: Colors.black54,
-            child: Text(
+          child: Text(
               '${type.shortText}',
               style: Theme
                   .of(context)
@@ -95,7 +83,6 @@ class ArenaBakuCore extends StatelessWidget {
                   .headline,
             ),
           ),
-        ),
       ));
     }
     return Row(
