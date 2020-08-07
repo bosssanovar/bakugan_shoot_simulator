@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-abstract class OkCancelDialogContents {
-  Widget build(BuildContext context);
-
+abstract class OkCancelDialogContents extends StatefulWidget {
   void onOk();
 
   void onCancel();

@@ -6,28 +6,32 @@ import 'package:flutter/material.dart';
 
 import '../dialog/ok_cancel_dialog.dart';
 
-class ArenaActionCards extends StatelessWidget {
-  const ArenaActionCards({
-    @required this.bloc, @required this.position});
+class ArenaActionCards extends StatefulWidget {
+  const ArenaActionCards({@required this.bloc, @required this.position});
 
   final MainBloc bloc;
   final TeamPosition position;
 
   @override
+  _ArenaActionCardsState createState() => _ArenaActionCardsState();
+}
+
+class _ArenaActionCardsState extends State<ArenaActionCards> {
+  @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        position == TeamPosition.left
+        widget.position == TeamPosition.left
             ? Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: _buildAddButton(context),
               )
             : Container(),
         _buildComputedParam(context),
-        position == TeamPosition.right
+        widget.position == TeamPosition.right
             ? Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: _buildAddButton(context),
+                padding: const EdgeInsets.only(left: 10),
+                child: _buildAddButton(context),
               )
             : Container(),
       ],
@@ -36,11 +40,16 @@ class ArenaActionCards extends StatelessWidget {
 
   Widget _buildAddButton(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        OkCancelDialog(
+      onTap: () async {
+        await OkCancelDialog(
           context,
-          contents: AddActionCardDialogContents(),
+          contents: AddActionCardDialogContents(
+            bloc: widget.bloc,
+            teamPosition: widget.position,
+          ),
         ).showCustomDialog();
+
+        setState(() {});
       },
       child: CustomPaint(
         painter: _ActionCardsButtonPainter(),
@@ -50,10 +59,7 @@ class ArenaActionCards extends StatelessWidget {
             height: 40,
             child: Text(
               '+',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline,
+              style: Theme.of(context).textTheme.headline,
             )),
       ),
     );
@@ -74,11 +80,8 @@ class ArenaActionCards extends StatelessWidget {
                 width: 130,
                 height: 30,
                 child: Text(
-                  'BP : 9999',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .headline,
+                  'BP : ${widget.bloc.getActionCardBattlePointTotal(widget.position)}',
+                  style: Theme.of(context).textTheme.headline,
                 ),
               ),
               Positioned(
@@ -87,11 +90,8 @@ class ArenaActionCards extends StatelessWidget {
                 width: 80,
                 height: 30,
                 child: Text(
-                  'DR : 99',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .headline,
+                  'DR : ${widget.bloc.getActionCardDamageRate(widget.position)}',
+                  style: Theme.of(context).textTheme.headline,
                 ),
               ),
             ],

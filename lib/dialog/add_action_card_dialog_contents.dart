@@ -1,26 +1,40 @@
+import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/dialog/ok_cancel_dialog_contents.dart';
+import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
 import 'package:flutter/material.dart';
 
-class AddActionCardDialogContents implements OkCancelDialogContents {
+class AddActionCardDialogContents extends OkCancelDialogContents {
+
+  AddActionCardDialogContents({
+    @required this.bloc,
+    @required this.teamPosition});
+
+  final MainBloc bloc;
+  final TeamPosition teamPosition;
+  final _AddActionCardDialogContentsState state
+  = _AddActionCardDialogContentsState();
+
   @override
-  Widget build(BuildContext context) {
-    return AddActionCardDialogWidget();
+  _AddActionCardDialogContentsState createState() => state;
+
+  @override
+  void onCancel() {
   }
 
   @override
-  void onCancel() {}
-
-  @override
-  void onOk() {}
+  void onOk() {
+    bloc.addActionCard(
+        teamPosition,
+        battlePoint: state.battlePoint,
+        damageRate: state.damageRate);
+  }
 }
 
-class AddActionCardDialogWidget extends StatefulWidget {
-  @override
-  _AddActionCardDialogWidgetState createState() =>
-      _AddActionCardDialogWidgetState();
-}
+class _AddActionCardDialogContentsState
+    extends State<AddActionCardDialogContents> {
+  int battlePoint = 0;
+  int damageRate = 0;
 
-class _AddActionCardDialogWidgetState extends State<AddActionCardDialogWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -33,16 +47,26 @@ class _AddActionCardDialogWidgetState extends State<AddActionCardDialogWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'BP : ',
-                    style: Theme.of(context).textTheme.headline,
+                    'BP : ${battlePoint}',
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .headline,
                   ),
                   Text(
                     'こんな感じでダイアログが出せるよ',
-                    style: Theme.of(context).textTheme.headline,
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .headline,
                   ),
                   FlatButton(
                     child: const Text('+100'),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        battlePoint += 100;
+                      });
+                    },
                   )
                 ],
               ),

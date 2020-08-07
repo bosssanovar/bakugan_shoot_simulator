@@ -12,26 +12,26 @@ class OkCancelDialog {
   BuildContext context;
   OkCancelDialogContents contents;
 
-  void showCustomDialog() {
-    Navigator.push(
+  Future showCustomDialog() async {
+    await Navigator.push(
       context,
       ModalOverlay(
         Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            contents,
+            Row(
               children: <Widget>[
-                contents.build(context),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: Container(),
-                    ),
-                    FlatButton(
-                      color: Colors.grey,
-                      child: Text(
-                        'Cancel',
-                        style: Theme.of(context).textTheme.body1,
-                      ),
+                Expanded(
+                  child: Container(),
+                ),
+                FlatButton(
+                  color: Colors.grey,
+                  child: Text(
+                    'Cancel',
+                    style: Theme.of(context).textTheme.body1,
+                  ),
                       onPressed: () {
                         contents.onCancel();
                         hideCustomDialog();
