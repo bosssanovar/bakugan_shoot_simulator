@@ -38,7 +38,7 @@ class _AddActionCardDialogContentsState
 
   @override
   Widget build(BuildContext context) {
-    const h = 250.0;
+    const h = 230.0;
     return Stack(
       children: <Widget>[
         Container(
