@@ -80,9 +80,7 @@ class Arena {
       throw StateError('Bakugan is not shot yet.');
     }
 
-    final temp = _teams[TeamPosition.right];
-    _teams[TeamPosition.right] = _teams[TeamPosition.left];
-    _teams[TeamPosition.left] = temp;
+    _teams[TeamPosition.left].swap(_teams[TeamPosition.right]);
   }
 
   void shootToGetOneMoreBakuCore(TeamPosition position) {

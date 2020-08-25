@@ -69,7 +69,7 @@ class _AddActionCardDialogContentsState
     return Column(
       children: <Widget>[
         _buildDamageRateDisplay(),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         _buildDamageRateInput(),
@@ -82,11 +82,11 @@ class _AddActionCardDialogContentsState
       children: <Widget>[
         Row(
           children: <Widget>[
-            MyRaisedButton('+1', () {
+            myRaisedButton('+1', () {
               damageRate += 1;
             }),
             const SizedBox(width: 10),
-            MyRaisedButton('+5', () {
+            myRaisedButton('+5', () {
               damageRate += 5;
             }),
           ],
@@ -96,11 +96,11 @@ class _AddActionCardDialogContentsState
         ),
         Row(
           children: <Widget>[
-            MyRaisedButton('-1', () {
+            myRaisedButton('-1', () {
               damageRate -= 1;
             }),
             const SizedBox(width: 10),
-            MyRaisedButton('-5', () {
+            myRaisedButton('-5', () {
               damageRate -= 5;
             }),
           ],
@@ -113,7 +113,7 @@ class _AddActionCardDialogContentsState
     return Column(
       children: <Widget>[
         Text(
-          'DR:${damageRate}',
+          'DR:$damageRate',
           style: Theme.of(context).textTheme.title,
         ),
       ],
@@ -124,7 +124,7 @@ class _AddActionCardDialogContentsState
     return Column(
       children: <Widget>[
         _buildBattlePointDisplay(),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         _buildBattlePointInput(),
@@ -137,15 +137,15 @@ class _AddActionCardDialogContentsState
       children: <Widget>[
         Row(
           children: <Widget>[
-            MyRaisedButton('+50', () {
+            myRaisedButton('+50', () {
               battlePoint += 50;
             }),
             const SizedBox(width: 10),
-            MyRaisedButton('+100', () {
+            myRaisedButton('+100', () {
               battlePoint += 100;
             }),
             const SizedBox(width: 10),
-            MyRaisedButton('+500', () {
+            myRaisedButton('+500', () {
               battlePoint += 500;
             }),
           ],
@@ -155,15 +155,15 @@ class _AddActionCardDialogContentsState
         ),
         Row(
           children: <Widget>[
-            MyRaisedButton('-50', () {
+            myRaisedButton('-50', () {
               battlePoint -= 50;
             }),
             const SizedBox(width: 10),
-            MyRaisedButton('-100', () {
+            myRaisedButton('-100', () {
               battlePoint -= 100;
             }),
             const SizedBox(width: 10),
-            MyRaisedButton('-500', () {
+            myRaisedButton('-500', () {
               battlePoint -= 500;
             }),
           ],
@@ -176,7 +176,7 @@ class _AddActionCardDialogContentsState
     return Column(
       children: <Widget>[
         Text(
-          'BP:${battlePoint}',
+          'BP:$battlePoint',
           style: Theme
               .of(context)
               .textTheme
@@ -186,7 +186,7 @@ class _AddActionCardDialogContentsState
     );
   }
 
-  Widget MyRaisedButton(String text, Function onPressed) {
+  Widget myRaisedButton(String text, Function onPressed) {
     return SizedBox(
       height: 50,
       child: RaisedButton(
@@ -199,7 +199,7 @@ class _AddActionCardDialogContentsState
         ),
         color: Colors.blue,
         shape: BeveledRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(10),
         ),
         onPressed: () {
           setState(() {

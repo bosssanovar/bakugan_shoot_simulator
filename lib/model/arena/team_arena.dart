@@ -56,6 +56,20 @@ class TeamArena {
     return _bakuCores.getBakuCores();
   }
 
+  void swap(TeamArena target) {
+    final temp = <BakuCore>[];
+    _bakuCores.getBakuCores().forEach(temp.add);
+
+    _bakuCores
+      ..clear()
+      ..addAll(target.getBakuCores());
+
+    // ignore: cascade_invocations
+    target._bakuCores
+      ..clear()
+      ..addAll(temp);
+  }
+
   // action card
 
   void addCard({int battlePoint = 0, int damageRate = 0}) {
