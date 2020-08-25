@@ -24,6 +24,10 @@ class AddActionCardDialogContents extends OkCancelDialogContents {
 
   @override
   void onOk() {
+    if (state.battlePoint == 0 && state.damageRate == 0) {
+      return;
+    }
+
     bloc.addActionCard(
         teamPosition,
         battlePoint: state.battlePoint,
@@ -114,7 +118,7 @@ class _AddActionCardDialogContentsState
       children: <Widget>[
         Text(
           'DR:$damageRate',
-          style: Theme.of(context).textTheme.title,
+          style: Theme.of(context).textTheme.headline,
         ),
       ],
     );
@@ -180,7 +184,7 @@ class _AddActionCardDialogContentsState
           style: Theme
               .of(context)
               .textTheme
-              .title,
+              .headline,
         ),
       ],
     );
@@ -195,7 +199,7 @@ class _AddActionCardDialogContentsState
           style: Theme
               .of(context)
               .textTheme
-              .subtitle,
+              .title,
         ),
         color: Colors.blue,
         shape: BeveledRectangleBorder(
