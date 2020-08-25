@@ -70,7 +70,7 @@ class TeamArena {
     return _actionCards.getDamageRateTotal();
   }
 
-  void clear() {
+  void clearActionCards() {
     _actionCards.clear();
   }
 

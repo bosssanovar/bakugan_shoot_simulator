@@ -17,7 +17,10 @@ class Arena {
   // baku core
 
   void shootBakgans() {
+    _teams[TeamPosition.left].clearActionCards();
     _teams[TeamPosition.left].setBakuCore(_bakuCorePool.getRandom());
+
+    _teams[TeamPosition.right].clearActionCards();
     _teams[TeamPosition.right].setBakuCore(_bakuCorePool.getRandom());
   }
 
@@ -106,7 +109,7 @@ class Arena {
 
   void clearActionCard() {
     _teams.forEach((key, value) {
-      value.clear();
+      value.clearActionCards();
     });
   }
 
