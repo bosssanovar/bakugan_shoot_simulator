@@ -1,7 +1,6 @@
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/dialog/add_action_card_dialog_contents.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../dialog/ok_cancel_dialog.dart';
