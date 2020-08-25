@@ -77,6 +77,7 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
+                // ignore: lines_longer_than_80_chars
                 'BP : ${widget.bloc.getActionCardBattlePointTotal(widget.position)}',
                 style: Theme.of(context).textTheme.headline,
               ),
