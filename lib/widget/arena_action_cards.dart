@@ -72,32 +72,23 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
         child: Container(
           height: 70,
           width: 120,
-          child: Stack(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Positioned(
-                top: 8,
-                left: 0,
-                width: 130,
-                height: 30,
-                child: Text(
-                  'BP : ${widget.bloc.getActionCardBattlePointTotal(widget.position)}',
-                  style: Theme.of(context).textTheme.headline,
-                ),
+              Text(
+                'BP : ${widget.bloc.getActionCardBattlePointTotal(widget.position)}',
+                style: Theme.of(context).textTheme.headline,
               ),
-              Positioned(
-                bottom: 8,
-                right: 0,
-                width: 80,
-                height: 30,
-                child: Text(
-                  'DR : ${
-                      widget.bloc.getActionCardDamageRate(widget.position)
-                  }',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .headline,
-                ),
+              Text(
+                'DR : ${
+                    widget.bloc.getActionCardDamageRate(widget.position)
+                }',
+                textAlign: TextAlign.right,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .headline,
               ),
             ],
           ),
