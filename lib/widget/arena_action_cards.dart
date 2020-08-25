@@ -166,7 +166,7 @@ class _ActionCardsButtonPainter extends CustomPainter {
       ..color = Colors.black
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 5;
+      ..strokeWidth = 3;
     path = Path()
       ..moveTo(x0 - width, y0 - height)
       ..lineTo(x0 - width, y0 + height)..lineTo(

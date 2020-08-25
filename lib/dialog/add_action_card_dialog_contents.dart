@@ -114,7 +114,7 @@ class _AddActionCardDialogContentsState
       children: <Widget>[
         Text(
           'DR:${damageRate}',
-          style: Theme.of(context).textTheme.headline5,
+          style: Theme.of(context).textTheme.title,
         ),
       ],
     );
@@ -177,7 +177,10 @@ class _AddActionCardDialogContentsState
       children: <Widget>[
         Text(
           'BP:${battlePoint}',
-          style: Theme.of(context).textTheme.headline5,
+          style: Theme
+              .of(context)
+              .textTheme
+              .title,
         ),
       ],
     );
@@ -189,7 +192,10 @@ class _AddActionCardDialogContentsState
       child: RaisedButton(
         child: Text(
           text,
-          style: Theme.of(context).textTheme.headline5,
+          style: Theme
+              .of(context)
+              .textTheme
+              .subtitle,
         ),
         color: Colors.blue,
         shape: BeveledRectangleBorder(

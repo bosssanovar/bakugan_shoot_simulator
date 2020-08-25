@@ -6,7 +6,7 @@ void paintArenaBakuCore(Canvas canvas, Size size, Point origin, int radius) {
   _paintBakuCoreBase(canvas, size, const Point(0, 0), radius);
   _paintDamageRateArea(canvas, size, const Point(0, 0), radius);
   _paintBattlePointArea(canvas, size, const Point(0, 0), radius);
-  _paintBakuCoreBorder(canvas, size, const Point(0, 0), radius, 10);
+  _paintBakuCoreBorder(canvas, size, const Point(0, 0), radius, 5);
 }
 
 void paintTeamBakuCore(Canvas canvas, Size size, Point origin, int radius) {
@@ -38,8 +38,8 @@ void _paintDamageRateArea(Canvas canvas, Size size, Point origin, int radius) {
   final paint = Paint()..color = const Color.fromARGB(0x99, 0xbb, 0xa7, 0x00);
   final path = Path()
     ..moveTo(x0 - radius / 2, y0 - radius / 2 * sqrt(3))
-    ..lineTo(x0 - radius * 7 / 8, y0 - radius / 6 * sqrt(3))
-    ..lineTo(x0 + radius * 7 / 8, y0 - radius / 6 * sqrt(3))
+    ..lineTo(x0 - radius * 5 / 6, y0 - radius / 6 * sqrt(3))
+    ..lineTo(x0 + radius * 5 / 6, y0 - radius / 6 * sqrt(3))
     ..lineTo(x0 + radius / 2, y0 - radius / 2 * sqrt(3))
     ..close();
   canvas.drawPath(path, paint);
@@ -53,8 +53,8 @@ void _paintTeamBakuCoreDamageRateArea(Canvas canvas, Size size, Point origin,
   final paint = Paint()
     ..color = const Color.fromARGB(0x99, 0xbb, 0xa7, 0x00);
   final path = Path()
-    ..moveTo(x0 - radius * 7 / 8, y0 - radius / 6 * sqrt(3))
-    ..lineTo(x0 + radius * 7 / 8, y0 - radius / 6 * sqrt(3))..lineTo(
+    ..moveTo(x0 - radius * 5 / 6, y0 - radius / 6 * sqrt(3))
+    ..lineTo(x0 + radius * 5 / 6, y0 - radius / 6 * sqrt(3))..lineTo(
         x0 + radius, y0)..lineTo(
         x0 + radius * 7 / 8, y0 + radius / 6 * sqrt(3))..lineTo(
         x0 - radius * 7 / 8, y0 + radius / 6 * sqrt(3))..lineTo(x0 - radius, y0)
@@ -70,8 +70,8 @@ void _paintBattlePointArea(Canvas canvas, Size size, Point origin, int radius) {
     ..color = const Color.fromARGB(0x99, 0xB2, 0x22, 0x22);
   final path = Path()
     ..moveTo(x0 - radius / 2, y0 + radius / 2 * sqrt(3))
-    ..lineTo(x0 - radius * 7 / 8, y0 + radius / 6 * sqrt(3))
-    ..lineTo(x0 + radius * 7 / 8, y0 + radius / 6 * sqrt(3))
+    ..lineTo(x0 - radius * 5 / 6, y0 + radius / 6 * sqrt(3))..lineTo(
+        x0 + radius * 5 / 6, y0 + radius / 6 * sqrt(3))
     ..lineTo(x0 + radius / 2, y0 + radius / 2 * sqrt(3))
     ..close();
   canvas.drawPath(path, paint);
