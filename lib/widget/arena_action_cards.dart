@@ -1,7 +1,6 @@
 import 'package:bakugan_shoot_simulator/bloc/main_bloc.dart';
 import 'package:bakugan_shoot_simulator/dialog/add_action_card_dialog_contents.dart';
 import 'package:bakugan_shoot_simulator/model/team/team_position.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../dialog/ok_cancel_dialog.dart';
@@ -72,32 +71,24 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
         child: Container(
           height: 70,
           width: 120,
-          child: Stack(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Positioned(
-                top: 8,
-                left: 0,
-                width: 130,
-                height: 30,
-                child: Text(
-                  'BP : ${widget.bloc.getActionCardBattlePointTotal(widget.position)}',
-                  style: Theme.of(context).textTheme.headline,
-                ),
+              Text(
+                // ignore: lines_longer_than_80_chars
+                'BP : ${widget.bloc.getActionCardBattlePointTotal(widget.position)}',
+                style: Theme.of(context).textTheme.headline,
               ),
-              Positioned(
-                bottom: 8,
-                right: 0,
-                width: 80,
-                height: 30,
-                child: Text(
-                  'DR : ${
-                      widget.bloc.getActionCardDamageRate(widget.position)
-                  }',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .headline,
-                ),
+              Text(
+                'DR : ${
+                    widget.bloc.getActionCardDamageRate(widget.position)
+                }',
+                textAlign: TextAlign.right,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .headline,
               ),
             ],
           ),
@@ -166,7 +157,7 @@ class _ActionCardsButtonPainter extends CustomPainter {
       ..color = Colors.black
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 5;
+      ..strokeWidth = 3;
     path = Path()
       ..moveTo(x0 - width, y0 - height)
       ..lineTo(x0 - width, y0 + height)..lineTo(

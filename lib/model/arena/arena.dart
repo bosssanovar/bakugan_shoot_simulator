@@ -17,7 +17,10 @@ class Arena {
   // baku core
 
   void shootBakgans() {
+    _teams[TeamPosition.left].clearActionCards();
     _teams[TeamPosition.left].setBakuCore(_bakuCorePool.getRandom());
+
+    _teams[TeamPosition.right].clearActionCards();
     _teams[TeamPosition.right].setBakuCore(_bakuCorePool.getRandom());
   }
 
@@ -77,9 +80,7 @@ class Arena {
       throw StateError('Bakugan is not shot yet.');
     }
 
-    final temp = _teams[TeamPosition.right];
-    _teams[TeamPosition.right] = _teams[TeamPosition.left];
-    _teams[TeamPosition.left] = temp;
+    _teams[TeamPosition.left].swap(_teams[TeamPosition.right]);
   }
 
   void shootToGetOneMoreBakuCore(TeamPosition position) {
@@ -106,7 +107,7 @@ class Arena {
 
   void clearActionCard() {
     _teams.forEach((key, value) {
-      value.clear();
+      value.clearActionCards();
     });
   }
 
