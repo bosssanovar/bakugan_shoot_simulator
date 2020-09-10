@@ -70,19 +70,14 @@ class ArenaBakuCore extends StatelessWidget {
     if (!bloc.isSuccessShoot(position)) {
       return Container();
     }
-    final wl = <Container>[];
+
+    final size = bloc.getShotBakuCoreType(position).length > 3 ? 30 : 50;
+
+    final wl = <Widget>[];
     for (final type in bloc.getShotBakuCoreType(position)) {
-      wl.add(Container(
-        color: type.color.withAlpha(0x99),
-        child: Center(
-          child: Text(
-              '${type.shortText}',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline,
-            ),
-          ),
+      wl.add(SizedBox(
+        width: size.toDouble(),
+        child: type.icon,
       ));
     }
     return Row(

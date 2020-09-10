@@ -73,4 +73,25 @@ extension BakuCoreTypeEx on BakuCoreType{
         throw Error();
     }
   }
+
+  Image get icon {
+    switch (this) {
+      case BakuCoreType.shield:
+        return Image.asset('asset/baku_core_type/baku_core_shield.png');
+      case BakuCoreType.magicShield:
+        return Image.asset('asset/baku_core_type/baku_core_magic_shield.png');
+      case BakuCoreType.attack:
+        return Image.asset('asset/baku_core_type/baku_core_attack.png');
+      case BakuCoreType.superAttack:
+        return Image.asset('asset/baku_core_type/baku_core_super_attack.png');
+      case BakuCoreType.special:
+        return Image.asset('asset/baku_core_type/baku_core_special.png');
+      case BakuCoreType.failed:
+        return null;
+      case BakuCoreType.none:
+        return null;
+      default:
+        throw Error();
+    }
+  }
 }
