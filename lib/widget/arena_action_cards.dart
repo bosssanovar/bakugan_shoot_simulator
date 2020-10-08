@@ -77,6 +77,7 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Text(
+                  // ignore: lines_longer_than_80_chars
                   'DR : ${widget.bloc.getActionCardDamageRate(widget.position)}',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline6,

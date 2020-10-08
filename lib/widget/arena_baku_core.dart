@@ -48,7 +48,7 @@ class ArenaBakuCore extends StatelessWidget {
       children: <Widget>[
         Text(
           '${_getShotDamageRateText(position)}',
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.headline5,
         ),
         _buildBakuCoreTypeParameter(context),
 
@@ -57,7 +57,7 @@ class ArenaBakuCore extends StatelessWidget {
             style: Theme
                 .of(context)
                 .textTheme
-                .headline6,
+                .headline5,
           ),
       ],
     );
