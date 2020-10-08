@@ -38,62 +38,76 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
   }
 
   Widget _buildAddButton(BuildContext context) {
-    return GestureDetector(
-      onTap: () async {
-        await OkCancelDialog(
-          context,
-          contents: AddActionCardDialogContents(
-            bloc: widget.bloc,
-            teamPosition: widget.position,
-          ),
-        ).showCustomDialog();
+    return Card(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () async {
+          await OkCancelDialog(
+            context,
+            contents: AddActionCardDialogContents(
+              bloc: widget.bloc,
+              teamPosition: widget.position,
+            ),
+          ).showCustomDialog();
 
-        setState(() {});
-      },
-      child: CustomPaint(
-        painter: _ActionCardsButtonPainter(),
-        child: Container(
-            alignment: Alignment.center,
-            width: 40,
-            height: 40,
-            child: Text(
-              '+',
-              style: Theme.of(context).textTheme.headline6,
-            )),
+          setState(() {});
+        },
+        child: CustomPaint(
+          painter: _ActionCardsButtonPainter(),
+          child: Container(
+              alignment: Alignment.center,
+              width: 40,
+              height: 60,
+              child: Text(
+                '+',
+                style: Theme.of(context).textTheme.headline6,
+              )),
+        ),
       ),
     );
   }
 
-  GestureDetector _buildComputedParam(BuildContext context) {
-    return GestureDetector(
-      child: CustomPaint(
-        painter: _ActionCardsPainter(),
-        child: Center(
-          child: SizedBox(
-            height: 70,
-            width: 120,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Text(
-                  // ignore: lines_longer_than_80_chars
-                  'DR : ${widget.bloc.getActionCardDamageRate(widget.position)}',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                Text(
-                  // ignore: lines_longer_than_80_chars
-                  'BP : ${widget.bloc.getActionCardBattlePointTotal(widget.position)}',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-              ],
+  Widget _buildComputedParam(BuildContext context) {
+    return Card(
+      color: Colors.transparent,
+      child: InkWell(
+        child: CustomPaint(
+          painter: _ActionCardsPainter(),
+          child: Center(
+            child: SizedBox(
+              height: 60,
+              width: 130,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Text(
+                    // ignore: lines_longer_than_80_chars
+                    'DR : ${widget.bloc.getActionCardDamageRate(
+                        widget.position)}',
+                    textAlign: TextAlign.center,
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .headline6,
+                  ),
+                  Text(
+                    // ignore: lines_longer_than_80_chars
+                    'BP : ${widget.bloc.getActionCardBattlePointTotal(
+                        widget.position)}',
+                    textAlign: TextAlign.center,
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .headline6,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
+        onTap: () {},
       ),
-      onTap: () {},
     );
   }
 }
