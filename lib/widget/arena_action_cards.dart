@@ -21,17 +21,11 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
     return Row(
       children: <Widget>[
         widget.position == TeamPosition.left
-            ? Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: _buildAddButton(context),
-              )
+            ? _buildAddButton(context)
             : Container(),
         _buildComputedParam(context),
         widget.position == TeamPosition.right
-            ? Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: _buildAddButton(context),
-              )
+            ? _buildAddButton(context)
             : Container(),
       ],
     );
