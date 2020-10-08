@@ -198,8 +198,7 @@ class _AddActionCardDialogContentsState
           text,
           style: Theme
               .of(context)
-              .textTheme
-              .headline2,
+              .textTheme.headline5,
         ),
         color: Colors.blue,
         shape: BeveledRectangleBorder(
