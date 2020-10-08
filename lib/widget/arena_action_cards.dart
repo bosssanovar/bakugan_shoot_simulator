@@ -68,32 +68,27 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
     return GestureDetector(
       child: CustomPaint(
         painter: _ActionCardsPainter(),
-        child: SizedBox(
-          height: 70,
-          width: 120,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Text(
-                // ignore: lines_longer_than_80_chars
-                'BP : ${widget.bloc.getActionCardBattlePointTotal(widget.position)}',
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .headline6,
-              ),
-              Text(
-                'DR : ${
-                    widget.bloc.getActionCardDamageRate(widget.position)
-                }',
-                textAlign: TextAlign.right,
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .headline6,
-              ),
-            ],
+        child: Center(
+          child: SizedBox(
+            height: 70,
+            width: 120,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text(
+                  'DR : ${widget.bloc.getActionCardDamageRate(widget.position)}',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                Text(
+                  // ignore: lines_longer_than_80_chars
+                  'BP : ${widget.bloc.getActionCardBattlePointTotal(widget.position)}',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+              ],
+            ),
           ),
         ),
       ),
