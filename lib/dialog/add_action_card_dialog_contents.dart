@@ -118,7 +118,7 @@ class _AddActionCardDialogContentsState
       children: <Widget>[
         Text(
           'DR:$damageRate',
-          style: Theme.of(context).textTheme.headline,
+          style: Theme.of(context).textTheme.headline6,
         ),
       ],
     );
@@ -184,7 +184,7 @@ class _AddActionCardDialogContentsState
           style: Theme
               .of(context)
               .textTheme
-              .headline,
+              .headline6,
         ),
       ],
     );
@@ -199,7 +199,7 @@ class _AddActionCardDialogContentsState
           style: Theme
               .of(context)
               .textTheme
-              .title,
+              .headline2,
         ),
         color: Colors.blue,
         shape: BeveledRectangleBorder(

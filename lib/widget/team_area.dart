@@ -48,7 +48,7 @@ class _TeamAreaState extends State<TeamArea> {
   }
 
   Widget _buildCoreAddButton(TeamBakuCorePosition position) {
-    return Container(
+    return SizedBox(
       height: 100,
       child: IconButton(
         onPressed: () {
@@ -61,13 +61,13 @@ class _TeamAreaState extends State<TeamArea> {
             widget.bloc.storeCores(widget.teamPosition, position);
           });
         },
-        icon: Icon(Icons.add_circle_outline),
+        icon: const Icon(Icons.add_circle_outline),
       ),
     );
   }
 
   Widget _buildTeamBakuCore(TeamBakuCorePosition position) {
-    return Container(
+    return SizedBox(
       height: 100,
       child: Stack(
         children: <Widget>[
@@ -79,7 +79,7 @@ class _TeamAreaState extends State<TeamArea> {
               widget.teamPosition == TeamPosition.left
                   ? _buildRemoveButton(position)
                   : Container(),
-              Container(
+              SizedBox(
                 width: 100,
                 child: Stack(
                   alignment: Alignment.center,
@@ -87,7 +87,7 @@ class _TeamAreaState extends State<TeamArea> {
                     _buildBakuCoreShape(),
                     Text(
                       _getTeamsDamageRateText(position),
-                      style: Theme.of(context).textTheme.headline,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                   ],
                 ),
@@ -143,7 +143,7 @@ class _TeamAreaState extends State<TeamArea> {
 
   Widget _buildRemoveButton(TeamBakuCorePosition position) {
     return IconButton(
-      icon: Icon(Icons.remove_circle),
+      icon: const Icon(Icons.remove_circle),
       onPressed: () async {
         await _removeTeamBakuCore(position);
       },

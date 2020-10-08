@@ -20,7 +20,7 @@ class FooterButtons extends StatefulWidget {
 class _FooterButtonsState extends State<FooterButtons> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 380,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,7 +36,7 @@ class _FooterButtonsState extends State<FooterButtons> {
                     });
                   },
             tooltip: 'left shoot',
-            child: Icon(Icons.repeat_one),
+            child: const Icon(Icons.repeat_one),
             foregroundColor:
                 widget.bloc.isShotBakugan()
                 ? null
@@ -49,7 +49,7 @@ class _FooterButtonsState extends State<FooterButtons> {
               });
             },
             tooltip: 'shoot',
-            child: Icon(Icons.refresh),
+            child: const Icon(Icons.refresh),
           ),
           FloatingActionButton(
             backgroundColor: widget.bloc.isShotBakugan()
@@ -63,7 +63,7 @@ class _FooterButtonsState extends State<FooterButtons> {
               });
             },
             tooltip: 'right shoot',
-            child: Icon(Icons.repeat_one),
+            child: const Icon(Icons.repeat_one),
             foregroundColor:
             widget.bloc.isShotBakugan()
                 ? null

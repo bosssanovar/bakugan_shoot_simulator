@@ -23,7 +23,7 @@ class ArenaBakuCores extends StatelessWidget {
         child: Container(
           child: Text(
             '${bloc.getCurrentBakuCoresCount(position)}',
-            style: Theme.of(context).textTheme.headline,
+            style: Theme.of(context).textTheme.headline6,
           ),
         ),
       ),

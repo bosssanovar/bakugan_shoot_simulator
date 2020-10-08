@@ -62,12 +62,12 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
+                SizedBox(
                   width: 270,
                   height: 260,
                   child: _buildCurrentArea(TeamPosition.left),
                 ),
-                Container(
+                SizedBox(
                   width: 270,
                   height: 260,
                   child: _buildCurrentArea(TeamPosition.right),
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
           width: 50,
           height: 50,
           child: IconButton(
-            icon: Icon(Icons.menu),
+            icon: const Icon(Icons.menu),
             iconSize: 32,
             onPressed: () {},
           ),

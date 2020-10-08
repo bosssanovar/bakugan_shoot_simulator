@@ -30,7 +30,7 @@ class OkCancelDialog {
                   color: Colors.grey,
                   child: Text(
                     'Cancel',
-                    style: Theme.of(context).textTheme.body1,
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                       onPressed: () {
                         contents.onCancel();
@@ -44,7 +44,10 @@ class OkCancelDialog {
                       color: Colors.blue,
                       child: Text(
                         'OK',
-                        style: Theme.of(context).textTheme.body1,
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .headline6,
                       ),
                       onPressed: () {
                         contents.onOk();

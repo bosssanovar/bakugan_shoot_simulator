@@ -58,7 +58,7 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
             height: 40,
             child: Text(
               '+',
-              style: Theme.of(context).textTheme.headline,
+              style: Theme.of(context).textTheme.headline6,
             )),
       ),
     );
@@ -68,7 +68,7 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
     return GestureDetector(
       child: CustomPaint(
         painter: _ActionCardsPainter(),
-        child: Container(
+        child: SizedBox(
           height: 70,
           width: 120,
           child: Column(
@@ -78,7 +78,10 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
               Text(
                 // ignore: lines_longer_than_80_chars
                 'BP : ${widget.bloc.getActionCardBattlePointTotal(widget.position)}',
-                style: Theme.of(context).textTheme.headline,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .headline6,
               ),
               Text(
                 'DR : ${
@@ -88,7 +91,7 @@ class _ArenaActionCardsState extends State<ArenaActionCards> {
                 style: Theme
                     .of(context)
                     .textTheme
-                    .headline,
+                    .headline6,
               ),
             ],
           ),

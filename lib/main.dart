@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
               bodyColor: Colors.white,
               displayColor: Colors.white,
             ),
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         dialogBackgroundColor: const Color.fromARGB(0xff, 0x33, 0x33, 0x44),
       ),
       home: const HomePage(title: 'Bakugan shoot simulator'),

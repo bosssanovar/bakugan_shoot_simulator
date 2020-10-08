@@ -20,7 +20,7 @@ class HeaderButtons extends StatefulWidget {
 class _HeaderButtonsState extends State<HeaderButtons> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 380,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,7 +36,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                     _clearTeamBakuCores(TeamPosition.left);
                   },
             tooltip: 'clear left',
-            child: Icon(Icons.delete),
+            child: const Icon(Icons.delete),
             foregroundColor: widget.bloc.isTeamBakuCoreFull(TeamPosition.left)
                 ? null
                 : Colors.white30,
@@ -54,7 +54,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
                     });
                   },
             tooltip: 'add left',
-            child: Icon(Icons.plus_one),
+            child: const Icon(Icons.plus_one),
             foregroundColor:
             widget.bloc.isSuccessShoot(TeamPosition.left)
                 ? null
@@ -77,7 +77,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
               });
             },
             tooltip: 'swap',
-            child: Icon(Icons.swap_horiz),
+            child: const Icon(Icons.swap_horiz),
             foregroundColor:
             (widget.bloc.isShotBakugan()
                 && widget.bloc.isSuccessShoot(TeamPosition.left)
@@ -99,7 +99,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
               });
             },
             tooltip: 'add right',
-            child: Icon(Icons.plus_one),
+            child: const Icon(Icons.plus_one),
             foregroundColor:
             widget.bloc.isSuccessShoot(TeamPosition.right)
                 ? null
@@ -117,7 +117,7 @@ class _HeaderButtonsState extends State<HeaderButtons> {
               _clearTeamBakuCores(TeamPosition.right);
             },
             tooltip: 'clear right',
-            child: Icon(Icons.delete),
+            child: const Icon(Icons.delete),
             foregroundColor:
             widget.bloc.isTeamBakuCoreFull(TeamPosition.right)
                 ? null

@@ -20,7 +20,7 @@ class ArenaBakuCore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 150,
       height: 150,
       child: bloc.isSuccessShoot(position)
@@ -48,8 +48,8 @@ class ArenaBakuCore extends StatelessWidget {
       children: <Widget>[
         Text(
           '${_getShotDamageRateText(position)}',
-            style: Theme.of(context).textTheme.headline,
-          ),
+          style: Theme.of(context).textTheme.headline6,
+        ),
         _buildBakuCoreTypeParameter(context),
 
         Text(
@@ -57,7 +57,7 @@ class ArenaBakuCore extends StatelessWidget {
             style: Theme
                 .of(context)
                 .textTheme
-                .headline,
+                .headline6,
           ),
       ],
     );

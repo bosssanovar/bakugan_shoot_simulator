@@ -27,9 +27,8 @@ extension BakuCoreTypeEx on BakuCoreType{
         return '';
       case BakuCoreType.none:
         return '';
-      default:
-        throw Error();
     }
+    throw Error();
   }
 
   String get shortText {
@@ -48,9 +47,8 @@ extension BakuCoreTypeEx on BakuCoreType{
         return '';
       case BakuCoreType.none:
         return '';
-      default:
-        throw Error();
     }
+    throw Error();
   }
 
   Color get color {
@@ -69,9 +67,8 @@ extension BakuCoreTypeEx on BakuCoreType{
         return null;
       case BakuCoreType.none:
         return null;
-      default:
-        throw Error();
     }
+    throw Error();
   }
 
   Image get icon {
@@ -90,8 +87,7 @@ extension BakuCoreTypeEx on BakuCoreType{
         return null;
       case BakuCoreType.none:
         return null;
-      default:
-        throw Error();
     }
+    throw Error();
   }
 }
