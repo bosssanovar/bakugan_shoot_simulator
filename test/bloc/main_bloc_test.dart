@@ -424,4 +424,17 @@ void main() {
     expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.left), leftBP);
     expect(mainBloc.getActionCardDamageRate(TeamPosition.left), leftDR);
   });
+
+  test('Failed swapping', () {
+    // 準備
+    // BakuCore Typeをバラバラに
+    final mainBloc = MainBloc()..shootBakugans();
+    while (mainBloc.isSuccessShoot(TeamPosition.right) &&
+        mainBloc.isSuccessShoot(TeamPosition.left)) {
+      mainBloc.shootBakugans();
+    }
+
+    // swap実行
+    expect(mainBloc.swapBakuCores, throwsStateError);
+  });
 }

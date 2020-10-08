@@ -79,6 +79,10 @@ class Arena {
     if (!isShotBakugan()) {
       throw StateError('Bakugan is not shot yet.');
     }
+    if (!isShotSuccess(TeamPosition.right) ||
+        !isShotSuccess(TeamPosition.left)) {
+      throw StateError('One or both shots have failed.');
+    }
 
     _teams[TeamPosition.left].swap(_teams[TeamPosition.right]);
   }
