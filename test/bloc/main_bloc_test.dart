@@ -391,4 +391,37 @@ void main() {
     expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.right), 0);
     expect(mainBloc.getActionCardDamageRate(TeamPosition.right), 0);
   });
+
+  test('swap arena bakugans', () {
+    // 準備
+    // BakuCore Typeをバラバラに
+    final mainBloc = MainBloc()..shootBakugans();
+    while (!mainBloc.isSuccessShoot(TeamPosition.right) ||
+        !mainBloc.isSuccessShoot(TeamPosition.left) ||
+        (mainBloc.getShotBakuCoreType(TeamPosition.right).first ==
+            mainBloc.getShotBakuCoreType(TeamPosition.left).first)) {
+      mainBloc.shootBakugans();
+    }
+    final rightType = mainBloc.getShotBakuCoreType(TeamPosition.right).first;
+    final leftType = mainBloc.getShotBakuCoreType(TeamPosition.left).first;
+    // アクションカードを設定
+    mainBloc
+      ..addActionCard(TeamPosition.right, battlePoint: 1, damageRate: 1)
+      ..addActionCard(TeamPosition.left, battlePoint: -1, damageRate: -1);
+    final rightBP = mainBloc.getActionCardBattlePointTotal(TeamPosition.right);
+    final rightDR = mainBloc.getActionCardDamageRate(TeamPosition.right);
+    final leftBP = mainBloc.getActionCardBattlePointTotal(TeamPosition.left);
+    final leftDR = mainBloc.getActionCardDamageRate(TeamPosition.left);
+
+    // swap実行
+    mainBloc.swapBakuCores();
+
+    // テスト
+    expect(mainBloc.getShotBakuCoreType(TeamPosition.left).first, rightType);
+    expect(mainBloc.getShotBakuCoreType(TeamPosition.right).first, leftType);
+    expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.right), rightBP);
+    expect(mainBloc.getActionCardDamageRate(TeamPosition.right), rightDR);
+    expect(mainBloc.getActionCardBattlePointTotal(TeamPosition.left), leftBP);
+    expect(mainBloc.getActionCardDamageRate(TeamPosition.left), leftDR);
+  });
 }
