@@ -202,7 +202,7 @@ class _AddActionCardDialogContentsState
         ),
         color: Colors.blue,
         shape: BeveledRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
         ),
         onPressed: () {
           setState(() {
